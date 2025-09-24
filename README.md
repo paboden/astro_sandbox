@@ -1,9 +1,10 @@
-# Astro Sandbox: MealDb Recipe Site
+# Astro Sandbox
 
 This is a sandbox site, using the Astro basics starter kit. It's just a place where I can practice some astro setups, components and best practices.
 
+---
 
-## Astro Starter Kit: Basics
+## Starter Kit: Basics
 
 ```sh
 npm create astro@latest -- --template basics
