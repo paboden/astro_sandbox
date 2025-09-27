@@ -11,7 +11,7 @@
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
-      "@data/*": ["data/*"] 
+      "@content/*": ["src/content/*"],
     },
     "allowJs": true
   }

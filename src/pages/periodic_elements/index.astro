@@ -1,16 +1,19 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Footer from "@components/Footer.astro";
-import Header from "@components/Header.astro";
 
 // Content collection import
 import { getCollection } from "astro:content";
-const elements = await getCollection("periodic_elements_list");
-const elementsData = elements.map((element) => ({
-  id: element.id,
-  ...element.data,
-}));
-elementsData.sort((a, b) => a.number.valueOf() - b.number.valueOf());
+const elements = await getCollection("elements");
+const elementsData = elements
+  // .filter((value, index, self) => {
+  //   return self.findIndex((e) => e.data.number === value.data.number) === index;
+  // })
+  .map((element) => ({
+    id: element.id,
+    ...element.data,
+  }))
+  .sort((a, b) => a.number.valueOf() - b.number.valueOf());
+// elementsData.sort((a, b) => a.number.valueOf() - b.number.valueOf());
 
 //// General markdown import
 // import type { MarkdownInstance } from "astro";
@@ -35,37 +38,34 @@ elementsData.sort((a, b) => a.number.valueOf() - b.number.valueOf());
   <p>This is a page listing periodic elements</p>
   <ol>
     {
-      elements.map((el) => {
-        const element = el.data;
-        const href = `/periodic_elements/${element.number}_${element.name.toLowerCase()}`;
+      elementsData.map((element) => {
+        const href = `/periodic_elements/${element.id}`;
         return (
           <li data-number="{element.number}">
-            <article
-              class="teaser"
-              data-number="{element.number}"
-              data-symbol="{element.symbol}"
-              data-name="{element.name}"
-            >
-              <div class="content">
-                <h2>
-                  {element.name} ({element.symbol})
-                </h2>
-                <dl>
-                  <dt class="inline-label">Symbol</dt>
-                  <dd>{element.symbol}</dd>
-                  <dt class="inline-label">Atomic number</dt>
-                  <dd>{element.number}</dd>
-                  <dt class="inline-label">Atomic weight</dt>
-                  <dd>{element.weight}</dd>
-                  <dt class="inline-label">Appearance</dt>
-                  <dd>{element.appearance}</dd>
-                </dl>
-                <a class="button" href={href}>
-                  Learn more
-                </a>
-              </div>
+            <a class="element_link" href={href}>
+              <article
+                class="teaser element_teaser"
+                data-number="{element.number}"
+                data-symbol="{element.symbol}"
+                data-name="{element.name}"
+              >
+                <span class="element_number">{element.number}</span>
+                <span class="element_symbol">{element.symbol}</span>
+                <h2 class="element_name">{element.name}</h2>
+                <span class="element_weight">{element.weight}</span>
 
-              {element.image &&
+                {/* <dl>
+                    <dt class="inline-label">Symbol</dt>
+                  <dd>{element.symbol}</dd>
+                    <dt class="inline-label">Atomic number</dt>
+                    <dd>{element.number}</dd>
+                    <dt class="inline-label">Atomic weight</dt>
+                    <dd>{element.weight}</dd>
+                    <dt class="inline-label">Appearance</dt>
+                  <dd>{element.appearance}</dd>
+                  </dl> */}
+
+                {/* {element.image &&
                 (() => {
                   const imgSrc = `/images/elements/${element.image}`;
                   return (
@@ -80,8 +80,9 @@ elementsData.sort((a, b) => a.number.valueOf() - b.number.valueOf());
                       </a>
                     </div>
                   );
-                })}
-            </article>
+                })} */}
+              </article>
+            </a>
           </li>
         );
       })
@@ -108,34 +109,57 @@ elementsData.sort((a, b) => a.number.valueOf() - b.number.valueOf());
     list-style: none;
     margin: 1.5rem 0;
     padding: 0;
-    border: 1px solid #e5e7eb;
     border-radius: 4px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16ch, 1fr));
+    gap: 1rem;
   }
 
   li {
-    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
   }
 
-  ol li + li {
-    border-top: 1px solid #e5e7eb;
+  .element_teaser {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem;
+    transition:
+      background-color 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .element_link {
+    text-decoration: none;
+  }
+
+  .element_symbol {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1;
   }
 
   h2 {
     margin: 0;
     font-weight: bold;
+    font-size: 1.15rem;
   }
 
   dl {
-    display: grid;
+    /* display: grid;
     grid-template-columns: 20ch auto;
     gap: 0.5rem 1rem;
-    margin: 0.5rem 0 1rem 0;
+    margin: 0.5rem 0 1rem 0; */
   }
 
   dd,
   dt {
-    margin-inline: 0;
-    padding-inline: 0;
+    /* margin-inline: 0;
+    padding-inline: 0; */
   }
 
   dt {

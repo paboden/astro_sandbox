@@ -3,8 +3,8 @@ number: 6
 name: Carbon
 symbol: C
 stp: solid
-density: 2.26
 weight: 12.01
+density: 2.26
 appearance: "Ranges from black, metallic looking to clear, depending on state"
 period: 2
 block: p
@@ -18,7 +18,7 @@ year_named: 1789
 named_by: "Antoine Lavoisier"
 name_meaning: "after Helios, Greek god of the Sun"
 image: carbon--graphite-and-diamond-with-scale.jpg
-wiki: https://en.wikipedia.org/wiki/Helium
+wiki: https://en.wikipedia.org/wiki/Carbon
 ---
 
 Carbon (from Latin carbo 'coal') is a chemical element; it has symbol C and atomic number 6. It is nonmetallic and tetravalent—meaning that its atoms are able to form up to four covalent bonds due to its valence shell exhibiting 4 electrons. It belongs to group 14 of the periodic table.[14] Carbon makes up about 0.025 percent of Earth's crust.[15] Three isotopes occur naturally, 12C and 13C being stable, while 14C is a radionuclide, decaying with a half-life of 5,700 years.[13] Carbon is one of the few elements known since antiquity.[16]

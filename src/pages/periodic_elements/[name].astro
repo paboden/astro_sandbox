@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 
 import Layout from "@layouts/Layout.astro";
-import Footer from "@components/Footer.astro";
 
 import type { MarkdownInstance } from 'astro';
 interface Frontmatter {
@@ -33,7 +32,7 @@ interface Frontmatter {
 
 export async function getStaticPaths() {
   const elements = Object.values(
-    import.meta.glob<MarkdownInstance<Frontmatter>>("@data/periodic_elements/*.md", { eager: true })
+    import.meta.glob<MarkdownInstance<Frontmatter>>("@content/elements/*.md", { eager: true })
   );
 
   return elements.map((el) => {

@@ -3,8 +3,8 @@ number: 1
 name: Hydrogen
 symbol: H
 stp: gas
-density: 0.08988
 weight: 1.0080
+density: 0.08988
 appearance: "Colorless gas"
 period: 1
 block: s

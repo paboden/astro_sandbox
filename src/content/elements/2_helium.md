@@ -3,8 +3,8 @@ number: 2
 name: Helium
 symbol: He
 stp: gas
-density: 0.1786
 weight: 4.0026
+density: 0.1786
 appearance: "Colorless gas, exhibiting a gray, cloudy glow"
 period: 1
 block: s
