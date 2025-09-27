@@ -1,9 +1,9 @@
 ---
 number: 92
 name: Uranium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: U
+stp: solid
+weight: 238.029
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Uranium
 ---
 
 Markdown content here...

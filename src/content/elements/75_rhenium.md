@@ -1,9 +1,9 @@
 ---
 number: 75
 name: Rhenium
-symbol: B
+symbol: Re
 stp: solid
-weight: 10.81
+weight: 186.207
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Boron
+wiki: https://en.wikipedia.org/wiki/Rhenium
 ---
 
 Markdown content here...

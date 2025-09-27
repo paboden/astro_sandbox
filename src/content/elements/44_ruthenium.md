@@ -1,9 +1,9 @@
 ---
 number: 44
 name: Ruthenium
-symbol: Be
+symbol: Ru
 stp: solid
-weight: 9.0122
+weight: 101.072
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Berylium
+wiki: https://en.wikipedia.org/wiki/Ruthenium
 ---
 
 Markdown content here...

@@ -1,9 +1,9 @@
 ---
 number: 82
 name: Lead
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Pb
+stp: solid
+weight: 207.21
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Lead
 ---
 
 Markdown content here...

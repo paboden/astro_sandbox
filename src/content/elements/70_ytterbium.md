@@ -1,9 +1,9 @@
 ---
 number: 70
 name: Ytterbium
-symbol: B
+symbol: Yb
 stp: solid
-weight: 10.81
+weight: 173.045
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Boron
+wiki: https://en.wikipedia.org/wiki/Ytterbium
 ---
 
 Markdown content here...

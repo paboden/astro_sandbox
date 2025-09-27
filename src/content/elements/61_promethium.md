@@ -2,8 +2,8 @@
 number: 61
 name: Promethium
 symbol: N
-stp: gas
-weight: 14.007
+stp: solid
+weight: 145
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Promethium
 ---
 
 Markdown content here...

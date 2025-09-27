@@ -1,9 +1,9 @@
 ---
 number: 86
 name: Radon
-symbol: N
+symbol: Rn
 stp: gas
-weight: 14.007
+weight: 222
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Radon
 ---
 
 Markdown content here...

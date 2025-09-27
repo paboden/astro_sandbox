@@ -1,9 +1,9 @@
 ---
 number: 80
 name: Mercury
-symbol: B
-stp: solid
-weight: 10.81
+symbol: Hg
+stp: liquid
+weight: 200.592
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Boron
+wiki: https://en.wikipedia.org/wiki/Mercury
 ---
 
 Markdown content here...

@@ -1,9 +1,9 @@
 ---
 number: 79
 name: Gold
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Au
+stp: solid
+weight: 196.967
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Gold
 ---
 
 Markdown content here...

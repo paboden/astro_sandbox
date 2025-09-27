@@ -1,9 +1,9 @@
 ---
 number: 65
 name: Terbium
-symbol: B
+symbol: Tb
 stp: solid
-weight: 10.81
+weight: 158.925
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Boron
+wiki: https://en.wikipedia.org/wiki/Terbium
 ---
 
 Markdown content here...

@@ -3,7 +3,7 @@ number: 53
 name: Iodine
 symbol: Li
 stp: solid
-weight: 6.94
+weight: 126.904
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Lithium
+wiki: https://en.wikipedia.org/wiki/Iodine
 ---
 
 Markdown content here...

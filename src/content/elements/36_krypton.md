@@ -1,9 +1,9 @@
 ---
 number: 36
 name: Krypton
-symbol: N
+symbol: Kr
 stp: gas
-weight: 14.007
+weight: 83.7982
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Krypton
 ---
 
 Markdown content here...

@@ -1,9 +1,9 @@
 ---
 number: 94
 name: Plutonium
-symbol: Be
+symbol: Pu
 stp: solid
-weight: 9.0122
+weight: 244
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Berylium
+wiki: https://en.wikipedia.org/wiki/Plutonium
 ---
 
 Markdown content here...

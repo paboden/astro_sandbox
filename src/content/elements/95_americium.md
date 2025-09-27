@@ -1,9 +1,9 @@
 ---
 number: 95
 name: Americium
-symbol: B
+symbol: Am
 stp: solid
-weight: 10.81
+weight: 243
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Boron
+wiki: https://en.wikipedia.org/wiki/Americium
 ---
 
 Markdown content here...

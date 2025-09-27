@@ -1,9 +1,9 @@
 ---
 number: 91
 name: Protactinium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Pa
+stp: solid
+weight: 231.036
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Protactinium
 ---
 
 Markdown content here...

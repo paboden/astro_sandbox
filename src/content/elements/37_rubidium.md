@@ -1,9 +1,9 @@
 ---
 number: 37
 name: Rubidium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Rb
+stp: solid
+weight: 85.4678
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Rubidium
 ---
 
 Markdown content here...

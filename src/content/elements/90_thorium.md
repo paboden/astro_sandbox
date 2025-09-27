@@ -1,9 +1,9 @@
 ---
 number: 90
 name: Thorium
-symbol: B
+symbol: Th
 stp: solid
-weight: 10.81
+weight: 232.038
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Boron
+wiki: https://en.wikipedia.org/wiki/Thorium
 ---
 
 Markdown content here...

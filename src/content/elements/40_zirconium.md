@@ -1,9 +1,9 @@
 ---
 number: 40
 name: Zirconium
-symbol: B
+symbol: Zr
 stp: solid
-weight: 10.81
+weight: 91.2242
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Boron
+wiki: https://en.wikipedia.org/wiki/Zirconium
 ---
 
 Markdown content here...

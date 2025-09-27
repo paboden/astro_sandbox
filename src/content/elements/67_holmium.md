@@ -1,9 +1,9 @@
 ---
 number: 67
 name: Holmium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Ho
+stp: solid
+weight: 164.93
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Holmium
 ---
 
 Markdown content here...

@@ -1,9 +1,9 @@
 ---
 number: 63
 name: Europium
-symbol: Li
+symbol: Eu
 stp: solid
-weight: 6.94
+weight: 151.964
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Lithium
+wiki: https://en.wikipedia.org/wiki/Europium
 ---
 
 Markdown content here...

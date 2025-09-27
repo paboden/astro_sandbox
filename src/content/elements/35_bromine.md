@@ -1,9 +1,9 @@
 ---
 number: 35
 name: Bromine
-symbol: B
+symbol: Br
 stp: liquid
-weight: 10.81
+weight: 79.901
 density:
 appearance:
 period:

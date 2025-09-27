@@ -1,9 +1,9 @@
 ---
 number: 103
 name: Lawrencium
-symbol: Li
+symbol: Lr
 stp: solid
-weight: 6.94
+weight: 262
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Lithium
+wiki: https://en.wikipedia.org/wiki/Lawrencium
 ---
 
 Markdown content here...

@@ -1,9 +1,9 @@
 ---
 number: 32
 name: Germanium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Ge
+stp: solid
+weight: 72.6308
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Germanium
 ---
 
 Markdown content here...

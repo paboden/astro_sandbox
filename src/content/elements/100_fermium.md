@@ -1,9 +1,9 @@
 ---
 number: 100
 name: Fermium
-symbol: B
+symbol: Fm
 stp: solid
-weight: 10.81
+weight: 257
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Boron
+wiki: https://en.wikipedia.org/wiki/Fermium
 ---
 
 Markdown content here...

@@ -1,9 +1,9 @@
 ---
 number: 52
 name: Tellerium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Te
+stp: solid
+weight: 127.603
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Tellerium
 ---
 
 Markdown content here...

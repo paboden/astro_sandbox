@@ -1,9 +1,9 @@
 ---
 number: 105
 name: Dubnium
-symbol: B
+symbol: Db
 stp: solid
-weight: 10.81
+weight: 268
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Boron
+wiki: https://en.wikipedia.org/wiki/Dubnium
 ---
 
 Markdown content here...

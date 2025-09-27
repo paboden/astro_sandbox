@@ -1,9 +1,9 @@
 ---
 number: 83
 name: Bismuth
-symbol: Li
+symbol: Bi
 stp: solid
-weight: 6.94
+weight: 208.98
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Lithium
+wiki: https://en.wikipedia.org/wiki/Bismuth
 ---
 
 Markdown content here...

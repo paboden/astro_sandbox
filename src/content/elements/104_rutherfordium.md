@@ -1,9 +1,9 @@
 ---
 number: 104
 name: Rutherfordium
-symbol: Be
+symbol: Rf
 stp: solid
-weight: 9.0122
+weight: 261
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Berylium
+wiki: https://en.wikipedia.org/wiki/Rutherfordium
 ---
 
 Markdown content here...

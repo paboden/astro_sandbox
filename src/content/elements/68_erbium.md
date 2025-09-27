@@ -1,8 +1,8 @@
 ---
 number: 68
 name: Erbium
-symbol: N
-stp: gas
+symbol: Er
+stp: solid
 weight: 14.007
 density:
 appearance:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Erbium
 ---
 
 Markdown content here...

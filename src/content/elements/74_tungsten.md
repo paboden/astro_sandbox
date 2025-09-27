@@ -1,9 +1,9 @@
 ---
 number: 74
 name: Tungsten
-symbol: Be
+symbol: W
 stp: solid
-weight: 9.0122
+weight: 183.841
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Berylium
+wiki: https://en.wikipedia.org/wiki/Tungsten
 ---
 
 Markdown content here...

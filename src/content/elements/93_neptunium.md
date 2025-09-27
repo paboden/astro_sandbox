@@ -1,9 +1,9 @@
 ---
 number: 93
 name: Neptunium
-symbol: Li
+symbol: Np
 stp: solid
-weight: 6.94
+weight: 237
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Lithium
+wiki: https://en.wikipedia.org/wiki/Neptunium
 ---
 
 Markdown content here...

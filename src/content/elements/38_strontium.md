@@ -1,9 +1,9 @@
 ---
 number: 38
 name: Strontium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Sr
+stp: solid
+weight: 87.621
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Strontium
 ---
 
 Markdown content here...

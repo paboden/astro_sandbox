@@ -1,9 +1,9 @@
 ---
 number: 49
 name: Indium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: In
+stp: solid
+weight: 114.818
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Indium
 ---
 
 Markdown content here...

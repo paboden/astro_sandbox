@@ -1,9 +1,9 @@
 ---
 number: 56
 name: Barium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Ba
+stp: solid
+weight: 137.328
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Barium
 ---
 
 Markdown content here...

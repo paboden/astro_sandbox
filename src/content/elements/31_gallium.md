@@ -2,8 +2,8 @@
 number: 31
 name: Gallium
 symbol: Ga
-stp: gas
-weight: 14.007
+stp: solid
+weight: 69.7231
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Gallium
 ---
 
 Markdown content here...

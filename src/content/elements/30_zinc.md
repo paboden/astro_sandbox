@@ -3,7 +3,7 @@ number: 30
 name: Zinc
 symbol: Z
 stp: solid
-weight: 65.38
+weight: 65.382
 density:
 appearance:
 period:

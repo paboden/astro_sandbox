@@ -1,9 +1,9 @@
 ---
 number: 84
 name: Polonium
-symbol: Be
+symbol: Po
 stp: solid
-weight: 9.0122
+weight: 209
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Berylium
+wiki: https://en.wikipedia.org/wiki/Polonium
 ---
 
 Markdown content here...

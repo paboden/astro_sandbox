@@ -1,9 +1,9 @@
 ---
 number: 48
 name: Cadmium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Cd
+stp: solid
+weight: 112.414
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Cadmium
 ---
 
 Markdown content here...

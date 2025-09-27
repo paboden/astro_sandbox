@@ -1,9 +1,9 @@
 ---
 number: 43
 name: Technetium
-symbol: Li
+symbol: Tc
 stp: solid
-weight: 6.94
+weight: 98.9062
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Lithium
+wiki: https://en.wikipedia.org/wiki/Technetium
 ---
 
 Markdown content here...

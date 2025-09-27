@@ -1,9 +1,9 @@
 ---
 number: 55
 name: Caesium
-symbol: B
+symbol: Cs
 stp: solid
-weight: 10.81
+weight: 132.905
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Boron
+wiki: https://en.wikipedia.org/wiki/Caesium
 ---
 
 Markdown content here...

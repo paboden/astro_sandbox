@@ -1,9 +1,9 @@
 ---
 number: 57
 name: Lanthanum
-symbol: N
-stp: gas
-weight: 14.007
+symbol: La
+stp: solid
+weight: 138.905
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Lanthanum
 ---
 
 Markdown content here...

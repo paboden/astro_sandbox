@@ -1,9 +1,9 @@
 ---
 number: 96
 name: Curium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Cm
+stp: solid
+weight: 247
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Curium
 ---
 
 Markdown content here...

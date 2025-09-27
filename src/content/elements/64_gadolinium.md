@@ -1,9 +1,9 @@
 ---
 number: 64
 name: Gadolinium
-symbol: Be
+symbol: Gd
 stp: solid
-weight: 9.0122
+weight: 157.253
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Berylium
+wiki: https://en.wikipedia.org/wiki/Gadolinium
 ---
 
 Markdown content here...

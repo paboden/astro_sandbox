@@ -1,9 +1,9 @@
 ---
 number: 45
 name: Rhodium
-symbol: B
+symbol: Rh
 stp: solid
-weight: 10.81
+weight: 102.906
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Boron
+wiki: https://en.wikipedia.org/wiki/Rhodium
 ---
 
 Markdown content here...

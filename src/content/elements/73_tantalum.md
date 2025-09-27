@@ -1,9 +1,9 @@
 ---
 number: 73
 name: Tantalum
-symbol: Li
+symbol: Ta
 stp: solid
-weight: 6.94
+weight: 180.948
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Lithium
+wiki: https://en.wikipedia.org/wiki/Tantalum
 ---
 
 Markdown content here...

@@ -1,9 +1,9 @@
 ---
 number: 62
 name: Samarium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Sm
+stp: solid
+weight: 150.362
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Samarium
 ---
 
 Markdown content here...

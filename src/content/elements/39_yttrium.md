@@ -1,9 +1,9 @@
 ---
 number: 39
 name: Yttrium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Y
+stp: solid
+weight: 88.9058
 density:
 appearance:
 period:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Yttrium
 ---
 
 Markdown content here...
