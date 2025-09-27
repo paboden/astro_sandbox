@@ -1,12 +1,12 @@
 ---
 number: 108
 name: Hassium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Hs
+stp: solid
+weight: 269
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Hassium
 ---
 
 Markdown content here...

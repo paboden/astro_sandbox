@@ -1,12 +1,12 @@
 ---
 number: 115
 name: Moscovium
-symbol: B
-stp: solid
-weight: 10.81
+symbol: Mc
+stp: synthetic
+weight: 288
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Boron
+wiki: https://en.wikipedia.org/wiki/Moscovium
 ---
 
 Markdown content here...

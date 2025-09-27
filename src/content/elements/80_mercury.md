@@ -6,7 +6,7 @@ stp: liquid
 weight: 200.592
 density:
 appearance:
-period:
+period: 6
 block:
 group:
 configuration:

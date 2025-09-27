@@ -2,11 +2,11 @@
 number: 104
 name: Rutherfordium
 symbol: Rf
-stp: solid
+stp: synthetic
 weight: 261
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:

@@ -2,11 +2,11 @@
 number: 105
 name: Dubnium
 symbol: Db
-stp: solid
+stp: synthetic
 weight: 268
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:

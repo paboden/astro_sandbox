@@ -1,12 +1,12 @@
 ---
 number: 114
 name: Flerovium
-symbol: Be
-stp: solid
-weight: 9.0122
+symbol: Fl
+stp: synthetic
+weight: 289
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Berylium
+wiki: https://en.wikipedia.org/wiki/Flerovium
 ---
 
 Markdown content here...

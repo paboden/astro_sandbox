@@ -2,11 +2,11 @@
 number: 96
 name: Curium
 symbol: Cm
-stp: solid
+stp: synthetic
 weight: 247
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:

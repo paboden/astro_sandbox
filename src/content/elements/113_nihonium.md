@@ -1,12 +1,12 @@
 ---
 number: 113
 name: Nihonium
-symbol: Li
+symbol: Nh
 stp: solid
-weight: 6.94
+weight: 286
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Lithium
+wiki: https://en.wikipedia.org/wiki/Nihonium
 ---
 
 Markdown content here...

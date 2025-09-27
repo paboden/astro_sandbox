@@ -2,11 +2,11 @@
 number: 100
 name: Fermium
 symbol: Fm
-stp: solid
+stp: synthetic
 weight: 257
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:

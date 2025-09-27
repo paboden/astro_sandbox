@@ -6,7 +6,7 @@ stp: solid
 weight: 118.711
 density:
 appearance:
-period:
+period: 5
 block:
 group:
 configuration:

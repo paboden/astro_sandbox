@@ -2,11 +2,11 @@
 number: 98
 name: Californium
 symbol: Cf
-stp: solid
+stp: synthetic
 weight: 251
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:

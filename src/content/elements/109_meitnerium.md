@@ -1,12 +1,12 @@
 ---
 number: 109
 name: Meitnerium
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Mt
+stp: solid
+weight: 277.154
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Meitnerium
 ---
 
 Markdown content here...

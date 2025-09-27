@@ -2,11 +2,11 @@
 number: 102
 name: Nobelium
 symbol: No
-stp: solid
+stp: synthetic
 weight: 259
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:

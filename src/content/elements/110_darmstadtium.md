@@ -1,12 +1,12 @@
 ---
 number: 110
 name: Darmstadtium
-symbol: B
+symbol: Ds
 stp: solid
-weight: 10.81
+weight: 281
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Boron
+wiki: https://en.wikipedia.org/wiki/Darmstadtium
 ---
 
 Markdown content here...

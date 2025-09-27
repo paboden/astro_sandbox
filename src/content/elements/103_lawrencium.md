@@ -2,11 +2,11 @@
 number: 103
 name: Lawrencium
 symbol: Lr
-stp: solid
+stp: synthetic
 weight: 262
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:

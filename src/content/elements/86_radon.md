@@ -6,9 +6,9 @@ stp: gas
 weight: 222
 density:
 appearance:
-period:
+period: 6
 block:
-group:
+group: 18
 configuration:
 oxidation_states:
 cas_number:

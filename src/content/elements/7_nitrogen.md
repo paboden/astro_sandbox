@@ -6,7 +6,7 @@ stp: gas
 weight: 14.007
 density:
 appearance:
-period:
+period: 2
 block:
 group:
 configuration:

@@ -2,11 +2,11 @@
 number: 97
 name: Berkelium
 symbol: Bk
-stp: solid
+stp: synthetic
 weight: 247
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:

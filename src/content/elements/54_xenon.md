@@ -6,9 +6,9 @@ stp: solid
 weight: 131.294
 density:
 appearance:
-period:
+period: 5
 block:
-group:
+group: 18
 configuration:
 oxidation_states:
 cas_number:

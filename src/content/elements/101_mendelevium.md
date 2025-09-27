@@ -2,11 +2,11 @@
 number: 101
 name: Mendelevium
 symbol: Md
-stp: solid
+stp: synthetic
 weight: 258
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:

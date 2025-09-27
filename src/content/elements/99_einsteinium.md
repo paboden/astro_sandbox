@@ -2,11 +2,11 @@
 number: 99
 name: Einsteinium
 symbol: Es
-stp: solid
+stp: synthetic
 weight: 252
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:

@@ -10,7 +10,7 @@ const elements = defineCollection({
     number: z.number(),
     symbol: z.string(),
     name: z.string(),
-    stp: z.enum(['gas', 'solid', 'liquid']).nullish(),
+    stp: z.enum(['gas', 'solid', 'liquid', 'synthetic']).nullish(),
     density: z.number().nullish(),
     weight: z.number().nullish(),
     appearance: z.string().nullish(),

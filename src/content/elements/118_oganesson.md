@@ -1,14 +1,14 @@
 ---
 number: 118
 name: Oganesson
-symbol: N
-stp: gas
-weight: 14.007
+symbol: Og
+stp: synthetic
+weight: 294
 density:
 appearance:
-period:
+period: 7
 block:
-group:
+group: 18
 configuration:
 oxidation_states:
 cas_number:
@@ -18,7 +18,7 @@ year_named:
 named_by:
 name_meaning:
 image:
-wiki: https://en.wikipedia.org/wiki/Nitrogen
+wiki: https://en.wikipedia.org/wiki/Oganesson
 ---
 
 Markdown content here...

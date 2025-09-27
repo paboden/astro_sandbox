@@ -2,11 +2,11 @@
 number: 95
 name: Americium
 symbol: Am
-stp: solid
+stp: synthetic
 weight: 243
 density:
 appearance:
-period:
+period: 7
 block:
 group:
 configuration:
