@@ -1,0 +1,54 @@
+---
+const { element } = Astro.props;
+---
+
+<p class="element_description">
+  {element.name} is a chemical element with the symbol {element.symbol}
+  and atomic number <em>{element.number}</em>.
+
+  {element.weight && <>It has an atomic weight of {element.weight}.</>}
+
+  {
+    !element.group && element.classification && (
+      <>It is classed as {element.classification}.</>
+    )
+  }
+
+  {
+    !element.classification && element.group && (
+      <>It is part of group {element.group} (group name here).</>
+    )
+  }
+
+  {
+    element.classification && element.group && (
+      <>
+        It is classed as {element.classification} and is part of group{" "}
+        {element.group} (group name here).
+      </>
+    )
+  }
+
+  {
+    element.stp && element.stp === "synthetic" ? (
+      <>
+        {element.name} is a {element.stp} chemical.
+      </>
+    ) : (
+      <>
+        {element.name} is {element.stp} at room temperature and pressure.
+      </>
+    )
+  }
+</p>
+
+<p class="element_description">{element.description}</p>
+
+<style>
+  .description {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+  }
+</style>

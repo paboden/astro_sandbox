@@ -13,22 +13,43 @@ const elements = defineCollection({
     stp: z.enum(['gas', 'solid', 'liquid', 'synthetic']).nullish(),
     density: z.number().nullish(),
     weight: z.number().nullish(),
+
+    classification: z.string().nullish(),
     appearance: z.string().nullish(),
+    facts: z.array(z.string()).nullish(),
+
+    color: z.string().nullish(),
+
     period: z.number().nullish(),
     block: z.string().nullish(),
     group: z.number().nullish(),
+    group_name: z.string().nullish(),
+
     configuration: z.array(z.number()).nullish(),
     oxidation_states: z.array(z.union([z.number(), z.string()])).nullish(),
+
     cas_number: z.array(z.string()).nullish(),
+
     year_discovered: z.number().nullish(),
-    discovered_by: z.string().nullish(),
     year_named: z.number().nullish(),
+
+    discovered_by: z.string().nullish(),
     named_by: z.string().nullish(),
     name_meaning: z.string().nullish(),
+
     image: z.string().nullish(),
     wiki: z.string().nullish(),
     href: z.string().nullish(),
-    description: z.string().nullish(),
+
+    melting_point: z.array(z.object({
+      type: z.enum(['K', 'C', 'F']),
+      value: z.number(),
+    })).nullish(),
+    boiling_point: z.array(z.object({
+      type: z.enum(['K', 'C', 'F']),
+      value: z.number(),
+    })).nullish(),
+    vaporization: z.array(z.number()).nullish(),
   }),
 });
 

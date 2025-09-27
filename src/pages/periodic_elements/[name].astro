@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 
 import Layout from "@layouts/Layout.astro";
+import Description from "@components/Element/Description.astro";
+
 
 import type { MarkdownInstance } from 'astro';
 interface Frontmatter {
@@ -13,7 +15,10 @@ interface Frontmatter {
     stp?: string;
     density?: number;
     weight?: number;
+    classification?: string;
+    color?: string;
     appearance?: string;
+    facts?: string[];
     period?: number;
     block?: string;
     group?: number;
@@ -56,6 +61,8 @@ const { element, content } = Astro.props;
 
   <h1>{element.name}</h1>
 
+  <Description element={element} />
+
   {element.image && (() => {
     const imgSrc = `/images/elements/${element.image}`;
     return (
@@ -94,6 +101,16 @@ const { element, content } = Astro.props;
     {element.appearance && (
       <dt>Appearance</dt>
       <dd>{element.appearance}</dd>
+    )}
+
+    {element.classification && (
+      <dt>Classification</dt>
+      <dd>{element.classification}</dd>
+    )}
+
+        {element.color && (
+      <dt>Color</dt>
+      <dd>{element.color}</dd>
     )}
 
     {element.period && (
@@ -162,6 +179,15 @@ const { element, content } = Astro.props;
   </dl>
 
   <Fragment set:html={content ?? "<p>No element found</p>"} />
+
+  {element.facts && element.facts.length > 0 && (
+    <h2>Facts</h2>
+    <ul>
+      {element.facts.map((fact) => (
+        <li>{fact}</li>
+      ))}
+    </ul>
+  )}
 
 </Layout>
 
