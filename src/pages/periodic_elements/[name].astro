@@ -18,13 +18,15 @@ interface Frontmatter {
     classification?: string;
     color?: string;
     appearance?: string;
-    facts?: string[];
     period?: number;
     block?: string;
     group?: number;
     configuration?: number[];
     oxidation_states?: (number | string)[];
     cas_number?: string[];
+    ec_number?: string;
+    chemspider_id?: number;
+    pubchem_id?: number;
     year_discovered?: number;
     discovered_by?: string;
     year_named?: number;
@@ -33,6 +35,14 @@ interface Frontmatter {
     image?: string;
     wiki?: string;
     href?: string;
+    facts?: string[];
+    location?: string;
+    protons?: number;
+    neutrons?: number;
+    electrons?: number;
+    melting_point?: { type: string; value: number }[];
+    boiling_point?: { type: string; value: number }[];
+    vaporization?: number[];
 }
 
 export async function getStaticPaths() {
