@@ -91,56 +91,74 @@ const { element, content } = Astro.props;
       <dd>{element.stp}</dd>
     )}
 
-    <dt>Appearance</dt>
-    <dd>{element.appearance ?? "N/A"}</dd>
+    {element.appearance && (
+      <dt>Appearance</dt>
+      <dd>{element.appearance}</dd>
+    )}
 
-    <dt>Period</dt>
-    <dd>{element.period ?? "N/A"}</dd>
+    {element.period && (
+      <dt>Period</dt>
+      <dd>{element.period}</dd>
+    )}
 
-    <dt>Block</dt>
-    <dd>{element.block ?? "N/A"}</dd>
+    {element.block && (
+      <dt>Block</dt>
+      <dd>{element.block}</dd>
+    )}
 
-    <dt>Group</dt>
-    <dd>{element.group ?? "N/A"}</dd>
+    {element.group && (
+      <dt>Group</dt>
+      <dd>{element.group}</dd>
+    )}
 
-    <dt>Electron Configuration</dt>
-    <dd>{element.configuration ? element.configuration.join(", ") : null}</dd>
+    {element.configuration && (
+      <dt>Electron Configuration</dt>
+      <dd>{element.configuration ? element.configuration.join(", ") : null}</dd>
+    )}
 
-    <dt>Oxidation States</dt>
-    <dd>
-      {element.oxidation_states ? element.oxidation_states.join(", ") : "N/A"}
-    </dd>
+    {element.oxidation_states && (
+      <dt>Oxidation States</dt>
+      <dd>{element.oxidation_states ? element.oxidation_states.join(", ") : null}</dd>
+    )}
 
-    <dt>CAS Number(s)</dt>
-    <dd>{element.cas_number ? element.cas_number.join(", ") : "N/A"}</dd>
+    {element.cas_number && (
+      <dt>CAS Number(s)</dt>
+      <dd>{element.cas_number ? element.cas_number.join(", ") : null}</dd>
+    )}
 
-    <dt>Year Discovered</dt>
-    <dd>{element.year_discovered ?? "N/A"}</dd>
+    {element.year_discovered && (
+      <dt>Year Discovered</dt>
+      <dd>{element.year_discovered}</dd>
+    )}
 
-    <dt>Discovered By</dt>
-    <dd>{element.discovered_by ?? "N/A"}</dd>
+    {element.discovered_by && (
+      <dt>Discovered By</dt>
+      <dd>{element.discovered_by}</dd>
+    )}
 
-    <dt>Year Named</dt>
-    <dd>{element.year_named ?? "N/A"}</dd>
+    {element.year_named && (
+      <dt>Year Named</dt>
+      <dd>{element.year_named}</dd>
+    )}
 
-    <dt>Named By</dt>
-    <dd>{element.named_by ?? "N/A"}</dd>
+    {element.named_by && (
+      <dt>Named By</dt>
+      <dd>{element.named_by}</dd>
+    )}
 
-    <dt>Name Meaning</dt>
-    <dd>{element.name_meaning ?? "N/A"}</dd>
+    {element.name_meaning && (
+      <dt>Name Meaning</dt>
+      <dd>{element.name_meaning}</dd>
+    )}
 
-    <dt>Wikipedia</dt>
-    <dd>
-      {
-        element.wiki ? (
+    {element.wiki && (
+      <dt>Wikipedia</dt>
+      <dd>
           <a href={element.wiki} target="_blank" rel="noopener noreferrer">
             {element.wiki}
           </a>
-        ) : (
-          "N/A"
-        )
-      }
-    </dd>
+      </dd>
+    )}
   </dl>
 
   <Fragment set:html={content ?? "<p>No element found</p>"} />
