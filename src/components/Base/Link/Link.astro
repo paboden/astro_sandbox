@@ -5,15 +5,17 @@ import { Icon } from "astro-icon/components";
 
 interface Props extends HTMLAttributes<"a"> {
   variant: "default" | "primary" | "secondary";
-  icon?: HTMLAttributes<"svg">;
+  isExternal?: boolean;
+  icon?: Record<string, string | boolean | undefined>;
 }
 
-const { variant = "default", ...props } = Astro.props;
+const { variant = "default", isExternal = false, icon, ...props } = Astro.props;
 ---
 
 <a
   class:list={twMerge([
     "link",
+    isExternal && "link--external",
     variant === "default" && "default",
     variant === "primary" && "primary",
     variant === "secondary" && "secondary",
@@ -21,5 +23,7 @@ const { variant = "default", ...props } = Astro.props;
   ])}
   {...props}
 >
+  {icon && <Icon name={icon.name} {...icon} />}
   <slot />
+  {isExternal && <Icon name="mdi:external-link" class="inline ml-2" />}
 </a>

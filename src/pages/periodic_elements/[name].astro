@@ -3,9 +3,11 @@ import { Image } from "astro:assets";
 
 import Layout from "@layouts/Layout.astro";
 import Description from "@components/Element/Description.astro";
+import { Icon } from "astro-icon/components";
 
 
 import type { MarkdownInstance } from 'astro';
+import Link from "@/components/Base/Link/Link.astro";
 interface Frontmatter {
     title: string;
     description?: string;
@@ -69,7 +71,7 @@ const { element, content } = Astro.props;
 
 <Layout title=`Periodic Element: ${element.name}`>
 
-  <h1>{element.name}</h1>
+  <h1 class="text-4xl font-bold text-black dark:text-white">{element.name}</h1>
 
   <Description element={element} />
 
@@ -181,9 +183,10 @@ const { element, content } = Astro.props;
     {element.wiki && (
       <dt>Wikipedia</dt>
       <dd>
-          <a href={element.wiki} target="_blank" rel="noopener noreferrer">
-            {element.wiki}
-          </a>
+        <Link href={element.wiki} target="_blank" rel="noopener noreferrer" variant="primary" icon={{ name: "mdi:wikipedia", class: "inline ml-1" }}>
+          {element.wiki}
+          <Icon name="mdi:external-link" class="inline mr-1" />
+        </Link>
       </dd>
     )}
   </dl>
