@@ -1,8 +1,19 @@
 ---
-const { element } = Astro.props;
+const { element, ...attr } = Astro.props;
+import { twMerge } from "tailwind-merge";
+
+const defaultClasses = [
+  "prose",
+  "dark:prose-invert",
+  "prose-a:text-blue-600",
+  "prose-img:rounded-xl",
+].join(" ");
 ---
 
-<p class="element_description">
+<p
+  class:list={twMerge(["element_description", defaultClasses, attr.class])}
+  {...attr}
+>
   {element.name} is a chemical element with the symbol {element.symbol}
   and atomic number <em>{element.number}</em>.
 
@@ -42,13 +53,20 @@ const { element } = Astro.props;
   }
 </p>
 
-<p class="element_description">{element.description}</p>
+{
+  element.description && (
+    <p
+      class:list={twMerge(["element_description", defaultClasses, attr.class])}
+      {...attr}
+    >
+      {element.description}
+    </p>
+  )
+}
 
 <style>
-  .description {
+  .element_description {
     margin-top: 0;
     margin-bottom: 1rem;
-    font-size: 1rem;
-    color: var(--color-text-secondary);
   }
 </style>

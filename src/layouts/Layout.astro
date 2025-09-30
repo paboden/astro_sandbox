@@ -1,8 +1,10 @@
 ---
-import Header from "@components/Header/Header.astro";
-import Footer from "@components/Footer/Footer.astro";
+import Header from "@components/Interface/Header/Header.astro";
+import Footer from "@components/Interface/Footer/Footer.astro";
 
 import "../styles/global.css";
+
+const { ...attr } = Astro.props;
 ---
 
 <!doctype html>
@@ -16,7 +18,7 @@ import "../styles/global.css";
   </head>
   <body>
     <Header />
-    <div class="content">
+    <div class:list={["content", attr.class]} {...attr}>
       <slot />
     </div>
     <Footer />

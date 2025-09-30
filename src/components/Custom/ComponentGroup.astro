@@ -1,0 +1,9 @@
+---
+import Heading from "@components/Base/Heading/Heading.astro";
+const { componentGroup } = Astro.props;
+---
+
+<div class="max-w-6xl mx-auto mt-8 mb-20">
+  <Heading as="h2" class="mb-4">{componentGroup}</Heading>
+  <slot />
+</div>

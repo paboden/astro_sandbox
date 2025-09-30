@@ -7,8 +7,8 @@ const elements = defineCollection({
     base: "./src/content/elements" 
   }),
   schema: z.object({
-    number: z.number(),
-    symbol: z.string(),
+    number: z.number().max(118, 'Element number does not exist'),
+    symbol: z.string().max(3, "Symbol too long"),
     name: z.string(),
     stp: z.enum(['gas', 'solid', 'liquid', 'synthetic']).nullish(),
     density: z.number().nullish(),
@@ -16,7 +16,7 @@ const elements = defineCollection({
     molar_volume: z.number().nullish(),
     classification: z.string().nullish(),
     appearance: z.string().nullish(),
-    facts: z.array(z.string()).nullish(),
+    facts: z.array(z.string()).max(4, 'Too many facts').nullish(),
     color: z.string().nullish(),
     period: z.number().nullish(),
     block: z.string().nullish(),

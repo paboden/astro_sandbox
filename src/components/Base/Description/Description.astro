@@ -1,0 +1,27 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { twMerge } from "tailwind-merge";
+
+interface Props extends HTMLAttributes<"div"> {
+  terms: string[] | string;
+}
+
+let { terms, ...attr } = Astro.props;
+
+if (typeof terms === "string") {
+  terms = [terms];
+}
+---
+
+<div class:list={twMerge(["description", attr.class])} {...attr}>
+  {
+    terms.map((term, index) => (
+      <dt class="font-bold mb-1" data-index={index}>
+        {term}
+      </dt>
+    ))
+  }
+  <dd class="mt-2 pl-4">
+    <slot />
+  </dd>
+</div>

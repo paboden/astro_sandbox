@@ -1,13 +1,14 @@
 ---
 import { Image } from "astro:assets";
-
+import Link from "@/components/Base/Link/Link.astro";
+import Heading from "@/components/Base/Heading/Heading.astro";
 import Layout from "@layouts/Layout.astro";
-import Description from "@components/Element/Description.astro";
+import Prose from "@layouts/Prose.astro";
+import ElementDescription from "@components/Custom/ElementDescription.astro";
 import { Icon } from "astro-icon/components";
-
+import { getEntry } from "astro:content";
 
 import type { MarkdownInstance } from 'astro';
-import Link from "@/components/Base/Link/Link.astro";
 interface Frontmatter {
     title: string;
     description?: string;
@@ -59,21 +60,27 @@ export async function getStaticPaths() {
     const content = el.compiledContent();
 
     return {
-      params: { name: `${number}_${name.toLowerCase()}` },
+      params: { periodic_element_name: `${number}_${name.toLowerCase()}` },
       props: { element, content },
     };
   });
 }
 
-const { name } = Astro.params;
+
+
+const { periodic_element_name } = Astro.params;
 const { element, content } = Astro.props;
+
+const testElement = await getEntry("elements", periodic_element_name);
+console.log(testElement);
+
 ---
 
 <Layout title=`Periodic Element: ${element.name}`>
 
-  <h1 class="text-4xl font-bold text-black dark:text-white">{element.name}</h1>
+  <Heading as="h1" class="text-4xl font-bold text-black dark:text-white">{element.name}</Heading>
 
-  <Description element={element} />
+  <ElementDescription element={element} />
 
   {element.image && (() => {
     const imgSrc = `/images/elements/${element.image}`;
@@ -120,7 +127,7 @@ const { element, content } = Astro.props;
       <dd>{element.classification}</dd>
     )}
 
-        {element.color && (
+    {element.color && (
       <dt>Color</dt>
       <dd>{element.color}</dd>
     )}
@@ -187,11 +194,17 @@ const { element, content } = Astro.props;
           {element.wiki}
           <Icon name="mdi:external-link" class="inline mr-1" />
         </Link>
+
+        <Link href={element.wiki} target="_blank" rel="noopener noreferrer" variant="primary" icon={{ name: "mdi:wikipedia", class: "inline ml-1" }}>
+          {element.wiki}
+        </Link>
       </dd>
     )}
   </dl>
 
-  <Fragment set:html={content ?? "<p>No element found</p>"} />
+  <Prose>
+    <Fragment set:html={content ?? "<p>No element found</p>"} />
+  </Prose>
 
   {element.facts && element.facts.length > 0 && (
     <h2>Facts</h2>

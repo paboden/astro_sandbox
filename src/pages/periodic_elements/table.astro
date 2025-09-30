@@ -1,9 +1,9 @@
 ---
 import PeriodicTablePageDisplayNav from "@custom/PeriodicTablePageDisplayNav.astro";
 import Layout from "@layouts/Layout.astro";
-import { getCollection } from "astro:content";
 
 // Content collection import
+import { getCollection } from "astro:content";
 const elements = await getCollection("elements");
 const elementsData = elements
   .map((element) => ({
@@ -14,15 +14,15 @@ const elementsData = elements
 ---
 
 <Layout title="Periodic Elements">
-  <h1>Periodic Elements</h1>
+  <h1>Periodic Elements Table</h1>
   <p>This is a page listing periodic elements</p>
   <PeriodicTablePageDisplayNav />
-  <ol>
+  <div>
     {
       elementsData.map((element) => {
-        const href = `/periodic_elements/${element.id}`;
+        const href = `/periodic_elements/test/${element.id}`;
         return (
-          <li data-number="{element.number}">
+          <div data-number="{element.number}">
             <a class="element_link" href={href}>
               <article
                 class="teaser element_teaser"
@@ -32,43 +32,15 @@ const elementsData = elements
               >
                 <span class="element_number">{element.number}</span>
                 <span class="element_symbol">{element.symbol}</span>
-                <h2 class="element_name">{element.name}</h2>
+                <span class="element_name">{element.name}</span>
                 <span class="element_weight">{element.weight}</span>
-
-                {/* <dl>
-                    <dt class="inline-label">Symbol</dt>
-                  <dd>{element.symbol}</dd>
-                    <dt class="inline-label">Atomic number</dt>
-                    <dd>{element.number}</dd>
-                    <dt class="inline-label">Atomic weight</dt>
-                    <dd>{element.weight}</dd>
-                    <dt class="inline-label">Appearance</dt>
-                  <dd>{element.appearance}</dd>
-                  </dl> */}
-
-                {/* {element.image &&
-                (() => {
-                  const imgSrc = `/images/elements/${element.image}`;
-                  return (
-                    <div class="image">
-                      <a href={href}>
-                        <img
-                          src={imgSrc}
-                          alt={element.name}
-                          width={150}
-                          height={150}
-                        />
-                      </a>
-                    </div>
-                  );
-                })} */}
               </article>
             </a>
-          </li>
+          </div>
         );
       })
     }
-  </ol>
+  </div>
 </Layout>
 
 <style>

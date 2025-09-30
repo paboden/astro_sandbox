@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import Link from "@/components/Base/Link/Link.astro";
+import Heading from "@/components/Base/Heading/Heading.astro";
+import Layout from "@layouts/Layout.astro";
+import Prose from "@layouts/Prose.astro";
+import ElementDescription from "@components/Custom/ElementDescription.astro";
+import { Icon } from "astro-icon/components";
+
+import { getCollection, getEntry, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const elements = await getCollection("elements");
+  return elements.map((element) => ({
+    params: { slug: element.id },
+  }));
+}
+
+const { slug } = Astro.params;
+let element: CollectionEntry<"elements"> | undefined;
+
+if (slug) {
+  element = await getEntry("elements", slug);
+}
+
+if (!element) {
+  return Astro.redirect("/404");
+}
+
+// Render the content and data
+const { Content } = await render(element);
+---
+
+<Layout title=`Periodic Element: ${element.data.name}`>
+  <Heading as="h1" class="text-black dark:text-white">
+    {element.data.name}
+  </Heading>
+
+  <ElementDescription element={element.data} />
+
+  <Prose>
+    <Content />
+  </Prose>
+
+  {
+    element.data.facts && element.data.facts.length > 0 && (
+      <Heading as="h2">Facts</Heading>
+      <ul>
+        {element.data.facts.map((fact) => (
+          <li>{fact}</li>
+        ))}
+      </ul>
+    )
+  }
+</Layout>

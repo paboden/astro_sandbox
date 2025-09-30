@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { twMerge } from "tailwind-merge";
+
+interface Props extends HTMLAttributes<"dl"> {}
+
+let { ...attr } = Astro.props;
+---
+
+<dl class:list={twMerge(["description-list", attr.class])} {...attr}>
+  <slot />
+</dl>

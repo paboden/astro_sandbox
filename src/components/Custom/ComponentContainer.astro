@@ -1,0 +1,19 @@
+---
+const { componentName, componentLink } = Astro.props;
+---
+
+<div class="max-w-6xl mx-auto mb-4">
+  <details class="border border-gray-300 rounded-lg">
+    <summary
+      class="p-4 text-gray-700 font-bold cursor-pointer border-b-gray-300 in-open:border-b-1 bg-gray-50"
+      >{componentName}</summary
+    >
+    <div class="p-8">
+      <slot />
+    </div>
+    <div class="p-4 bg-gray-100 text-sm text-gray-700 border-t border-gray-300">
+      Source: {componentLink}
+      <slot name="note" />
+    </div>
+  </details>
+</div>

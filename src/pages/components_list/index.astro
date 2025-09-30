@@ -1,0 +1,129 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Heading from "@components/Base/Heading/Heading.astro";
+import Description from "@components/Base/Description/Description.astro";
+import DescriptionList from "@components/Base/Description/DescriptionList.astro";
+import ComponentContainer from "@custom/ComponentContainer.astro";
+import ComponentGroup from "@custom/ComponentGroup.astro";
+import ComponentContainerNote from "@custom/ComponentContainerNote.astro";
+import ComponentGroupNote from "@components/Custom/ComponentGroupNote.astro";
+---
+
+<Layout title="Home" class="max-w-6xl mx-auto">
+  <ComponentGroup componentGroup="Headings">
+    <ComponentGroupNote>
+      These are examples of Headings (h1-h6).
+    </ComponentGroupNote>
+
+    <ComponentContainer
+      componentName="Heading (H1)"
+      componentLink="@components/Base/Heading"
+    >
+      <Heading as="h1">This is a Heading component!</Heading>
+    </ComponentContainer>
+    <ComponentContainer
+      componentName="Heading (H2)"
+      componentLink="@components/Base/Heading"
+    >
+      <Heading>This is a Heading component!</Heading>
+    </ComponentContainer>
+    <ComponentContainer
+      componentName="Heading (H3)"
+      componentLink="@components/Base/Heading"
+    >
+      <Heading as="h3">This is a Heading component!</Heading>
+    </ComponentContainer>
+    <ComponentContainer
+      componentName="Heading (H4)"
+      componentLink="@components/Base/Heading"
+    >
+      <Heading as="h4">This is a Heading component!</Heading>
+    </ComponentContainer>
+    <ComponentContainer
+      componentName="Heading (H5)"
+      componentLink="@components/Base/Heading"
+    >
+      <Heading as="h5">This is a Heading component!</Heading>
+    </ComponentContainer>
+    <ComponentContainer
+      componentName="Heading (H6)"
+      componentLink="@components/Base/Heading"
+    >
+      <Heading as="h6">This is a Heading component!</Heading>
+    </ComponentContainer>
+  </ComponentGroup>
+
+  <ComponentGroup componentGroup="Descriptions">
+    <ComponentGroupNote>
+      These are examples of definition/descriptions (dl, dt, dd).
+    </ComponentGroupNote>
+
+    <ComponentContainer
+      componentName="Description"
+      componentLink="@components/Base/Description"
+    >
+      <Description terms="This is the title the description">
+        <p>
+          This is the description content. Lorem ipsum dolor sit amet. Ut
+          voluptatem voluptas et minima libero sed odio repudiandae qui amet
+          quod est optio autem. Quo consequatur facere qui tempora quibusdam et
+          amet voluptate non excepturi nesciunt aut molestiae numquam a incidunt
+          impedit aut nihil ipsam.
+        </p>
+      </Description>
+    </ComponentContainer>
+
+    <ComponentContainer
+      componentName="Description (Multiple Terms)"
+      componentLink="@components/Base/Description"
+    >
+      <Description terms={["Term one", "Term Two", "Term three"]}>
+        <p>
+          This is the description content. Lorem ipsum dolor sit amet. Ut
+          voluptatem voluptas et minima libero sed odio repudiandae qui amet
+          quod est optio autem. Quo consequatur facere qui tempora quibusdam et
+          amet voluptate non excepturi nesciunt aut molestiae numquam a incidunt
+          impedit aut nihil ipsam.
+        </p>
+      </Description>
+    </ComponentContainer>
+
+    <ComponentContainer
+      componentName="Description List (dl)"
+      componentLink="@components/Base/DescriptionList"
+    >
+      <ComponentContainerNote slot="note">
+        This is an example of the description/definition list.
+      </ComponentContainerNote>
+      <DescriptionList class="flex flex-col gap-4">
+        <Description terms="This is one description">
+          <p>
+            This is the description content. Lorem ipsum dolor sit amet. Ut
+            voluptatem voluptas et minima libero sed odio repudiandae qui amet
+            quod est optio autem. Quo consequatur facere qui tempora quibusdam
+            et amet voluptate non excepturi nesciunt aut molestiae numquam a
+            incidunt impedit aut nihil ipsam.
+          </p>
+        </Description>
+        <Description terms="This is another term and description">
+          <p>
+            This is the description content. Lorem ipsum dolor sit amet. Ut
+            voluptatem voluptas et minima libero sed odio repudiandae qui amet
+            quod est optio autem. Quo consequatur facere qui tempora quibusdam
+            et amet voluptate non excepturi nesciunt aut molestiae numquam a
+            incidunt impedit aut nihil ipsam.
+          </p>
+        </Description>
+        <Description terms="Useful for key value pairings">
+          <p>
+            This is the description content. Lorem ipsum dolor sit amet. Ut
+            voluptatem voluptas et minima libero sed odio repudiandae qui amet
+            quod est optio autem. Quo consequatur facere qui tempora quibusdam
+            et amet voluptate non excepturi nesciunt aut molestiae numquam a
+            incidunt impedit aut nihil ipsam.
+          </p>
+        </Description>
+      </DescriptionList>
+    </ComponentContainer>
+  </ComponentGroup>
+</Layout>
