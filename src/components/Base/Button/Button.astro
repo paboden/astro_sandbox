@@ -1,7 +1,25 @@
 ---
-const { type = "button" } = Astro.props;
+import type { HTMLAttributes } from "astro/types";
+import { twMerge } from "tailwind-merge";
+import { Icon } from "astro-icon/components";
+
+interface Props extends HTMLAttributes<"button"> {
+  type: "button" | "submit" | "reset";
+  variant: "link" | "primary" | "secondary" | "disabled";
+  onclick?: any;
+  icon?: Record<string, string | boolean | undefined>;
+}
+
+let {
+  type = "button",
+  variant = "link",
+  onclick = null,
+  icon = null,
+  ...attr
+} = Astro.props;
 ---
 
-<button type={type}>
+<button type={type} onclick={onclick}>
+  {icon && <Icon name={icon.name} class="inline ml-2" {...icon} />}
   <slot />
 </button>
