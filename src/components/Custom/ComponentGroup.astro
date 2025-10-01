@@ -1,9 +1,56 @@
 ---
 import Heading from "@components/Base/Heading/Heading.astro";
+import { toSnakeCase } from "@utils/helpers";
+import { Icon } from "astro-icon/components";
+
 const { componentGroup } = Astro.props;
+const groupName = toSnakeCase(componentGroup);
 ---
 
-<div class="max-w-6xl mx-auto mt-8 mb-20">
-  <Heading as="h2" class="mb-4">{componentGroup}</Heading>
+<div class="mt-8 mb-20">
+  <Heading as="h2" class="mb-4 flex items-center gap-2">
+    {componentGroup}
+    <button 
+      class="text-blue-600 font-semibold hover:text-blue-900 py-2 cursor-pointer flex ml-auto text-sm gap-1" 
+      id={groupName}
+      >
+        <Icon name="mdi:plus-circle" class="text-xl"></Icon> Expand all
+    </button>
+  </Heading>
+
   <slot />
 </div>
+
+<script define:vars={{groupName}}>
+		let button = document.getElementById({groupName});
+		let detailsElements = document.querySelectorAll('details');
+
+		if (button) {
+			button.addEventListener('click', () => {
+				let allAreOpen = true;
+
+				// First, check if all details are already open
+				detailsElements.forEach(detail => {
+					if (!detail.open) {
+						allAreOpen = false;
+					}
+				});
+
+				// Toggle the 'open' attribute based on the initial state
+				detailsElements.forEach(detail => {
+					if (allAreOpen) {
+						detail.removeAttribute('open');
+					} else {
+						detail.setAttribute('open', '');
+					}
+				});
+
+				// Update the button text
+				if (allAreOpen) {
+					button.textContent = 'Expand All';
+				} else {
+					button.textContent = 'Collapse All';
+				}
+			});
+		}
+	</script>

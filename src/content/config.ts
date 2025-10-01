@@ -1,6 +1,8 @@
 import { z, defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders';
+import { MenuItemSchema } from "@/lib/Schema/menu_item"
 
+// Define the Periodical Elements (elements) collection.
 const elements = defineCollection({
   loader: glob({ 
     pattern: "*.md", 
@@ -52,6 +54,18 @@ const elements = defineCollection({
   }),
 });
 
+const main_menu = defineCollection({
+  loader: file('./src/content/data/main_menu.json'),
+  schema: MenuItemSchema,
+});
+
+const footer_menu = defineCollection({
+  loader: file('./src/content/data/footer_menu.json'),
+  schema: MenuItemSchema,
+});
+
 export const collections = {
   elements,
+  main_menu,
+  footer_menu,
 };

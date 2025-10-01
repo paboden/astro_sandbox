@@ -1,57 +1,16 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Heading from "@components/Base/Heading/Heading.astro";
 import Description from "@components/Base/Description/Description.astro";
 import DescriptionList from "@components/Base/Description/DescriptionList.astro";
 import ComponentContainer from "@custom/ComponentContainer.astro";
 import ComponentGroup from "@custom/ComponentGroup.astro";
 import ComponentContainerNote from "@custom/ComponentContainerNote.astro";
 import ComponentGroupNote from "@components/Custom/ComponentGroupNote.astro";
+import ComponentListing from "@components/Custom/ComponentListing.astro";
 ---
 
-<Layout title="Home" class="max-w-6xl mx-auto">
-  <ComponentGroup componentGroup="Headings">
-    <ComponentGroupNote>
-      These are examples of Headings (h1-h6).
-    </ComponentGroupNote>
-
-    <ComponentContainer
-      componentName="Heading (H1)"
-      componentLink="@components/Base/Heading"
-    >
-      <Heading as="h1">This is a Heading component!</Heading>
-    </ComponentContainer>
-    <ComponentContainer
-      componentName="Heading (H2)"
-      componentLink="@components/Base/Heading"
-    >
-      <Heading>This is a Heading component!</Heading>
-    </ComponentContainer>
-    <ComponentContainer
-      componentName="Heading (H3)"
-      componentLink="@components/Base/Heading"
-    >
-      <Heading as="h3">This is a Heading component!</Heading>
-    </ComponentContainer>
-    <ComponentContainer
-      componentName="Heading (H4)"
-      componentLink="@components/Base/Heading"
-    >
-      <Heading as="h4">This is a Heading component!</Heading>
-    </ComponentContainer>
-    <ComponentContainer
-      componentName="Heading (H5)"
-      componentLink="@components/Base/Heading"
-    >
-      <Heading as="h5">This is a Heading component!</Heading>
-    </ComponentContainer>
-    <ComponentContainer
-      componentName="Heading (H6)"
-      componentLink="@components/Base/Heading"
-    >
-      <Heading as="h6">This is a Heading component!</Heading>
-    </ComponentContainer>
-  </ComponentGroup>
+<Layout title="Components: Descriptions" class="max-w-screen-xl mx-auto">
+  <ComponentListing slot="sidebar"/>
 
   <ComponentGroup componentGroup="Descriptions">
     <ComponentGroupNote>

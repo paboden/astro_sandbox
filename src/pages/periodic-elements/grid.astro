@@ -13,10 +13,12 @@ const elementsData = elements
   .sort((a, b) => a.number.valueOf() - b.number.valueOf());
 ---
 
-<Layout title="Periodic Elements">
-  <h1>Periodic Elements</h1>
-  <p>This is a page listing periodic elements</p>
-  <PeriodicTablePageDisplayNav />
+<Layout title="Periodic Elements: Grid display">
+  <div class="max-w-screen-xl mx-auto">
+    <h1>Periodic Elements: Grid</h1>
+    <p>This is a page listing periodic elements</p>
+    <PeriodicTablePageDisplayNav />
+  </div>
   <ol>
     {
       elementsData.map((element) => {

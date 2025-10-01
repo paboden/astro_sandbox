@@ -14,3 +14,28 @@ export function isExternalUrl(url: string): boolean {
     return false; 
   }
 }
+
+export function toSnakeCase(str: string): string {
+  // Replace spaces, hyphens, and other non-word characters with underscores
+  // and then convert to lowercase.
+  return str
+    .replace(/[^a-zA-Z0-9]+/g, '_') // Replace non-alphanumeric characters with underscores
+    .replace(/([A-Z])/g, '_$1')    // Add underscore before uppercase letters (for camelCase/PascalCase)
+    .toLowerCase()
+    .replace(/^_/, '')             // Remove leading underscore if present
+    .replace(/_$/, '');            // Remove trailing underscore if present
+}
+
+export function capitalizeFirstLetter(str: string): string {
+  if (typeof str !== 'string' || str.length === 0) {
+    return str; // Handle empty strings or non-string inputs
+  }
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function dashesToSpaces(str: string): string {
+  if (typeof str !== 'string' || str.length === 0) {
+    return str; // Handle empty strings or non-string inputs
+  }
+  return str.replaceAll(/[_-]/g, ' ');
+}

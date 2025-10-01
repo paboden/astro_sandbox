@@ -1,12 +1,22 @@
 ---
+import { Icon } from "astro-icon/components";
 const { componentName, componentLink } = Astro.props;
 ---
 
-<div class="max-w-6xl mx-auto mb-4">
+<div class="mx-auto mb-4 group">
   <details class="border border-gray-300 rounded-lg">
     <summary
-      class="p-4 text-gray-700 font-bold cursor-pointer border-b-gray-300 in-open:border-b-1 bg-gray-50"
-      >{componentName}</summary
+      class="flex items-center p-4 text-gray-700 font-bold cursor-pointer border-b-gray-300 in-open:border-b-1 bg-gray-50 list-none rounded-lg in-open:rounded-b-none"
+      >{componentName}
+        <span class="text-2xl font-light ml-auto in-open:hidden">
+          <span class="sr-only">Open</span>
+          <Icon name="mdi:plus-circle"></Icon>
+        </span>
+        <span class="text-2xl font-light ml-auto hidden in-open:inline">
+          <span class="sr-only">Close</span>
+          <Icon name="mdi:minus-circle"></Icon>
+        </span>
+      </summary
     >
     <div class="p-8">
       <slot />

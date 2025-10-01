@@ -1,0 +1,48 @@
+---
+import Heading from "@components/Base/Heading/Heading.astro"
+import { capitalizeFirstLetter, dashesToSpaces } from "@utils/helpers";
+import path from 'path';
+
+interface ComponentListing {
+  id: string;
+  name?: string;
+  title?: string;
+  href?: string;
+}
+
+const componentsList = new Array();
+
+let componentsDirectory = Object.values(import.meta.glob([
+  '../../../src/pages/component-pages/*.{md,mdx,astro}',
+], { eager: true }));
+
+const ComponentListings = [...componentsDirectory];
+
+ComponentListings.map((component: any) => {
+  const file_name: string = path.basename(component.file).split('.').shift() as string;
+  const title: string = capitalizeFirstLetter(dashesToSpaces(file_name));
+  if (title != 'Index') {
+    const listing: ComponentListing = {
+      id: file_name,
+      name: file_name,
+      title: title,
+      href: component.url,
+    };
+
+    componentsList.push(listing);
+  }
+
+});
+
+---
+
+<div class="border border-gray-300 rounded-lg bg-gray-50 py-3 px-4 mt-10">
+  <Heading as="h2" size="lg" weight="semibold">Components</Heading>
+  <ul>
+    {componentsList.map((item: any) => (
+      <li id={item.id}>
+        <a href={item.href}>{item.title}</a>
+      </li>
+    ))}
+  </ul>
+</div>

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "home-link",
+    "title": "First Item",
+    "url": "/",
+    "icon": {
+      "name": "mdi:home",
+      "title": "Return to Home",
+      "size": 100
+    },
+    "item_attr": [{ "class": "test" }],
+    "link_attr": [{ "class": "test--link" }],
+    "links": [
+      {
+        "id": "home-subitem-one",
+        "title": "First SubItem",
+        "url": "/about"
+      },
+      {
+        "id": "home-subitem-two",
+        "title": "Second SubItem",
+        "url": "/about/else"
+      }
+    ]
+  },
+  {
+    "id": "blog",
+    "title": "Blog",
+    "url": "/blog"
+  },
+  {
+    "id": "periodic_elements",
+    "title": "Periodic Elements",
+    "url": "/periodic_elements"
+  },
+  {
+    "id": "components",
+    "title": "Components",
+    "url": "/components",
+    "links": [
+      {
+        "id": "components-headings",
+        "title": "Headings",
+        "url": "/components/headings"
+      },
+      {
+        "id": "components-buttons",
+        "title": "Buttons",
+        "url": "/components/buttons"
+      }
+    ]
+  },
+  {
+    "id": "astro_docs",
+    "title": "Astro Docs",
+    "url": "https://docs.astro.build/"
+  }
+]

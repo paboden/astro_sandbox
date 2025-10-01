@@ -2,11 +2,7 @@
 import type { HTMLAttributes } from "astro/types";
 import { twMerge } from "tailwind-merge";
 
-interface defaultArrays {
-  [key: string]: string;
-}
-
-const sizes: defaultArrays = {
+const sizes = {
   "6xl": "text-6xl",
   "5xl": "text-5xl",
   "4xl": "text-4xl",
@@ -18,7 +14,7 @@ const sizes: defaultArrays = {
   sm: "text-sm",
 };
 
-const weights: defaultArrays = {
+const weights = {
   light: "font-light",
   normal: "font-normal",
   medium: "font-medium",
@@ -26,22 +22,22 @@ const weights: defaultArrays = {
   bold: "font-bold",
 };
 
-const defaultSizes: defaultArrays = {
-  h1: "5xl",
-  h2: "3xl",
-  h3: "2xl",
-  h4: "xl",
-  h5: "xl",
-  h6: "lg",
+const defaultSizes = {
+  h1: "text-5xl",
+  h2: "text-3xl",
+  h3: "text-2xl",
+  h4: "text-xl",
+  h5: "text-xl",
+  h6: "text-lg",
 };
 
-const defaultWeights: defaultArrays = {
-  h1: "bold",
-  h2: "bold",
-  h3: "semibold",
-  h4: "semibold",
-  h5: "medium",
-  h6: "normal",
+const defaultWeights = {
+  h1: "font-bold",
+  h2: "font-bold",
+  h3: "font-semibold",
+  h4: "font-semibold",
+  h5: "font-medium",
+  h6: "font-normal",
 };
 
 interface Props extends HTMLAttributes<"h1"> {
@@ -53,17 +49,19 @@ interface Props extends HTMLAttributes<"h1"> {
 // Headings use defaults based on the "as" prop.
 // This makes it more structured from the start.
 let { as: As = "h2", weight, size, ...attr } = Astro.props;
-let defaultSize = defaultSizes[As];
-let defaultWeight = defaultWeights[As];
-const fontSize = size ?? sizes[defaultSize];
-const fontWeight = weight ?? weights[defaultWeight];
+
+let default_size: string = defaultSizes[As];
+let default_weight: string = defaultWeights[As];
+
+const fontSize = size ? sizes[size] : default_size;
+const fontWeight = weight ? weights[weight] : default_weight;
 ---
 
 <As
   class:list={twMerge([
     "heading",
-    fontSize as string,
-    fontWeight as string,
+    fontSize,
+    fontWeight,
     attr.class,
   ])}
   {...attr}
