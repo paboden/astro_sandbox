@@ -1,10 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
-const { componentName, componentLink } = Astro.props;
+const { componentName, componentLink, ...attr } = Astro.props;
 ---
 
 <div class="mx-auto mb-4 group">
-  <details class="border border-gray-300 rounded-lg">
+  <details class="border border-gray-300 rounded-lg" {...attr}>
     <summary
       class="flex items-center p-4 text-gray-700 font-bold cursor-pointer border-b-gray-300 in-open:border-b-1 bg-gray-50 list-none rounded-lg in-open:rounded-b-none"
       >{componentName}

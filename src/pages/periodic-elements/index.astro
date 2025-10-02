@@ -1,6 +1,7 @@
 ---
 import PeriodicTablePageDisplayNav from "@custom/PeriodicTablePageDisplayNav.astro";
 import Layout from "@layouts/Layout.astro";
+import Heading from "@components/Base/Heading/Heading.astro"
 import { getCollection } from "astro:content";
 
 // Content collection import
@@ -15,61 +16,31 @@ const elementsData = elements
 
 <Layout title="Periodic Elements">
   <div class="max-w-screen-xl mx-auto">
-    <h1>Periodic Elements List</h1>
+    <Heading as="h1">Periodic Elements</Heading>
     <p>This is a page listing periodic elements</p>
     <PeriodicTablePageDisplayNav />
   </div>
   <ol>
-    {
-      elementsData.map((element) => {
-        const href = `/periodic_elements/${element.id}`;
-        return (
-          <li data-number="{element.number}">
-            <a class="element_link" href={href}>
-              <article
-                class="teaser element_teaser"
-                data-number="{element.number}"
-                data-symbol="{element.symbol}"
-                data-name="{element.name}"
-              >
-                <span class="element_number">{element.number}</span>
-                <span class="element_symbol">{element.symbol}</span>
-                <h2 class="element_name">{element.name}</h2>
-                <span class="element_weight">{element.weight}</span>
-
-                {/* <dl>
-                    <dt class="inline-label">Symbol</dt>
-                  <dd>{element.symbol}</dd>
-                    <dt class="inline-label">Atomic number</dt>
-                    <dd>{element.number}</dd>
-                    <dt class="inline-label">Atomic weight</dt>
-                    <dd>{element.weight}</dd>
-                    <dt class="inline-label">Appearance</dt>
-                  <dd>{element.appearance}</dd>
-                  </dl> */}
-
-                {/* {element.image &&
-                (() => {
-                  const imgSrc = `/images/elements/${element.image}`;
-                  return (
-                    <div class="image">
-                      <a href={href}>
-                        <img
-                          src={imgSrc}
-                          alt={element.name}
-                          width={150}
-                          height={150}
-                        />
-                      </a>
-                    </div>
-                  );
-                })} */}
-              </article>
-            </a>
-          </li>
-        );
-      })
-    }
+    {elementsData.map((element) => {
+      const href = `/periodic_elements/${element.id}`;
+      return (
+        <li data-number="{element.number}">
+          <a class="element_link" href={href}>
+            <article
+              class="teaser element_teaser"
+              data-number="{element.number}"
+              data-symbol="{element.symbol}"
+              data-name="{element.name}"
+            >
+              <span class="element_number">{element.number}</span>
+              <span class="element_symbol">{element.symbol}</span>
+              <span class="element_name">{element.name}</span>
+              {/* <span class="element_weight">{element.weight}</span> */}
+            </article>
+          </a>
+        </li>
+      );
+    })}
   </ol>
 </Layout>
 
@@ -81,21 +52,15 @@ const elementsData = elements
     gap: 1rem;
   }
 
-  .teaser .image img {
-    border-radius: 100rem;
-    border: 1px solid #e5e7eb;
-    filter: brightness(0.9);
-  }
-
   ol,
   ul {
     list-style: none;
     margin: 1.5rem 0;
     padding: 0;
-    border-radius: 4px;
+    border: 1px solid #e5e7eb;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16ch, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(8ch, 1fr));
+    gap: 0;
   }
 
   li {
@@ -109,8 +74,7 @@ const elementsData = elements
     gap: 0.5rem;
     background: #f9fafb;
     border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 1rem;
+    padding: 0.5rem;
     transition:
       background-color 0.2s,
       box-shadow 0.2s;
@@ -121,52 +85,18 @@ const elementsData = elements
   }
 
   .element_symbol {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: bold;
     line-height: 1;
   }
 
-  h2 {
-    margin: 0;
-    font-weight: normal;
-    font-size: 1rem;
+  .element_name {
+    font-size: .75rem;
+    hyphens: auto;
+    hyphenate-limit-chars: 0 4 4;
   }
 
-  dl {
-    /* display: grid;
-    grid-template-columns: 20ch auto;
-    gap: 0.5rem 1rem;
-    margin: 0.5rem 0 1rem 0; */
-  }
-
-  dd,
-  dt {
-    /* margin-inline: 0;
-    padding-inline: 0; */
-  }
-
-  dt {
-    font-weight: 600;
-  }
-
-  dt:after {
-    content: ":";
-  }
-
-  .button {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 12px;
-    color: white;
-    background: #3245ff;
-    box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.12),
-      inset 0 -2px 0 rgba(0, 0, 0, 0.24);
-    text-decoration: none;
-    transition:
-      background-color 0.2s,
-      box-shadow 0.2s;
-    border-radius: 8px;
-    font-weight: 500;
+    .element_weight {
+    font-size: .5rem;
   }
 </style>

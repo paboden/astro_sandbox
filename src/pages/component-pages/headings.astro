@@ -5,11 +5,14 @@ import ComponentContainer from "@custom/ComponentContainer.astro";
 import ComponentGroup from "@custom/ComponentGroup.astro";
 import ComponentGroupNote from "@components/Custom/ComponentGroupNote.astro";
 import ComponentListing from "@components/Custom/ComponentListing.astro";
+import Box from "@components/Custom/Box.astro";
 ---
 
 <Layout title="Components: Headings" class="max-w-screen-xl mx-auto">
+
   <ComponentListing slot="sidebar"/>
-  <ComponentGroup componentGroup="Headings">
+
+  <ComponentGroup componentGroup="Headings" toggleable>
     <ComponentGroupNote>
       These are examples of Headings (h1-h6).
     </ComponentGroupNote>
@@ -17,6 +20,7 @@ import ComponentListing from "@components/Custom/ComponentListing.astro";
     <ComponentContainer
       componentName="Heading (H1)"
       componentLink="@components/Base/Heading"
+      open
     >
       <Heading as="h1">This is a Heading component!</Heading>
     </ComponentContainer>

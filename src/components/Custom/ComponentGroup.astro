@@ -3,54 +3,59 @@ import Heading from "@components/Base/Heading/Heading.astro";
 import { toSnakeCase } from "@utils/helpers";
 import { Icon } from "astro-icon/components";
 
-const { componentGroup } = Astro.props;
-const groupName = toSnakeCase(componentGroup);
+const { componentGroup, toggleable = false} = Astro.props;
+const button_id = toSnakeCase(componentGroup) + "-toggle-button";
+const group_name = toSnakeCase(componentGroup);
 ---
 
 <div class="mt-8 mb-20">
-  <Heading as="h2" class="mb-4 flex items-center gap-2">
+  <Heading as="h2" class="flex items-center gap-2 mb-4">
     {componentGroup}
-    <button 
-      class="text-blue-600 font-semibold hover:text-blue-900 py-2 cursor-pointer flex ml-auto text-sm gap-1" 
-      id={groupName}
-      >
-        <Icon name="mdi:plus-circle" class="text-xl"></Icon> Expand all
-    </button>
+    {toggleable && (
+      <button 
+        class="flex ml-auto gap-1 font-semibold text-sm text-blue-600  hover:text-blue-900 py-2 cursor-pointer collapsed" 
+        id="component-toggle-button"
+        data-group-name={group_name}
+        >
+          <span class="icon-expand flex items-center gap-1 text-md"><Icon name="mdi:plus-circle" class="text-xl"></Icon>Expand all</span>
+          <span class="icon-collapse flex items-center gap-1 text-md"><Icon name="mdi:plus-circle" class="text-xl"></Icon>Collapse all</span>
+      </button>
+    )}
   </Heading>
 
   <slot />
 </div>
 
-<script define:vars={{groupName}}>
-		let button = document.getElementById({groupName});
-		let detailsElements = document.querySelectorAll('details');
+<style>
+  button.expanded > span.icon-expand {
+    display: none;
+  }
+  button.collapsed > span.icon-collapse {
+    display: none;
+  }
+</style>
 
-		if (button) {
-			button.addEventListener('click', () => {
-				let allAreOpen = true;
+<script define:vars={{ group_name, button_id }}>
 
-				// First, check if all details are already open
-				detailsElements.forEach(detail => {
-					if (!detail.open) {
-						allAreOpen = false;
-					}
-				});
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    const button = document.getElementById('component-toggle-button');
+		const details = document.querySelectorAll('details');
 
-				// Toggle the 'open' attribute based on the initial state
-				detailsElements.forEach(detail => {
-					if (allAreOpen) {
-						detail.removeAttribute('open');
-					} else {
-						detail.setAttribute('open', '');
-					}
-				});
-
-				// Update the button text
-				if (allAreOpen) {
-					button.textContent = 'Expand All';
-				} else {
-					button.textContent = 'Collapse All';
-				}
-			});
-		}
+    button.addEventListener('click', () => {
+      if (button.classList.contains('collapsed')) {
+        details.forEach(detail => {
+          detail.setAttribute('open', '');      
+        });
+        button.classList.add('expanded');
+        button.classList.remove('collapsed');
+      } else if (button.classList.contains('expanded')) {
+        details.forEach(detail => {
+          detail.removeAttribute('open');
+        });
+        button.classList.remove('expanded');
+        button.classList.add('collapsed');
+      }
+    });
+  });
 	</script>

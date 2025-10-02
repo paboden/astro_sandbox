@@ -1,6 +1,7 @@
 ---
 import PeriodicTablePageDisplayNav from "@custom/PeriodicTablePageDisplayNav.astro";
 import Layout from "@layouts/Layout.astro";
+import Heading from "@components/Base/Heading/Heading.astro";
 import { getCollection } from "astro:content";
 
 // Content collection import
@@ -15,7 +16,7 @@ const elementsData = elements
 
 <Layout title="Periodic Elements: Grid display">
   <div class="max-w-screen-xl mx-auto">
-    <h1>Periodic Elements: Grid</h1>
+    <Heading as="h1">Periodic Elements: Grid</Heading>
     <p>This is a page listing periodic elements</p>
     <PeriodicTablePageDisplayNav />
   </div>

@@ -10,9 +10,10 @@ import ComponentListing from "@components/Custom/ComponentListing.astro";
 ---
 
 <Layout title="Components: Descriptions" class="max-w-screen-xl mx-auto">
+
   <ComponentListing slot="sidebar"/>
 
-  <ComponentGroup componentGroup="Descriptions">
+  <ComponentGroup componentGroup="Descriptions" toggleable>
     <ComponentGroupNote>
       These are examples of definition/descriptions (dl, dt, dd).
     </ComponentGroupNote>
@@ -20,6 +21,7 @@ import ComponentListing from "@components/Custom/ComponentListing.astro";
     <ComponentContainer
       componentName="Description"
       componentLink="@components/Base/Description"
+      open
     >
       <Description terms="This is the title the description">
         <p>
