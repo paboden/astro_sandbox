@@ -1,0 +1,133 @@
+---
+import { Image } from "astro:assets";
+import Link from "@/components/Base/Link/Link.astro";
+import Heading from "@/components/Base/Heading/Heading.astro";
+import Layout from "@layouts/Layout.astro";
+import Prose from "@layouts/Prose.astro";
+import ElementDescription from "@components/Custom/ElementDescription.astro";
+import { Icon } from "astro-icon/components";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
+import type { GetStaticPaths } from 'astro';
+import DataItem from "@components/Base/DataItem/DataItem.astro";
+import DataItemList from "@components/Base/DataItem/DataItemList.astro";
+
+export const getStaticPaths = (async () => {
+  const elements = await getCollection('elements');
+  return elements.map((element) => ({
+    params: { slug: `${element.data.number}_${element.data.name.toLowerCase()}` },
+    props: { element: element, data: element.data, content: element.rendered },
+  }));
+}) satisfies GetStaticPaths;
+
+const { element } = Astro.props as { element: CollectionEntry<'elements'> } ;
+
+const data = element.data;
+const content = element.rendered;
+
+const densityLabel = data.stp == 'solid' ? 'Density (g/cm³)' : 'Density (g/L)';
+---
+
+<Layout title=`Periodic Element: ${data.name}`>
+
+  <Heading as="h1" class="text-4xl font-bold text-black dark:text-white">{data.name}</Heading>
+
+  <ElementDescription element={element} />
+
+  {data.image && (() => {
+    const imgSrc = `/images/elements/${data.image}`;
+    return (
+      <Image 
+        src={imgSrc} 
+        alt={data.name}
+        inferSize={true}
+        width={300}
+        height={200}
+      />
+    )
+  })}
+
+  <DataItemList label="General information">
+    {data.symbol && <DataItem label="Symbol">{data.symbol}</DataItem>}
+    {data.number && <DataItem label="Atomic number">{data.number}</DataItem>}
+    {data.weight && <DataItem label="Atomic weight (u)">{data.weight}</DataItem>}
+    {data.classification && <DataItem label="Classification">{data.classification}</DataItem>}
+  </DataItemList>
+
+  <DataItemList label="Appearance">
+    {data.appearance && <DataItem label="Appearance">{data.appearance}</DataItem>}
+    {data.color && <DataItem label="Color">{data.color}</DataItem>}
+  </DataItemList>
+
+  <DataItemList label="Periodic table information">
+    {data.number && <DataItem label="Atomic number">{data.number}</DataItem>}
+    {data.period && <DataItem label="Period">Period-{data.period}</DataItem>}
+    {data.block && <DataItem label="Block">Block-{data.block}</DataItem>}
+    {data.group && <DataItem label="Group">Group {data.group}</DataItem>}
+    {data.configuration && <DataItem label="Electron Configuration">{ data.configuration ? data.configuration.join(", ") : null }</DataItem>}
+    {data.electrons_per_shell && <DataItem label="Electrons per shell">{ data.electrons_per_shell ? data.electrons_per_shell.join(", ") : null }</DataItem>}
+  </DataItemList>
+
+  <DataItemList label="Physical properties">
+    {data.stp && <DataItem label="State at Standard Temperature and Pressure (STP)">{data.stp}</DataItem>}
+    {data.density && <DataItem label={densityLabel}>{data.density}</DataItem>}
+    {data.melting_point && <DataItem label="Melting Point (K)">{data.melting_point ? data.melting_point.join(", ") : null }</DataItem>}
+    {data.boiling_point && <DataItem label="Boiling Point (K)">{data.boiling_point ? data.boiling_point.join(", ") : null }</DataItem>}
+    {data.vaporization && <DataItem label="Vaporization">{data.vaporization  ? data.vaporization.join(", ") : null }</DataItem>}
+    {data.heat_fusion && <DataItem label="Heat fusion">{data.heat_fusion}</DataItem>}
+    {data.molar_heat && <DataItem label="Heat fusion">{data.molar_heat}</DataItem>}
+  </DataItemList>
+
+  <DataItemList label="Atomic properties">
+    {data.oxidation_states && <DataItem label="Oxidation States">{ data.oxidation_states ? data.oxidation_states.join(", ") : null }</DataItem>}
+    {data.electronegativity && <DataItem label="Electronegativity">{ data.electronegativity }</DataItem>}
+    {data.ionization_energy && <DataItem label="Ionization energy">{ data.ionization_energy ? data.ionization_energy.join(", ") : null }</DataItem>}
+    {data.atomic_radius && <DataItem label="Atomic radius">{ data.atomic_radius }</DataItem>}
+    {data.covalent_radius && <DataItem label="Covalent radius">{ data.covalent_radius }</DataItem>}
+    {data.van_der_waals_radius && <DataItem label="Van der Waals radius">{ data.van_der_waals_radius }</DataItem>}
+  </DataItemList>
+
+  <DataItemList label="Identification">
+    {data.cas_number && <DataItem label="CAS Number(s)">{ data.cas_number ? data.cas_number.join(", ") : null }</DataItem>}
+    {data.chemspider_id && <DataItem label="ChemSpider ID">{data.chemspider_id}</DataItem>}
+    {data.pubchem_id && <DataItem label="PubChem ID">{data.pubchem_id}</DataItem>}
+    {data.ec_number && <DataItem label="EC Number">{data.ec_number}</DataItem>}
+  </DataItemList>
+
+  <DataItemList label="Discovery information">
+    {data.year_discovered && <DataItem label="Year discovered">{data.year_discovered}</DataItem>}
+    {data.year_named && <DataItem label="Year named">{data.year_named}</DataItem>}
+    {data.discovered_by && <DataItem label="Discovered by">{data.discovered_by}</DataItem>}
+    {data.named_by && <DataItem label="Named by">{data.named_by}</DataItem>}
+  </DataItemList>
+
+    {data.wiki && (
+      <Link 
+      href={data.wiki} 
+      target="_blank" 
+      class="inline-flex items-center my-4 p-2 px-4 border-4 bg-transparent hover:bg-blue-600 text-blue-400 hover:text-white border-blue-400 hover:border-blue-600 rounded-lg" 
+      rel="noopener noreferrer" 
+      variant="primary" 
+      icon={{ name: "mdi:wikipedia", class: "inline mr-1", size: "30" }}>
+        View on wikipedia
+      </Link>
+    )}
+
+  <Prose>
+    {data.name_meaning && (
+      <Heading as="h2" id="name_meaning">Name meaning</Heading>
+      <p>{ data.name_meaning }</p>
+    )}
+
+    {data.facts && data.facts.length > 0 && (
+      <Heading as="h2" id="facts">Interesting facts</Heading>
+      <ul>
+        {data.facts.map((fact) => (
+          <li>{fact}</li>
+        ))}
+      </ul>
+    )}
+
+    <Fragment set:html={content?.html ?? "<p>No element found</p>"} />
+  </Prose>
+
+</Layout>

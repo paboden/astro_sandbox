@@ -1,0 +1,35 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { twMerge } from "tailwind-merge";
+
+interface Props extends HTMLAttributes<"div"> {
+  label: string;
+}
+
+let { label, ...attr } = Astro.props;
+---
+
+<div class:list={twMerge(["data-item", "p-2 border border-x-0 border-t-0 last:border-b-0 border-gray-300", attr.class])} {...attr}>
+  <dt class="data-item__label font-bold">{ label }</dt>
+  <dd class="data-item__data">
+    <slot />
+  </dd>
+</div>
+
+<style>
+  .data-item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  dt.data-item__label {
+    flex-grow: 1;
+    flex-basis: 15ch;
+  }
+
+  dd.data-item__data {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-inline-size: 50%;
+  }
+</style>

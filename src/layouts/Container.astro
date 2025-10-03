@@ -1,0 +1,111 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { twMerge } from "tailwind-merge";
+
+interface Props extends HTMLAttributes<"div"> {
+  type: "stack" | "box" | "center" | "cluster" | "sidebar" | "switcher" | "cover" | "grid" | "frame" | "imposter" | "container";
+  spacingSize?: string;
+  gapSize?: string;
+  thresholdSize?: string;
+  items?: number;
+}
+
+let { type = "container", spacingSize, gapSize, thresholdSize,  ...attr } = Astro.props;
+
+let default_classes = '';
+
+switch (type) {
+  case "stack":
+    default_classes = 'group flex flex-col justify-start';
+    break;
+  case "box":
+    default_classes = 'group flex';
+    break;
+  case "center":
+    default_classes = 'group flex';
+    break;
+  case "cluster":
+    default_classes = 'group flex';
+    break;
+  case "sidebar":
+    default_classes = 'group flex';
+    break;
+  case "switcher":
+    default_classes = 'group flex flex-wrap';
+    spacingSize = '';
+    break;
+  case "cover":
+    default_classes = 'group flex';
+    break;
+  case "grid":
+    default_classes = 'group flex';
+    break;
+  case "frame":
+    default_classes = 'group flex';
+    break;
+  case "imposter":
+    default_classes = 'group flex';
+    break;
+  case "container":
+    default_classes = 'flex';
+    break;
+  default:
+    default_classes = '';
+}
+
+---
+
+<div
+  data-container-type={type}
+  class:list={twMerge([
+    type,
+    default_classes,
+    attr.class
+  ])}
+  {...attr}
+  >
+  <slot />
+</div>
+
+<style define:vars={{ spacingSize, gapSize, thresholdSize }} is:global>
+
+  .stack {
+    --spacingSize: var( --spacingSize, 1rem );
+    display: flex;
+    flex-direction: column;
+  }  
+
+  .stack > * {
+    margin-block: 0;
+  } 
+
+  .stack > * + * {
+    margin-block-start: var( --spacingSize, 1rem );
+  }
+
+  .stack:only-child {
+    block-size: 100%;
+  }
+
+  .stack > :nth-child(0) {
+    margin-block-end: auto;
+  }
+
+  .switcher {
+    --gapSize: var( --gapSize, 1rem );
+    --threshholdSize: var( --thresholdSize, 90ch );
+    display: flex;
+    flex-wrap: wrap;
+    gap: var( --gapSize, 1rem );
+  }
+
+  .switcher > * {
+    flex-grow: 1;
+    flex-basis: calc(( var( --thresholdSize, 90ch ) - 100%) * 999);
+  }
+
+  .switcher > :nth-last-child(n+ 5),
+  .switcher > :nth-last-child(n+ 5) ~ * {
+    flex-basis: 100%;
+  }
+</style>

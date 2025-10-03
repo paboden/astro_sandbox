@@ -34,6 +34,7 @@ const { Content } = await render(element);
 ---
 
 <Layout title=`Periodic Element: ${element.data.name}`>
+  <div class="max-w-screen-xl mx-auto">
   <Heading as="h1" class="text-black dark:text-white">
     {element.data.name}
   </Heading>
@@ -48,10 +49,10 @@ const { Content } = await render(element);
     <div>Lorem ipsum dolor sit amet. Ab quos reiciendis qui unde laborum est aliquam nihil ex laudantium quia. Aut sunt perferendis eum numquam ipsum ut voluptate odit sit voluptatem iste sit galisum deleniti. Est porro consequatur sed nostrum quod et nesciunt perferendis ut velit numquam et galisum nulla est voluptatem pariatur. Qui laudantium animi et maiores repellendus sit vero aliquam et repellat nostrum.</div>
     <div>Lorem ipsum dolor sit amet. Ab quos reiciendis qui unde laborum est aliquam nihil ex laudantium quia. Aut sunt perferendis eum numquam ipsum ut voluptate odit sit voluptatem iste sit galisum deleniti. Est porro consequatur sed nostrum quod et nesciunt perferendis ut velit numquam et galisum nulla est voluptatem pariatur. Qui laudantium animi et maiores repellendus sit vero aliquam et repellat nostrum.</div>
     <div>Lorem ipsum dolor sit amet. Ab quos reiciendis qui unde laborum est aliquam nihil ex laudantium quia. Aut sunt perferendis eum numquam ipsum ut voluptate odit sit voluptatem iste sit galisum deleniti. Est porro consequatur sed nostrum quod et nesciunt perferendis ut velit numquam et galisum nulla est voluptatem pariatur. Qui laudantium animi et maiores repellendus sit vero aliquam et repellat nostrum.</div>
+    <div>Lorem ipsum dolor sit amet. Ab quos reiciendis qui unde laborum est aliquam nihil ex laudantium quia. Aut sunt perferendis eum numquam ipsum ut voluptate odit sit voluptatem iste sit galisum deleniti. Est porro consequatur sed nostrum quod et nesciunt perferendis ut velit numquam et galisum nulla est voluptatem pariatur. Qui laudantium animi et maiores repellendus sit vero aliquam et repellat nostrum.</div>
   </Switcher>
 
-  <Switcher gutter="3rem" items="4">
-    <div>Lorem ipsum dolor sit amet. Ab quos reiciendis qui unde laborum est aliquam nihil ex laudantium quia. Aut sunt perferendis eum numquam ipsum ut voluptate odit sit voluptatem iste sit galisum deleniti. Est porro consequatur sed nostrum quod et nesciunt perferendis ut velit numquam et galisum nulla est voluptatem pariatur. Qui laudantium animi et maiores repellendus sit vero aliquam et repellat nostrum.</div>
+  <Switcher gutter="3rem" items="2">
     <div>Lorem ipsum dolor sit amet. Ab quos reiciendis qui unde laborum est aliquam nihil ex laudantium quia. Aut sunt perferendis eum numquam ipsum ut voluptate odit sit voluptatem iste sit galisum deleniti. Est porro consequatur sed nostrum quod et nesciunt perferendis ut velit numquam et galisum nulla est voluptatem pariatur. Qui laudantium animi et maiores repellendus sit vero aliquam et repellat nostrum.</div>
     <div>Lorem ipsum dolor sit amet. Ab quos reiciendis qui unde laborum est aliquam nihil ex laudantium quia. Aut sunt perferendis eum numquam ipsum ut voluptate odit sit voluptatem iste sit galisum deleniti. Est porro consequatur sed nostrum quod et nesciunt perferendis ut velit numquam et galisum nulla est voluptatem pariatur. Qui laudantium animi et maiores repellendus sit vero aliquam et repellat nostrum.</div>
   </Switcher>
@@ -65,4 +66,5 @@ const { Content } = await render(element);
       </ul>
     )
   }
+  </div>
 </Layout>

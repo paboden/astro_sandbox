@@ -1,0 +1,27 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { twMerge } from "tailwind-merge";
+import Heading from "../Heading/Heading.astro";
+
+interface Props extends HTMLAttributes<"dl"> {
+  label?: string;
+}
+
+let { label, ...attr } = Astro.props;
+
+const default_wrapper_classes = 'border border-4 p-4 my-4 rounded-lg';
+---
+
+<div class:list={twMerge(["data-item-list", default_wrapper_classes, attr.class])} {...attr}>
+  {label && <Heading as="h3" class="data-item-list__label">{ label }</Heading>}
+  <dl class="data-item-list__content">
+    <slot />
+  </dl>
+</div>
+
+<style>
+  dl {
+    display: flex;
+    flex-direction: column;
+  }
+</style>

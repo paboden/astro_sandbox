@@ -68,11 +68,11 @@ export async function getStaticPaths() {
 
 
 
+
 const { periodic_element_name } = Astro.params;
 const { element, content } = Astro.props;
 
 const testElement = await getEntry("elements", periodic_element_name);
-console.log(testElement);
 
 ---
 

@@ -22,7 +22,7 @@ const elementsData = elements
   </div>
   <ol>
     {elementsData.map((element) => {
-      const href = `/periodic_elements/${element.id}`;
+      const href = `/periodic-elements/${element.id}`;
       return (
         <li data-number="{element.number}">
           <a class="element_link" href={href}>
