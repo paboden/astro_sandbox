@@ -49,7 +49,7 @@ const densityLabel = data.stp == 'solid' ? 'Density (g/cm³)' : 'Density (g/L)';
   <DataItemList label="General information">
     {data.symbol && <DataItem label="Symbol">{data.symbol}</DataItem>}
     {data.number && <DataItem label="Atomic number">{data.number}</DataItem>}
-    {data.weight && <DataItem label="Atomic weight (u)">{data.weight}</DataItem>}
+    {data.atomic_weight && <DataItem label="Atomic weight (u)">{data.atomic_weight}</DataItem>}
     {data.classification && <DataItem label="Classification">{data.classification}</DataItem>}
   </DataItemList>
 
@@ -63,17 +63,21 @@ const densityLabel = data.stp == 'solid' ? 'Density (g/cm³)' : 'Density (g/L)';
     {data.period && <DataItem label="Period">Period-{data.period}</DataItem>}
     {data.block && <DataItem label="Block">Block-{data.block}</DataItem>}
     {data.group && <DataItem label="Group">Group {data.group}</DataItem>}
-    {data.configuration && <DataItem label="Electron Configuration">{ data.configuration ? data.configuration.join(", ") : null }</DataItem>}
+    {data.electron_config && <DataItem label="Electron Configuration">{ data.electron_config }</DataItem>}
     {data.electrons_per_shell && <DataItem label="Electrons per shell">{ data.electrons_per_shell ? data.electrons_per_shell.join(", ") : null }</DataItem>}
   </DataItemList>
 
   <DataItemList label="Physical properties">
     {data.stp && <DataItem label="State at Standard Temperature and Pressure (STP)">{data.stp}</DataItem>}
     {data.density && <DataItem label={densityLabel}>{data.density}</DataItem>}
-    {data.melting_point && <DataItem label="Melting Point (K)">{data.melting_point ? data.melting_point.join(", ") : null }</DataItem>}
-    {data.boiling_point && <DataItem label="Boiling Point (K)">{data.boiling_point ? data.boiling_point.join(", ") : null }</DataItem>}
-    {data.vaporization && <DataItem label="Vaporization">{data.vaporization  ? data.vaporization.join(", ") : null }</DataItem>}
-    {data.heat_fusion && <DataItem label="Heat fusion">{data.heat_fusion}</DataItem>}
+    {data.melting_point?.K && <DataItem label="Melting Point (K)">{data.melting_point?.K }</DataItem>}
+    {data.melting_point?.F && <DataItem label="Melting Point (F)">{data.melting_point?.F }</DataItem>}
+    {data.melting_point?.C && <DataItem label="Melting Point (C)">{data.melting_point?.C }</DataItem>}
+    {data.boiling_point?.K && <DataItem label="Boiling Point (K)">{data.boiling_point?.K }</DataItem>}
+    {data.boiling_point?.F && <DataItem label="Boiling Point (F)">{data.boiling_point?.F }</DataItem>}
+    {data.boiling_point?.C && <DataItem label="Boiling Point (C)">{data.boiling_point?.C }</DataItem>}
+    {data.heat?.vaporization_kJ_per_mol && <DataItem label="Vaporization">{data.heat?.vaporization_kJ_per_mol }</DataItem>}
+    {data.heat?.fusion_kJ_per_mol && <DataItem label="Heat fusion">{data.heat?.fusion_kJ_per_mol}</DataItem>}
     {data.molar_heat && <DataItem label="Heat fusion">{data.molar_heat}</DataItem>}
   </DataItemList>
 
@@ -81,9 +85,9 @@ const densityLabel = data.stp == 'solid' ? 'Density (g/cm³)' : 'Density (g/L)';
     {data.oxidation_states && <DataItem label="Oxidation States">{ data.oxidation_states ? data.oxidation_states.join(", ") : null }</DataItem>}
     {data.electronegativity && <DataItem label="Electronegativity">{ data.electronegativity }</DataItem>}
     {data.ionization_energy && <DataItem label="Ionization energy">{ data.ionization_energy ? data.ionization_energy.join(", ") : null }</DataItem>}
-    {data.atomic_radius && <DataItem label="Atomic radius">{ data.atomic_radius }</DataItem>}
-    {data.covalent_radius && <DataItem label="Covalent radius">{ data.covalent_radius }</DataItem>}
-    {data.van_der_waals_radius && <DataItem label="Van der Waals radius">{ data.van_der_waals_radius }</DataItem>}
+    {data.atomic_radius?.calculated_pm && <DataItem label="Atomic radius">{ data.atomic_radius?.calculated_pm }</DataItem>}
+    {data.atomic_radius?.covalent_pm && <DataItem label="Covalent radius">{ data.atomic_radius?.covalent_pm }</DataItem>}
+    {data.atomic_radius?.van_der_waals_pm && <DataItem label="Van der Waals radius">{ data.atomic_radius?.van_der_waals_pm }</DataItem>}
   </DataItemList>
 
   <DataItemList label="Identification">
@@ -94,8 +98,8 @@ const densityLabel = data.stp == 'solid' ? 'Density (g/cm³)' : 'Density (g/L)';
   </DataItemList>
 
   <DataItemList label="Discovery information">
-    {data.year_discovered && <DataItem label="Year discovered">{data.year_discovered}</DataItem>}
-    {data.year_named && <DataItem label="Year named">{data.year_named}</DataItem>}
+    {data.discovered_year && <DataItem label="Year discovered">{data.discovered_year}</DataItem>}
+    {data.named_year && <DataItem label="Year named">{data.named_year}</DataItem>}
     {data.discovered_by && <DataItem label="Discovered by">{data.discovered_by}</DataItem>}
     {data.named_by && <DataItem label="Named by">{data.named_by}</DataItem>}
   </DataItemList>

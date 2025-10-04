@@ -26,17 +26,17 @@ const elementsData = elements
       elementsData.map((element) => {
         const href = `/periodic-elements/test/${element.id}`;
         return (
-          <li data-number="{element.number}">
+          <li data-number={element.number}>
             <article
               class="teaser element_teaser"
-              data-number="{element.number}"
-              data-symbol="{element.symbol}"
-              data-name="{element.name}"
+              data-number={element.number}
+              data-symbol={element.symbol}
+              data-name={element.name}
             >
               <span class="element_name">
                 {element.name} <span>{element.symbol}</span>
               </span>
-              <span class="element_weight">{element.weight}</span>
+              {/* <span class="element_weight">{element.weight}</span> */}
               <a class="element_link" href={href}>
                 More information
               </a>

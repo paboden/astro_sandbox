@@ -25,46 +25,18 @@ const elementsData = elements
       elementsData.map((element) => {
         const href = `/periodic-elements/${element.id}`;
         return (
-          <li data-number="{element.number}">
+          <li data-number={element.number}>
             <a class="element_link" href={href}>
               <article
                 class="teaser element_teaser"
-                data-number="{element.number}"
-                data-symbol="{element.symbol}"
-                data-name="{element.name}"
+              data-number={element.number}
+              data-symbol={element.symbol}
+              data-name={element.name}
               >
                 <span class="element_number">{element.number}</span>
                 <span class="element_symbol">{element.symbol}</span>
                 <h2 class="element_name">{element.name}</h2>
-                <span class="element_weight">{element.weight}</span>
-
-                {/* <dl>
-                    <dt class="inline-label">Symbol</dt>
-                  <dd>{element.symbol}</dd>
-                    <dt class="inline-label">Atomic number</dt>
-                    <dd>{element.number}</dd>
-                    <dt class="inline-label">Atomic weight</dt>
-                    <dd>{element.weight}</dd>
-                    <dt class="inline-label">Appearance</dt>
-                  <dd>{element.appearance}</dd>
-                  </dl> */}
-
-                {/* {element.image &&
-                (() => {
-                  const imgSrc = `/images/elements/${element.image}`;
-                  return (
-                    <div class="image">
-                      <a href={href}>
-                        <img
-                          src={imgSrc}
-                          alt={element.name}
-                          width={150}
-                          height={150}
-                        />
-                      </a>
-                    </div>
-                  );
-                })} */}
+                {/* <span class="element_weight">{element.weight}</span> */}
               </article>
             </a>
           </li>

@@ -3,6 +3,11 @@ import { twMerge } from "tailwind-merge";
 let { ...attr } = Astro.props;
 
 const defaultClasses = [
+  "prose",
+  "max-w-none",
+  "prose-zinc",
+  "prose-md",
+  "lg:prose-lg",
   "dark:prose-invert",
   "prose-h1:font-bold",
   "prose-h1:text-5xl",
@@ -15,6 +20,6 @@ const defaultClasses = [
 ].join(" ");
 ---
 
-<div class:list={twMerge(["prose", defaultClasses, attr.class])} {...attr}>
+<div class:list={twMerge([defaultClasses, attr.class])} {...attr}>
   <slot />
 </div>

@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Heading from "@components/Base/Heading/Heading.astro";
+import Container from "@layouts/Container.astro";
+import Layout from "@layouts/Layout.astro";
+
+const allPosts = await getCollection('blog');
+const posts = allPosts.map((post) => ({
+    ...post.data,
+  })).sort((a, b) => a.id.valueOf() - b.id.valueOf());
+
+---
+
+<Layout title="Blog Posts">
+  <div class="max-w-screen-md mx-auto mt-8">
+  <Heading as="h1">Blog Posts</Heading>
+  <ul class="list list--unstyled mt-8">
+    {posts.map((post) => {
+      const href = `/blog/${post.id}/${post.title.replace(/\s+/g, '-').toLowerCase()}`;
+      return (
+        <li data-number={post.id} class="list__item">
+          <a class="element_link" href={href}>
+            <article class="teaser post_teaser">
+              <Heading as="h2" class="element_number">{post.title}</Heading>
+              <p class="element_symbol">{post.summary}</p>
+            </article>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+
+  </div>
+
+
+</Layout>

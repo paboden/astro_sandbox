@@ -4,21 +4,7 @@ name: Ytterbium
 symbol: Yb
 stp: solid
 weight: 173.045
-density:
-appearance:
-period: 6
-block:
-group:
-configuration:
-oxidation_states:
-cas_number:
-year_discovered:
-discovered_by:
-year_named:
-named_by:
-name_meaning:
-image:
-wiki: https://en.wikipedia.org/wiki/Ytterbium
+series: "Lanthanoid"
 ---
 
 Markdown content here...

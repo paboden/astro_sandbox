@@ -4,21 +4,7 @@ name: Erbium
 symbol: Er
 stp: solid
 weight: 14.007
-density:
-appearance:
-period: 6
-block:
-group:
-configuration:
-oxidation_states:
-cas_number:
-year_discovered:
-discovered_by:
-year_named:
-named_by:
-name_meaning:
-image:
-wiki: https://en.wikipedia.org/wiki/Erbium
+series: "Lanthanoid"
 ---
 
 Markdown content here...
