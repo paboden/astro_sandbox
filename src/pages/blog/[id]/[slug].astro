@@ -5,12 +5,11 @@ import Layout from "@layouts/Layout.astro" // Adjust path
 import Heading from '@components/Base/Heading/Heading.astro';
 import Prose from '@layouts/Prose.astro';
 import Link from '@components/Base/Link/Link.astro';
+import BackTo from '@components/Navigation/BackTo/BackTo.astro';
+import { Image } from 'astro:assets';
 
 export const getStaticPaths = (async () => {
   const allPosts = await getCollection('blog');
-
-//post.data.title.replace(/\s+/g, '-').toLowerCase()
-
   return allPosts.map((post) => ({
     params: { 
       id: post.data.id,
@@ -24,67 +23,90 @@ const { post } = Astro.props as { post: CollectionEntry<'blog'> };
 
 const data = post.data;
 const content = post.rendered?.html;
+const headings = post.rendered?.metadata?.headings as Array<{ text: string; depth: number; slug: string }>;
+
+const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
 ---
 
-<Layout title={post.data.title} class="max-w-screen-lg  mx-auto">
+<Layout title={post.data.title} class="max-w-screen-lg mx-auto mt-8">
 
-  <hgroup class="mt-4">
+  <BackTo href="/blog" title="Return to all blog posts listing page">Back to Blog Posts</BackTo>
+  
+  {imagePath && (
+    <Image src={imagePath} alt="A bird." width="800" height="500" />
+  )}
 
-    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 inline-flex items-center">
-      <Link href="/blog" icon={{ name: "mdi:arrow-left", class: "inline-flex items-center"}} >Back to Blog</Link>
-    </p>
-
+  <hgroup id="blog-header" class="mb-4"class="my-4">
     <Heading as="h1" >{post.data.title}</Heading>
-
-    {data.summary && (
-      <p class="lead mt-6">
-        {data.summary}
-      </p> 
-    )}
+    {data.summary && (<p class="lead mt-6">{data.summary}</p>)}
   </hgroup>
 
-  {data.author && (
-    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
-      By {data.author}
-    </p> 
+  <footer id="blog-meta" class="mb-4">
+    {data.author && (
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+        By <Link variant="link" href={`/blog/authors/${data.author}`} class="no-underline hover:underline inline-flex items-center">{data.author}</Link>
+      </p> 
+    )}
+
+    {data.created &&  (
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+        Published on: {new Date(data.created).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+      </p>
+    )}
+
+    {data.changed &&  (
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+        Last updated on: {new Date(data.changed).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+      </p>
+    )}
+  </footer>
+
+  {headings && (
+    <div class="border-t border-gray-300 dark:border-gray-700 my-12">
+      <Heading as="h2" class="my-6">Table of Contents</Heading>
+      <ul class="list-disc list-inside space-y-2 ml-4">
+        {headings.map((heading: any) => {
+          if (heading.depth !== 2) return null;
+          return (
+            <li class="list-disc flex items-center text-gray-800 dark:text-gray-200 text-sm">
+              <Link variant="link" href={`#${heading.slug}`} class="no-underline hover:underline inline-flex items-center">
+                {heading.text}
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
+    </div> 
   )}
 
-  {data.created &&  (
-    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
-      Published on: {new Date(data.created).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
-    </p>
-  )}
+  <Prose class="border-t border-gray-300 dark:border-gray-700 mt-8 py-8">
+    <Fragment set:html={content ?? "<p>No element found</p>"} />
+  </Prose>
 
-  {data.changed &&  (
-    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
-      Last updated on: {new Date(data.changed).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
-    </p>
-  )}
-
-  {data.tags && (() => {
-    return (
+  {data.tags && (
+    <div class="border-t border-gray-300 dark:border-gray-700 my-12">
+      <Heading as="h2" class="my-6">Post Topics</Heading>
       <ul>
         {data.tags?.map((tag) => {
           const tag_slug = tag.replace(/\s+/g, '-').toLowerCase();
           return (
             <li id={tag} class="inline-flex items-center bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">
-              <Link variant="link" href={`/blog/tags/${tag}`} icon={{name: "mdi:tag", class: "mr-1"}} class="no-underline hover:underline inline-flex items-center">
+              <Link variant="link" href={`/blog/tags/${tag_slug}`} icon={{name: "mdi:tag", class: "mr-1"}} class="no-underline hover:underline inline-flex items-center">
                 {tag}
               </Link>
             </li>
           )
         })}
       </ul>
-    ) 
-  })}
-
-  <Prose class="mt-8">
-    <Fragment set:html={content ?? "<p>No element found</p>"} />
-  </Prose>
+    </div> 
+  )}
 
   {data.author && (
-    <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">
-      {data.author}
-    </p> 
+    <div class="border-t border-gray-300 dark:border-gray-700 my-12">
+      <Heading as="h2" class="my-6">About the Author</Heading>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">
+        {data.author} articles go here.
+      </p> 
+    </div>
   )}
 </Layout>

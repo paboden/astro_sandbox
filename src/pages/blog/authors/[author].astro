@@ -1,0 +1,46 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import Layout from "@layouts/Layout.astro" // Adjust path
+import Heading from '@components/Base/Heading/Heading.astro';
+import Prose from '@layouts/Prose.astro';
+import Link from '@components/Base/Link/Link.astro';
+import { Icon } from 'astro-icon/components';
+import BackTo from '@components/Navigation/BackTo/BackTo.astro';
+
+export const getStaticPaths = (async () => {
+  const allAuthors = await getCollection('authors');
+  return allAuthors.map((author) => ({
+    params: { author: author.data.username},
+    props: { author },
+  }));
+}) satisfies GetStaticPaths;
+
+const { author } = Astro.props as { author: CollectionEntry<'authors'> };
+
+const data = author.data;
+const content = author.rendered?.html;
+---
+
+<Layout title={ data.name } class="max-w-screen-lg mx-auto mt-8">
+
+  <BackTo href="/blog/authors" title="Return to all blog authors listing page">Back to Blog Authors</BackTo>
+
+  <hgroup class="mt-4">
+    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 inline-flex items-center">Author</p>
+    <Heading as="h1" >{ data.name }</Heading>
+    { data.username && <p class="text-md text-gray-500 dark:text-gray-400 mb-4 flex items-center mt-6"><Icon name="mdi:at"/>{data.username}</p> }
+    { data.email && <p class="text-md text-gray-500 dark:text-gray-400 mb-4 flex items-center"><Icon name="mdi:email"  class="mr-1" />{data.email}</p> }
+    { data.joined &&  (
+    <p class="text-md text-gray-500 dark:text-gray-400 mb-4 flex items-center"><Icon name="mdi:calendar" class="mr-1"/>Joined on: {new Date(data.joined).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+    )}
+  </hgroup>
+
+
+
+  <Prose class="mt-8">
+    <Fragment set:html={content ?? "<p>No element found</p>"} />
+  </Prose>
+
+  <p>Test</p>
+</Layout>

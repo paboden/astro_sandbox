@@ -11,14 +11,13 @@ const posts = allPosts.map((post) => ({
 
 ---
 
-<Layout title="Blog Posts">
-  <div class="max-w-screen-md mx-auto mt-8">
+<Layout title="Blog Posts" class="max-w-screen-lg mx-auto mt-8">
   <Heading as="h1">Blog Posts</Heading>
-  <ul class="list list--unstyled mt-8">
+  <ul class="list list--unstyled my-12">
     {posts.map((post) => {
       const href = `/blog/${post.id}/${post.title.replace(/\s+/g, '-').toLowerCase()}`;
       return (
-        <li data-number={post.id} class="list__item">
+        <li data-number={post.id} class="list__item mb-6">
           <a class="element_link" href={href}>
             <article class="teaser post_teaser">
               <Heading as="h2" class="element_number">{post.title}</Heading>
@@ -29,8 +28,4 @@ const posts = allPosts.map((post) => ({
       );
     })}
   </ul>
-
-  </div>
-
-
 </Layout>

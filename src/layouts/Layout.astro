@@ -18,23 +18,29 @@ const sidbarClass = hasSidebar ? 'with-sidebar flex flex-wrap gap-8' : null;
     <meta name="generator" content={Astro.generator} />
     <title>{Astro.props.title ?? "Astro Sandbox Site"}</title>
   </head>
-  <body>
+  <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+
     <Header />
-    <div class:list={["content", sidbarClass, attr.class]} {...attr}>
-      {hasSidebar ? (
-        <div class="sidebar">
-          <slot name="sidebar" />
-        </div>
-        <main class="main-content">
-          <slot />
-        </main>
-      ) : (
-        <main class="main-content">
-          <slot />
-        </main>
-      )}
+
+    <div class="bg-white">
+      <div class:list={["content", sidbarClass, attr.class]} {...attr}>
+        {hasSidebar ? (
+          <div class="sidebar">
+            <slot name="sidebar" />
+          </div>
+          <main class="main-content">
+            <slot />
+          </main>
+        ) : (
+          <main class="main-content">
+            <slot />
+          </main>
+        )}
+      </div>
     </div>
+
     <Footer />
+
   </body>
 </html>
 
