@@ -2,6 +2,7 @@ import { z, defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { MenuItemSchema } from "@/lib/Schema/menu_item";
 import { ElementSchema } from "@/lib/Schema/element";
+import { ElementSimpleSchema } from "@/lib/Schema/element_simple";
 import { BlogPostSchema } from "@/lib/Schema/blog_post";
 import { AuthorSchema } from "@/lib/Schema/author";
 import { BlogTagSchema } from "@/lib/Schema/blog_tag";
@@ -12,6 +13,11 @@ const elements = defineCollection({
     base: "./src/content/elements" 
   }),
   schema: ElementSchema,
+});
+
+const periodic_elements_list = defineCollection({
+  loader: file("./src/content/data/periodic_table_elements__simple.json", { parser: (text) => JSON.parse(text).data }),
+  schema: ElementSimpleSchema,
 });
 
 const blog = defineCollection({
@@ -50,6 +56,7 @@ const footer_menu = defineCollection({
 
 export const collections = {
   elements,
+  periodic_elements_list,
   blog,
   blog_tags,
   authors,

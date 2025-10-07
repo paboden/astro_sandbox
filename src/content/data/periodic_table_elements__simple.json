@@ -1,0 +1,2132 @@
+{
+  "title": "Periodic Table of Elements",
+  "description": "Dataset of elements including atomic number, weight, electron configuration, density, and abundance percentages.",
+  "last_updated": "10-15-2025 02:30 PM PST",
+  "data": [
+    {
+      "id": 1,
+      "symbol": "H",
+      "name": "Hydrogen",
+      "atomic_weight": 1.008,
+      "electron_config": "1s1",
+      "series": "Nonmetal",
+      "valence": 1,
+      "discovery_year": 1766,
+      "density_g_per_cm3": 0.0899,
+      "abundance_percent": {
+        "universe": 75.0,
+        "crust": 0.15,
+        "ocean": 11.0,
+        "human_body": 10.0
+      },
+      "isotopes_count": 7
+    },
+    {
+      "id": 2,
+      "symbol": "He",
+      "name": "Helium",
+      "atomic_weight": 4.002602,
+      "electron_config": "1s2",
+      "series": "Noble",
+      "valence": 0,
+      "discovery_year": 1895,
+      "density_g_per_cm3": 0.1785,
+      "abundance_percent": {
+        "universe": 23.0,
+        "crust": 5.5e-7,
+        "ocean": 7.2e-10,
+        "human_body": null
+      },
+      "isotopes_count": 9
+    },
+    {
+      "id": 3,
+      "symbol": "Li",
+      "name": "Lithium",
+      "atomic_weight": 6.94,
+      "electron_config": "[He] 2s1",
+      "series": "Alkali",
+      "valence": 1,
+      "discovery_year": 1817,
+      "density_g_per_cm3": 535.0,
+      "abundance_percent": {
+        "universe": 6e-7,
+        "crust": 0.0017,
+        "ocean": 1.8e-5,
+        "human_body": 3e-6
+      },
+      "isotopes_count": 10
+    },
+    {
+      "id": 4,
+      "symbol": "Be",
+      "name": "Beryllium",
+      "atomic_weight": 9.0121831,
+      "electron_config": "[He] 2s2",
+      "series": "Alkaline",
+      "valence": 2,
+      "discovery_year": 1797,
+      "density_g_per_cm3": 1848.0,
+      "abundance_percent": {
+        "universe": 1e-7,
+        "crust": 0.00019,
+        "ocean": 6e-11,
+        "human_body": 4e-8
+      },
+      "isotopes_count": 12
+    },
+    {
+      "id": 5,
+      "symbol": "B",
+      "name": "Boron",
+      "atomic_weight": 10.81,
+      "electron_config": "[He] 2s2 2p1",
+      "series": "Metalloid",
+      "valence": 3,
+      "discovery_year": 1808,
+      "density_g_per_cm3": 2460.0,
+      "abundance_percent": {
+        "universe": 1e-7,
+        "crust": 0.00086,
+        "ocean": 0.00044,
+        "human_body": 7e-5
+      },
+      "isotopes_count": 14
+    },
+    {
+      "id": 6,
+      "symbol": "C",
+      "name": "Carbon",
+      "atomic_weight": 12.011,
+      "electron_config": "[He] 2s2 2p2",
+      "series": "Nonmetal",
+      "valence": 4,
+      "discovery_year": -3749,
+      "density_g_per_cm3": 2260.0,
+      "abundance_percent": {
+        "universe": 0.5,
+        "crust": 0.18,
+        "ocean": 0.0028,
+        "human_body": 23.0
+      },
+      "isotopes_count": 15
+    },
+    {
+      "id": 7,
+      "symbol": "N",
+      "name": "Nitrogen",
+      "atomic_weight": 14.007,
+      "electron_config": "[He] 2s2 2p3",
+      "series": "Nonmetal",
+      "valence": 5,
+      "discovery_year": 1772,
+      "density_g_per_cm3": 1.251,
+      "abundance_percent": {
+        "universe": 0.1,
+        "crust": 0.002,
+        "ocean": 5e-5,
+        "human_body": 2.6
+      },
+      "isotopes_count": 16
+    },
+    {
+      "id": 8,
+      "symbol": "O",
+      "name": "Oxygen",
+      "atomic_weight": 15.999,
+      "electron_config": "[He] 2s2 2p4",
+      "series": "Nonmetal",
+      "valence": 2,
+      "discovery_year": 1774,
+      "density_g_per_cm3": 1.429,
+      "abundance_percent": {
+        "universe": 1.0,
+        "crust": 46.0,
+        "ocean": 86.0,
+        "human_body": 61.0
+      },
+      "isotopes_count": 17
+    },
+    {
+      "id": 9,
+      "symbol": "F",
+      "name": "Fluorine",
+      "atomic_weight": 18.998403162,
+      "electron_config": "[He] 2s2 2p5",
+      "series": "Nonmetal",
+      "valence": 1,
+      "discovery_year": 1886,
+      "density_g_per_cm3": 1.696,
+      "abundance_percent": {
+        "universe": 4e-5,
+        "crust": 0.054,
+        "ocean": 0.00013,
+        "human_body": 0.0037
+      },
+      "isotopes_count": 18
+    },
+    {
+      "id": 10,
+      "symbol": "Ne",
+      "name": "Neon",
+      "atomic_weight": 20.1797,
+      "electron_config": "[He] 2s2 2p6",
+      "series": "Noble",
+      "valence": 0,
+      "discovery_year": 1898,
+      "density_g_per_cm3": 0.9,
+      "abundance_percent": {
+        "universe": 0.13,
+        "crust": 3e-7,
+        "ocean": 1.2e-8,
+        "human_body": null
+      },
+      "isotopes_count": 19
+    },
+    {
+      "id": 11,
+      "symbol": "Na",
+      "name": "Sodium",
+      "atomic_weight": 22.98976928,
+      "electron_config": "[Ne] 3s1",
+      "series": "Alkali",
+      "valence": 1,
+      "discovery_year": 1807,
+      "density_g_per_cm3": 968.0,
+      "abundance_percent": {
+        "universe": 0.002,
+        "crust": 2.3,
+        "ocean": 1.1,
+        "human_body": 0.14
+      },
+      "isotopes_count": 20
+    },
+    {
+      "id": 12,
+      "symbol": "Mg",
+      "name": "Magnesium",
+      "atomic_weight": 24.305,
+      "electron_config": "[Ne] 3s2",
+      "series": "Alkaline",
+      "valence": 2,
+      "discovery_year": 1755,
+      "density_g_per_cm3": 1738.0,
+      "abundance_percent": {
+        "universe": 0.06,
+        "crust": 2.9,
+        "ocean": 0.13,
+        "human_body": 0.027
+      },
+      "isotopes_count": 22
+    },
+    {
+      "id": 13,
+      "symbol": "Al",
+      "name": "Aluminium",
+      "atomic_weight": 26.9815384,
+      "electron_config": "[Ne] 3s2 3p1",
+      "series": "Poor",
+      "valence": 3,
+      "discovery_year": 1825,
+      "density_g_per_cm3": 2700.0,
+      "abundance_percent": {
+        "universe": 0.005,
+        "crust": 8.1,
+        "ocean": 5e-7,
+        "human_body": 9e-5
+      },
+      "isotopes_count": 22
+    },
+    {
+      "id": 14,
+      "symbol": "Si",
+      "name": "Silicon",
+      "atomic_weight": 28.085,
+      "electron_config": "[Ne] 3s2 3p2",
+      "series": "Metalloid",
+      "valence": 4,
+      "discovery_year": 1824,
+      "density_g_per_cm3": 2330.0,
+      "abundance_percent": {
+        "universe": 0.07,
+        "crust": 27.0,
+        "ocean": 0.0001,
+        "human_body": 0.026
+      },
+      "isotopes_count": 23
+    },
+    {
+      "id": 15,
+      "symbol": "P",
+      "name": "Phosphorus",
+      "atomic_weight": 30.973761998,
+      "electron_config": "[Ne] 3s2 3p3",
+      "series": "Nonmetal",
+      "valence": 5,
+      "discovery_year": 1669,
+      "density_g_per_cm3": 1823.0,
+      "abundance_percent": {
+        "universe": 0.0007,
+        "crust": 0.099,
+        "ocean": 7e-6,
+        "human_body": 1.1
+      },
+      "isotopes_count": 23
+    },
+    {
+      "id": 16,
+      "symbol": "S",
+      "name": "Sulfur",
+      "atomic_weight": 32.06,
+      "electron_config": "[Ne] 3s2 3p4",
+      "series": "Nonmetal",
+      "valence": 6,
+      "discovery_year": -499,
+      "density_g_per_cm3": 1960.0,
+      "abundance_percent": {
+        "universe": 0.05,
+        "crust": 0.042,
+        "ocean": 0.093,
+        "human_body": 0.2
+      },
+      "isotopes_count": 24
+    },
+    {
+      "id": 17,
+      "symbol": "Cl",
+      "name": "Chlorine",
+      "atomic_weight": 35.45,
+      "electron_config": "[Ne] 3s2 3p5",
+      "series": "Nonmetal",
+      "valence": 7,
+      "discovery_year": 1774,
+      "density_g_per_cm3": 3.214,
+      "abundance_percent": {
+        "universe": 0.0001,
+        "crust": 0.017,
+        "ocean": 2.0,
+        "human_body": 0.12
+      },
+      "isotopes_count": 24
+    },
+    {
+      "id": 18,
+      "symbol": "Ar",
+      "name": "Argon",
+      "atomic_weight": 39.948,
+      "electron_config": "[Ne] 3s2 3p6",
+      "series": "Noble",
+      "valence": 2,
+      "discovery_year": 1894,
+      "density_g_per_cm3": 1.784,
+      "abundance_percent": {
+        "universe": 0.02,
+        "crust": 0.00015,
+        "ocean": 4.5e-5,
+        "human_body": null
+      },
+      "isotopes_count": 24
+    },
+    {
+      "id": 19,
+      "symbol": "K",
+      "name": "Potassium",
+      "atomic_weight": 39.0983,
+      "electron_config": "[Ar] 4s1",
+      "series": "Alkali",
+      "valence": 1,
+      "discovery_year": 1807,
+      "density_g_per_cm3": 856.0,
+      "abundance_percent": {
+        "universe": 0.0003,
+        "crust": 1.5,
+        "ocean": 0.042,
+        "human_body": 0.2
+      },
+      "isotopes_count": 24
+    },
+    {
+      "id": 20,
+      "symbol": "Ca",
+      "name": "Calcium",
+      "atomic_weight": 40.078,
+      "electron_config": "[Ar] 4s2",
+      "series": "Alkaline",
+      "valence": 2,
+      "discovery_year": 1808,
+      "density_g_per_cm3": 1550.0,
+      "abundance_percent": {
+        "universe": 0.007,
+        "crust": 5.0,
+        "ocean": 0.00042,
+        "human_body": 1.4
+      },
+      "isotopes_count": 24
+    },
+    {
+      "id": 21,
+      "symbol": "Sc",
+      "name": "Scandium",
+      "atomic_weight": 44.955907,
+      "electron_config": "[Ar] 4s2 3d1",
+      "series": "Transition",
+      "valence": 3,
+      "discovery_year": 1879,
+      "density_g_per_cm3": 2985.0,
+      "abundance_percent": {
+        "universe": 3e-6,
+        "crust": 0.0026,
+        "ocean": 1.5e-10,
+        "human_body": null
+      },
+      "isotopes_count": 25
+    },
+    {
+      "id": 22,
+      "symbol": "Ti",
+      "name": "Titanium",
+      "atomic_weight": 47.867,
+      "electron_config": "[Ar] 4s2 3d2",
+      "series": "Transition",
+      "valence": 4,
+      "discovery_year": 1791,
+      "density_g_per_cm3": 4507.0,
+      "abundance_percent": {
+        "universe": 0.0003,
+        "crust": 0.66,
+        "ocean": 1e-7,
+        "human_body": null
+      },
+      "isotopes_count": 26
+    },
+    {
+      "id": 23,
+      "symbol": "V",
+      "name": "Vanadium",
+      "atomic_weight": 50.9415,
+      "electron_config": "[Ar] 4s2 3d3",
+      "series": "Transition",
+      "valence": 5,
+      "discovery_year": 1801,
+      "density_g_per_cm3": 6110.0,
+      "abundance_percent": {
+        "universe": 0.0001,
+        "crust": 0.019,
+        "ocean": 1.5e-7,
+        "human_body": 3e-6
+      },
+      "isotopes_count": 26
+    },
+    {
+      "id": 24,
+      "symbol": "Cr",
+      "name": "Chromium",
+      "atomic_weight": 51.9961,
+      "electron_config": "[Ar] 4s1 3d5",
+      "series": "Transition",
+      "valence": 6,
+      "discovery_year": 1797,
+      "density_g_per_cm3": 7190.0,
+      "abundance_percent": {
+        "universe": 0.0015,
+        "crust": 0.014,
+        "ocean": 6e-8,
+        "human_body": 3e-6
+      },
+      "isotopes_count": 26
+    },
+    {
+      "id": 25,
+      "symbol": "Mn",
+      "name": "Manganese",
+      "atomic_weight": 54.938043,
+      "electron_config": "[Ar] 4s2 3d5",
+      "series": "Transition",
+      "valence": 7,
+      "discovery_year": 1774,
+      "density_g_per_cm3": 7470.0,
+      "abundance_percent": {
+        "universe": 0.0008,
+        "crust": 0.11,
+        "ocean": 2e-7,
+        "human_body": 2e-5
+      },
+      "isotopes_count": 26
+    },
+    {
+      "id": 26,
+      "symbol": "Fe",
+      "name": "Iron",
+      "atomic_weight": 55.845,
+      "electron_config": "[Ar] 4s2 3d6",
+      "series": "Transition",
+      "valence": 6,
+      "discovery_year": -1999,
+      "density_g_per_cm3": 7874.0,
+      "abundance_percent": {
+        "universe": 0.11,
+        "crust": 6.3,
+        "ocean": 3e-7,
+        "human_body": 0.006
+      },
+      "isotopes_count": 28
+    },
+    {
+      "id": 27,
+      "symbol": "Co",
+      "name": "Cobalt",
+      "atomic_weight": 58.933194,
+      "electron_config": "[Ar] 4s2 3d7",
+      "series": "Transition",
+      "valence": 5,
+      "discovery_year": 1735,
+      "density_g_per_cm3": 8900.0,
+      "abundance_percent": {
+        "universe": 0.0003,
+        "crust": 0.003,
+        "ocean": 8e-9,
+        "human_body": 2e-6
+      },
+      "isotopes_count": 29
+    },
+    {
+      "id": 28,
+      "symbol": "Ni",
+      "name": "Nickel",
+      "atomic_weight": 58.6934,
+      "electron_config": "[Ar] 4s2 3d8",
+      "series": "Transition",
+      "valence": 4,
+      "discovery_year": 1751,
+      "density_g_per_cm3": 8908.0,
+      "abundance_percent": {
+        "universe": 0.006,
+        "crust": 0.0089,
+        "ocean": 2e-7,
+        "human_body": 1e-5
+      },
+      "isotopes_count": 31
+    },
+    {
+      "id": 29,
+      "symbol": "Cu",
+      "name": "Copper",
+      "atomic_weight": 63.546,
+      "electron_config": "[Ar] 4s1 3d10",
+      "series": "Transition",
+      "valence": 4,
+      "discovery_year": -7999,
+      "density_g_per_cm3": 8960.0,
+      "abundance_percent": {
+        "universe": 6e-6,
+        "crust": 0.0068,
+        "ocean": 3e-7,
+        "human_body": 0.0001
+      },
+      "isotopes_count": 29
+    },
+    {
+      "id": 30,
+      "symbol": "Zn",
+      "name": "Zinc",
+      "atomic_weight": 65.38,
+      "electron_config": "[Ar] 4s2 3d10",
+      "series": "Transition",
+      "valence": 2,
+      "discovery_year": 1500,
+      "density_g_per_cm3": 7140.0,
+      "abundance_percent": {
+        "universe": 3e-5,
+        "crust": 0.0078,
+        "ocean": 5e-7,
+        "human_body": 0.0033
+      },
+      "isotopes_count": 30
+    },
+    {
+      "id": 31,
+      "symbol": "Ga",
+      "name": "Gallium",
+      "atomic_weight": 69.723,
+      "electron_config": "[Ar] 4s2 3d10 4p1",
+      "series": "Poor",
+      "valence": 3,
+      "discovery_year": 1875,
+      "density_g_per_cm3": 5904.0,
+      "abundance_percent": {
+        "universe": 1e-6,
+        "crust": 0.0019,
+        "ocean": 3e-9,
+        "human_body": null
+      },
+      "isotopes_count": 31
+    },
+    {
+      "id": 32,
+      "symbol": "Ge",
+      "name": "Germanium",
+      "atomic_weight": 72.63,
+      "electron_config": "[Ar] 4s2 3d10 4p2",
+      "series": "Metalloid",
+      "valence": 4,
+      "discovery_year": 1886,
+      "density_g_per_cm3": 5323.0,
+      "abundance_percent": {
+        "universe": 2e-5,
+        "crust": 0.00014,
+        "ocean": 6e-9,
+        "human_body": null
+      },
+      "isotopes_count": 32
+    },
+    {
+      "id": 33,
+      "symbol": "As",
+      "name": "Arsenic",
+      "atomic_weight": 74.921595,
+      "electron_config": "[Ar] 4s2 3d10 4p3",
+      "series": "Metalloid",
+      "valence": 5,
+      "discovery_year": 1250,
+      "density_g_per_cm3": 5727.0,
+      "abundance_percent": {
+        "universe": 8e-7,
+        "crust": 0.00021,
+        "ocean": 2.3e-7,
+        "human_body": 5e-6
+      },
+      "isotopes_count": 33
+    },
+    {
+      "id": 34,
+      "symbol": "Se",
+      "name": "Selenium",
+      "atomic_weight": 78.971,
+      "electron_config": "[Ar] 4s2 3d10 4p4",
+      "series": "Nonmetal",
+      "valence": 6,
+      "discovery_year": 1817,
+      "density_g_per_cm3": 4819.0,
+      "abundance_percent": {
+        "universe": 3e-6,
+        "crust": 5e-6,
+        "ocean": 4.5e-8,
+        "human_body": 5e-6
+      },
+      "isotopes_count": 30
+    },
+    {
+      "id": 35,
+      "symbol": "Br",
+      "name": "Bromine",
+      "atomic_weight": 79.904,
+      "electron_config": "[Ar] 4s2 3d10 4p5",
+      "series": "Nonmetal",
+      "valence": 7,
+      "discovery_year": 1826,
+      "density_g_per_cm3": 3120.0,
+      "abundance_percent": {
+        "universe": 7e-7,
+        "crust": 0.0003,
+        "ocean": 0.0067,
+        "human_body": 0.00029
+      },
+      "isotopes_count": 31
+    },
+    {
+      "id": 36,
+      "symbol": "Kr",
+      "name": "Krypton",
+      "atomic_weight": 83.798,
+      "electron_config": "[Ar] 4s2 3d10 4p6",
+      "series": "Noble",
+      "valence": 2,
+      "discovery_year": 1898,
+      "density_g_per_cm3": 3.75,
+      "abundance_percent": {
+        "universe": 4e-6,
+        "crust": 1.5e-8,
+        "ocean": 2.1e-8,
+        "human_body": null
+      },
+      "isotopes_count": 32
+    },
+    {
+      "id": 37,
+      "symbol": "Rb",
+      "name": "Rubidium",
+      "atomic_weight": 85.4678,
+      "electron_config": "[Kr] 5s1",
+      "series": "Alkali",
+      "valence": 1,
+      "discovery_year": 1861,
+      "density_g_per_cm3": 1532.0,
+      "abundance_percent": {
+        "universe": 1e-6,
+        "crust": 0.006,
+        "ocean": 1.2e-5,
+        "human_body": 0.00046
+      },
+      "isotopes_count": 32
+    },
+    {
+      "id": 38,
+      "symbol": "Sr",
+      "name": "Strontium",
+      "atomic_weight": 87.62,
+      "electron_config": "[Kr] 5s2",
+      "series": "Alkaline",
+      "valence": 2,
+      "discovery_year": 1790,
+      "density_g_per_cm3": 2630.0,
+      "abundance_percent": {
+        "universe": 4e-6,
+        "crust": 0.036,
+        "ocean": 0.00081,
+        "human_body": 0.00046
+      },
+      "isotopes_count": 33
+    },
+    {
+      "id": 39,
+      "symbol": "Y",
+      "name": "Yttrium",
+      "atomic_weight": 88.905838,
+      "electron_config": "[Kr] 5s2 4d1",
+      "series": "Transition",
+      "valence": 3,
+      "discovery_year": 1794,
+      "density_g_per_cm3": 4472.0,
+      "abundance_percent": {
+        "universe": 7e-7,
+        "crust": 0.0029,
+        "ocean": 1.3e-9,
+        "human_body": null
+      },
+      "isotopes_count": 33
+    },
+    {
+      "id": 40,
+      "symbol": "Zr",
+      "name": "Zirconium",
+      "atomic_weight": 91.224,
+      "electron_config": "[Kr] 5s2 4d2",
+      "series": "Transition",
+      "valence": 4,
+      "discovery_year": 1789,
+      "density_g_per_cm3": 6511.0,
+      "abundance_percent": {
+        "universe": 5e-6,
+        "crust": 0.013,
+        "ocean": 2.6e-9,
+        "human_body": 5e-6
+      },
+      "isotopes_count": 33
+    },
+    {
+      "id": 41,
+      "symbol": "Nb",
+      "name": "Niobium",
+      "atomic_weight": 92.90637,
+      "electron_config": "[Kr] 5s1 4d4",
+      "series": "Transition",
+      "valence": 5,
+      "discovery_year": 1801,
+      "density_g_per_cm3": 8570.0,
+      "abundance_percent": {
+        "universe": 2e-7,
+        "crust": 0.0017,
+        "ocean": 1e-10,
+        "human_body": null
+      },
+      "isotopes_count": 33
+    },
+    {
+      "id": 42,
+      "symbol": "Mo",
+      "name": "Molybdenum",
+      "atomic_weight": 95.95,
+      "electron_config": "[Kr] 5s1 4d5",
+      "series": "Transition",
+      "valence": 6,
+      "discovery_year": 1781,
+      "density_g_per_cm3": 10280.0,
+      "abundance_percent": {
+        "universe": 5e-7,
+        "crust": 0.00011,
+        "ocean": 1e-6,
+        "human_body": 1e-5
+      },
+      "isotopes_count": 33
+    },
+    {
+      "id": 43,
+      "symbol": "Tc",
+      "name": "Technetium",
+      "atomic_weight": 98.0,
+      "electron_config": "[Kr] 5s2 4d5",
+      "series": "Transition",
+      "valence": 7,
+      "discovery_year": 1937,
+      "density_g_per_cm3": 11500.0,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 34
+    },
+    {
+      "id": 44,
+      "symbol": "Ru",
+      "name": "Ruthenium",
+      "atomic_weight": 101.07,
+      "electron_config": "[Kr] 5s1 4d7",
+      "series": "Transition",
+      "valence": 8,
+      "discovery_year": 1844,
+      "density_g_per_cm3": 12370.0,
+      "abundance_percent": {
+        "universe": 4e-7,
+        "crust": 9.9e-8,
+        "ocean": 7e-11,
+        "human_body": null
+      },
+      "isotopes_count": 34
+    },
+    {
+      "id": 45,
+      "symbol": "Rh",
+      "name": "Rhodium",
+      "atomic_weight": 102.90549,
+      "electron_config": "[Kr] 5s1 4d8",
+      "series": "Transition",
+      "valence": 6,
+      "discovery_year": 1803,
+      "density_g_per_cm3": 12450.0,
+      "abundance_percent": {
+        "universe": 6e-8,
+        "crust": 7e-8,
+        "ocean": null,
+        "human_body": null
+      },
+      "isotopes_count": 34
+    },
+    {
+      "id": 46,
+      "symbol": "Pd",
+      "name": "Palladium",
+      "atomic_weight": 106.42,
+      "electron_config": "[Kr] 4d10",
+      "series": "Transition",
+      "valence": 4,
+      "discovery_year": 1803,
+      "density_g_per_cm3": 12023.0,
+      "abundance_percent": {
+        "universe": 2e-7,
+        "crust": 6.3e-7,
+        "ocean": null,
+        "human_body": null
+      },
+      "isotopes_count": 34
+    },
+    {
+      "id": 47,
+      "symbol": "Ag",
+      "name": "Silver",
+      "atomic_weight": 107.8682,
+      "electron_config": "[Kr] 5s1 4d10",
+      "series": "Transition",
+      "valence": 4,
+      "discovery_year": -2999,
+      "density_g_per_cm3": 10490.0,
+      "abundance_percent": {
+        "universe": 6e-8,
+        "crust": 7.9e-6,
+        "ocean": 1e-8,
+        "human_body": null
+      },
+      "isotopes_count": 38
+    },
+    {
+      "id": 48,
+      "symbol": "Cd",
+      "name": "Cadmium",
+      "atomic_weight": 112.414,
+      "electron_config": "[Kr] 5s2 4d10",
+      "series": "Transition",
+      "valence": 2,
+      "discovery_year": 1817,
+      "density_g_per_cm3": 8650.0,
+      "abundance_percent": {
+        "universe": 2e-7,
+        "crust": 1.5e-5,
+        "ocean": 5e-9,
+        "human_body": 7e-5
+      },
+      "isotopes_count": 38
+    },
+    {
+      "id": 49,
+      "symbol": "In",
+      "name": "Indium",
+      "atomic_weight": 114.818,
+      "electron_config": "[Kr] 5s2 4d10 5p1",
+      "series": "Poor",
+      "valence": 3,
+      "discovery_year": 1863,
+      "density_g_per_cm3": 7310.0,
+      "abundance_percent": {
+        "universe": 3e-8,
+        "crust": 1.6e-5,
+        "ocean": 1e-11,
+        "human_body": null
+      },
+      "isotopes_count": 39
+    },
+    {
+      "id": 50,
+      "symbol": "Sn",
+      "name": "Tin",
+      "atomic_weight": 118.71,
+      "electron_config": "[Kr] 5s2 4d10 5p2",
+      "series": "Poor",
+      "valence": 4,
+      "discovery_year": -2999,
+      "density_g_per_cm3": 7310.0,
+      "abundance_percent": {
+        "universe": 4e-7,
+        "crust": 0.00022,
+        "ocean": 1e-9,
+        "human_body": 2e-5
+      },
+      "isotopes_count": 39
+    },
+    {
+      "id": 51,
+      "symbol": "Sb",
+      "name": "Antimony",
+      "atomic_weight": 121.76,
+      "electron_config": "[Kr] 5s2 4d10 5p3",
+      "series": "Metalloid",
+      "valence": 5,
+      "discovery_year": -2999,
+      "density_g_per_cm3": 6697.0,
+      "abundance_percent": {
+        "universe": 4e-8,
+        "crust": 2e-5,
+        "ocean": 2e-8,
+        "human_body": null
+      },
+      "isotopes_count": 37
+    },
+    {
+      "id": 52,
+      "symbol": "Te",
+      "name": "Tellurium",
+      "atomic_weight": 127.6,
+      "electron_config": "[Kr] 5s2 4d10 5p4",
+      "series": "Metalloid",
+      "valence": 6,
+      "discovery_year": 1783,
+      "density_g_per_cm3": 6240.0,
+      "abundance_percent": {
+        "universe": 9e-7,
+        "crust": 9.9e-8,
+        "ocean": null,
+        "human_body": null
+      },
+      "isotopes_count": 38
+    },
+    {
+      "id": 53,
+      "symbol": "I",
+      "name": "Iodine",
+      "atomic_weight": 126.90447,
+      "electron_config": "[Kr] 5s2 4d10 5p5",
+      "series": "Nonmetal",
+      "valence": 7,
+      "discovery_year": 1811,
+      "density_g_per_cm3": 4940.0,
+      "abundance_percent": {
+        "universe": 1e-7,
+        "crust": 4.9e-5,
+        "ocean": 6e-6,
+        "human_body": 2e-5
+      },
+      "isotopes_count": 37
+    },
+    {
+      "id": 54,
+      "symbol": "Xe",
+      "name": "Xenon",
+      "atomic_weight": 131.293,
+      "electron_config": "[Kr] 5s2 4d10 5p6",
+      "series": "Noble",
+      "valence": 8,
+      "discovery_year": 1898,
+      "density_g_per_cm3": 5.9,
+      "abundance_percent": {
+        "universe": 1e-6,
+        "crust": 2e-9,
+        "ocean": 5e-10,
+        "human_body": null
+      },
+      "isotopes_count": 38
+    },
+    {
+      "id": 55,
+      "symbol": "Cs",
+      "name": "Cesium",
+      "atomic_weight": 132.90545196,
+      "electron_config": "[Xe] 6s1",
+      "series": "Alkali",
+      "valence": 1,
+      "discovery_year": 1860,
+      "density_g_per_cm3": 1879.0,
+      "abundance_percent": {
+        "universe": 8e-8,
+        "crust": 0.00019,
+        "ocean": 5e-8,
+        "human_body": 2e-6
+      },
+      "isotopes_count": 40
+    },
+    {
+      "id": 56,
+      "symbol": "Ba",
+      "name": "Barium",
+      "atomic_weight": 137.327,
+      "electron_config": "[Xe] 6s2",
+      "series": "Alkaline",
+      "valence": 2,
+      "discovery_year": 1808,
+      "density_g_per_cm3": 3510.0,
+      "abundance_percent": {
+        "universe": 1e-6,
+        "crust": 0.034,
+        "ocean": 3e-6,
+        "human_body": 3e-5
+      },
+      "isotopes_count": 40
+    },
+    {
+      "id": 57,
+      "symbol": "La",
+      "name": "Lanthanum",
+      "atomic_weight": 138.90547,
+      "electron_config": "[Xe] 6s2 5d1",
+      "series": "Lanthanoid",
+      "valence": 3,
+      "discovery_year": 1839,
+      "density_g_per_cm3": 6146.0,
+      "abundance_percent": {
+        "universe": 2e-7,
+        "crust": 0.0034,
+        "ocean": 3.4e-10,
+        "human_body": null
+      },
+      "isotopes_count": 39
+    },
+    {
+      "id": 58,
+      "symbol": "Ce",
+      "name": "Cerium",
+      "atomic_weight": 140.116,
+      "electron_config": "[Xe] 6s2 4f1 5d1",
+      "series": "Lanthanoid",
+      "valence": 4,
+      "discovery_year": 1803,
+      "density_g_per_cm3": 6689.0,
+      "abundance_percent": {
+        "universe": 1e-6,
+        "crust": 0.006,
+        "ocean": 1.2e-10,
+        "human_body": null
+      },
+      "isotopes_count": 39
+    },
+    {
+      "id": 59,
+      "symbol": "Pr",
+      "name": "Praseodymium",
+      "atomic_weight": 140.90766,
+      "electron_config": "[Xe] 6s2 4f3",
+      "series": "Lanthanoid",
+      "valence": 4,
+      "discovery_year": 1885,
+      "density_g_per_cm3": 6640.0,
+      "abundance_percent": {
+        "universe": 2e-7,
+        "crust": 0.00086,
+        "ocean": 6e-11,
+        "human_body": null
+      },
+      "isotopes_count": 39
+    },
+    {
+      "id": 60,
+      "symbol": "Nd",
+      "name": "Neodymium",
+      "atomic_weight": 144.242,
+      "electron_config": "[Xe] 6s2 4f4",
+      "series": "Lanthanoid",
+      "valence": 3,
+      "discovery_year": 1885,
+      "density_g_per_cm3": 7010.0,
+      "abundance_percent": {
+        "universe": 1e-6,
+        "crust": 0.0033,
+        "ocean": 2.8e-10,
+        "human_body": null
+      },
+      "isotopes_count": 38
+    },
+    {
+      "id": 61,
+      "symbol": "Pm",
+      "name": "Promethium",
+      "atomic_weight": 145.0,
+      "electron_config": "[Xe] 6s2 4f5",
+      "series": "Lanthanoid",
+      "valence": 3,
+      "discovery_year": 1945,
+      "density_g_per_cm3": 7264.0,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 38
+    },
+    {
+      "id": 62,
+      "symbol": "Sm",
+      "name": "Samarium",
+      "atomic_weight": 150.36,
+      "electron_config": "[Xe] 6s2 4f6",
+      "series": "Lanthanoid",
+      "valence": 3,
+      "discovery_year": 1879,
+      "density_g_per_cm3": 7353.0,
+      "abundance_percent": {
+        "universe": 5e-7,
+        "crust": 0.0006,
+        "ocean": 4.5e-11,
+        "human_body": null
+      },
+      "isotopes_count": 38
+    },
+    {
+      "id": 63,
+      "symbol": "Eu",
+      "name": "Europium",
+      "atomic_weight": 151.964,
+      "electron_config": "[Xe] 6s2 4f7",
+      "series": "Lanthanoid",
+      "valence": 3,
+      "discovery_year": 1901,
+      "density_g_per_cm3": 5244.0,
+      "abundance_percent": {
+        "universe": 5e-8,
+        "crust": 0.00018,
+        "ocean": 1.3e-11,
+        "human_body": null
+      },
+      "isotopes_count": 38
+    },
+    {
+      "id": 64,
+      "symbol": "Gd",
+      "name": "Gadolinium",
+      "atomic_weight": 157.25,
+      "electron_config": "[Xe] 6s2 4f7 5d1",
+      "series": "Lanthanoid",
+      "valence": 3,
+      "discovery_year": 1880,
+      "density_g_per_cm3": 7901.0,
+      "abundance_percent": {
+        "universe": 2e-7,
+        "crust": 0.00052,
+        "ocean": 7e-11,
+        "human_body": null
+      },
+      "isotopes_count": 36
+    },
+    {
+      "id": 65,
+      "symbol": "Tb",
+      "name": "Terbium",
+      "atomic_weight": 158.925354,
+      "electron_config": "[Xe] 6s2 4f9",
+      "series": "Lanthanoid",
+      "valence": 4,
+      "discovery_year": 1843,
+      "density_g_per_cm3": 8219.0,
+      "abundance_percent": {
+        "universe": 5e-8,
+        "crust": 9.3e-5,
+        "ocean": 1.4e-11,
+        "human_body": null
+      },
+      "isotopes_count": 36
+    },
+    {
+      "id": 66,
+      "symbol": "Dy",
+      "name": "Dysprosium",
+      "atomic_weight": 162.5,
+      "electron_config": "[Xe] 6s2 4f10",
+      "series": "Lanthanoid",
+      "valence": 3,
+      "discovery_year": 1886,
+      "density_g_per_cm3": 8551.0,
+      "abundance_percent": {
+        "universe": 2e-7,
+        "crust": 0.00062,
+        "ocean": 9.1e-11,
+        "human_body": null
+      },
+      "isotopes_count": 36
+    },
+    {
+      "id": 67,
+      "symbol": "Ho",
+      "name": "Holmium",
+      "atomic_weight": 164.930329,
+      "electron_config": "[Xe] 6s2 4f11",
+      "series": "Lanthanoid",
+      "valence": 3,
+      "discovery_year": 1878,
+      "density_g_per_cm3": 8795.0,
+      "abundance_percent": {
+        "universe": 5e-8,
+        "crust": 0.00012,
+        "ocean": 2.2e-11,
+        "human_body": null
+      },
+      "isotopes_count": 36
+    },
+    {
+      "id": 68,
+      "symbol": "Er",
+      "name": "Erbium",
+      "atomic_weight": 167.259,
+      "electron_config": "[Xe] 6s2 4f12",
+      "series": "Lanthanoid",
+      "valence": 3,
+      "discovery_year": 1842,
+      "density_g_per_cm3": 9066.0,
+      "abundance_percent": {
+        "universe": 2e-7,
+        "crust": 0.0003,
+        "ocean": 9e-11,
+        "human_body": null
+      },
+      "isotopes_count": 35
+    },
+    {
+      "id": 69,
+      "symbol": "Tm",
+      "name": "Thulium",
+      "atomic_weight": 168.934219,
+      "electron_config": "[Xe] 6s2 4f13",
+      "series": "Lanthanoid",
+      "valence": 3,
+      "discovery_year": 1879,
+      "density_g_per_cm3": 9320.0,
+      "abundance_percent": {
+        "universe": 1e-8,
+        "crust": 4.5e-5,
+        "ocean": 2e-11,
+        "human_body": null
+      },
+      "isotopes_count": 35
+    },
+    {
+      "id": 70,
+      "symbol": "Yb",
+      "name": "Ytterbium",
+      "atomic_weight": 173.045,
+      "electron_config": "[Xe] 6s2 4f14",
+      "series": "Lanthanoid",
+      "valence": 3,
+      "discovery_year": 1878,
+      "density_g_per_cm3": 6570.0,
+      "abundance_percent": {
+        "universe": 2e-7,
+        "crust": 0.00028,
+        "ocean": 8e-11,
+        "human_body": null
+      },
+      "isotopes_count": 35
+    },
+    {
+      "id": 71,
+      "symbol": "Lu",
+      "name": "Lutetium",
+      "atomic_weight": 174.9668,
+      "electron_config": "[Xe] 6s2 4f14 5d1",
+      "series": "Lanthanoid",
+      "valence": 3,
+      "discovery_year": 1907,
+      "density_g_per_cm3": 9841.0,
+      "abundance_percent": {
+        "universe": 1e-8,
+        "crust": 5.6e-5,
+        "ocean": 1.5e-11,
+        "human_body": null
+      },
+      "isotopes_count": 35
+    },
+    {
+      "id": 72,
+      "symbol": "Hf",
+      "name": "Hafnium",
+      "atomic_weight": 178.486,
+      "electron_config": "[Xe] 6s2 4f14 5d2",
+      "series": "Transition",
+      "valence": 4,
+      "discovery_year": 1923,
+      "density_g_per_cm3": 13310.0,
+      "abundance_percent": {
+        "universe": 7e-8,
+        "crust": 0.00033,
+        "ocean": 8e-10,
+        "human_body": null
+      },
+      "isotopes_count": 36
+    },
+    {
+      "id": 73,
+      "symbol": "Ta",
+      "name": "Tantalum",
+      "atomic_weight": 180.94788,
+      "electron_config": "[Xe] 6s2 4f14 5d3",
+      "series": "Transition",
+      "valence": 5,
+      "discovery_year": 1802,
+      "density_g_per_cm3": 16650.0,
+      "abundance_percent": {
+        "universe": 8e-9,
+        "crust": 0.00017,
+        "ocean": 2e-10,
+        "human_body": null
+      },
+      "isotopes_count": 36
+    },
+    {
+      "id": 74,
+      "symbol": "W",
+      "name": "Tungsten",
+      "atomic_weight": 183.84,
+      "electron_config": "[Xe] 6s2 4f14 5d4",
+      "series": "Transition",
+      "valence": 6,
+      "discovery_year": 1783,
+      "density_g_per_cm3": 19250.0,
+      "abundance_percent": {
+        "universe": 5e-8,
+        "crust": 0.00011,
+        "ocean": 1.2e-8,
+        "human_body": null
+      },
+      "isotopes_count": 35
+    },
+    {
+      "id": 75,
+      "symbol": "Re",
+      "name": "Rhenium",
+      "atomic_weight": 186.207,
+      "electron_config": "[Xe] 6s2 4f14 5d5",
+      "series": "Transition",
+      "valence": 7,
+      "discovery_year": 1925,
+      "density_g_per_cm3": 21020.0,
+      "abundance_percent": {
+        "universe": 2e-8,
+        "crust": 2.6e-7,
+        "ocean": 1e-10,
+        "human_body": null
+      },
+      "isotopes_count": 35
+    },
+    {
+      "id": 76,
+      "symbol": "Os",
+      "name": "Osmium",
+      "atomic_weight": 190.23,
+      "electron_config": "[Xe] 6s2 4f14 5d6",
+      "series": "Transition",
+      "valence": 8,
+      "discovery_year": 1803,
+      "density_g_per_cm3": 22590.0,
+      "abundance_percent": {
+        "universe": 3e-7,
+        "crust": 1.8e-7,
+        "ocean": null,
+        "human_body": null
+      },
+      "isotopes_count": 35
+    },
+    {
+      "id": 77,
+      "symbol": "Ir",
+      "name": "Iridium",
+      "atomic_weight": 192.217,
+      "electron_config": "[Xe] 6s2 4f14 5d7",
+      "series": "Transition",
+      "valence": 8,
+      "discovery_year": 1803,
+      "density_g_per_cm3": 22560.0,
+      "abundance_percent": {
+        "universe": 2e-7,
+        "crust": 4e-8,
+        "ocean": null,
+        "human_body": null
+      },
+      "isotopes_count": 36
+    },
+    {
+      "id": 78,
+      "symbol": "Pt",
+      "name": "Platinum",
+      "atomic_weight": 195.084,
+      "electron_config": "[Xe] 6s1 4f14 5d9",
+      "series": "Transition",
+      "valence": 6,
+      "discovery_year": 1735,
+      "density_g_per_cm3": 21450.0,
+      "abundance_percent": {
+        "universe": 5e-7,
+        "crust": 3.7e-6,
+        "ocean": null,
+        "human_body": null
+      },
+      "isotopes_count": 37
+    },
+    {
+      "id": 79,
+      "symbol": "Au",
+      "name": "Gold",
+      "atomic_weight": 196.96657,
+      "electron_config": "[Xe] 6s1 4f14 5d10",
+      "series": "Transition",
+      "valence": 5,
+      "discovery_year": -2499,
+      "density_g_per_cm3": 19300.0,
+      "abundance_percent": {
+        "universe": 6e-8,
+        "crust": 3.1e-7,
+        "ocean": 5e-9,
+        "human_body": 1e-5
+      },
+      "isotopes_count": 37
+    },
+    {
+      "id": 80,
+      "symbol": "Hg",
+      "name": "Mercury",
+      "atomic_weight": 200.59,
+      "electron_config": "[Xe] 6s2 4f14 5d10",
+      "series": "Transition",
+      "valence": 4,
+      "discovery_year": -1499,
+      "density_g_per_cm3": 13534.0,
+      "abundance_percent": {
+        "universe": 1e-7,
+        "crust": 6.7e-6,
+        "ocean": 5e-9,
+        "human_body": null
+      },
+      "isotopes_count": 40
+    },
+    {
+      "id": 81,
+      "symbol": "Tl",
+      "name": "Thallium",
+      "atomic_weight": 204.38,
+      "electron_config": "[Xe] 6s2 4f14 5d10 6p1",
+      "series": "Poor",
+      "valence": 3,
+      "discovery_year": 1861,
+      "density_g_per_cm3": 11850.0,
+      "abundance_percent": {
+        "universe": 5e-8,
+        "crust": 5.3e-5,
+        "ocean": 1e-10,
+        "human_body": null
+      },
+      "isotopes_count": 37
+    },
+    {
+      "id": 82,
+      "symbol": "Pb",
+      "name": "Lead",
+      "atomic_weight": 207.2,
+      "electron_config": "[Xe] 6s2 4f14 5d10 6p2",
+      "series": "Poor",
+      "valence": 4,
+      "discovery_year": -3999,
+      "density_g_per_cm3": 11340.0,
+      "abundance_percent": {
+        "universe": 1e-6,
+        "crust": 0.00099,
+        "ocean": 3e-9,
+        "human_body": 0.00017
+      },
+      "isotopes_count": 38
+    },
+    {
+      "id": 83,
+      "symbol": "Bi",
+      "name": "Bismuth",
+      "atomic_weight": 208.9804,
+      "electron_config": "[Xe] 6s2 4f14 5d10 6p3",
+      "series": "Poor",
+      "valence": 5,
+      "discovery_year": 1400,
+      "density_g_per_cm3": 9780.0,
+      "abundance_percent": {
+        "universe": 7e-8,
+        "crust": 2.5e-6,
+        "ocean": 2e-9,
+        "human_body": null
+      },
+      "isotopes_count": 36
+    },
+    {
+      "id": 84,
+      "symbol": "Po",
+      "name": "Polonium",
+      "atomic_weight": 209.0,
+      "electron_config": "[Xe] 6s2 4f14 5d10 6p4",
+      "series": "Poor",
+      "valence": 6,
+      "discovery_year": 1898,
+      "density_g_per_cm3": 9196.0,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": null,
+        "ocean": 2e-18,
+        "human_body": 0.0
+      },
+      "isotopes_count": 33
+    },
+    {
+      "id": 85,
+      "symbol": "At",
+      "name": "Astatine",
+      "atomic_weight": 210.0,
+      "electron_config": "[Xe] 6s2 4f14 5d10 6p5",
+      "series": "Metalloid",
+      "valence": 7,
+      "discovery_year": 1940,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 31
+    },
+    {
+      "id": 86,
+      "symbol": "Rn",
+      "name": "Radon",
+      "atomic_weight": 222.0,
+      "electron_config": "[Xe] 6s2 4f14 5d10 6p6",
+      "series": "Noble",
+      "valence": 6,
+      "discovery_year": 1900,
+      "density_g_per_cm3": 9.73,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": null,
+        "ocean": 6e-20,
+        "human_body": null
+      },
+      "isotopes_count": 34
+    },
+    {
+      "id": 87,
+      "symbol": "Fr",
+      "name": "Francium",
+      "atomic_weight": 223.0,
+      "electron_config": "[Rn] 7s1",
+      "series": "Alkali",
+      "valence": 1,
+      "discovery_year": 1939,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": null,
+        "ocean": null,
+        "human_body": 0.0
+      },
+      "isotopes_count": 34
+    },
+    {
+      "id": 88,
+      "symbol": "Ra",
+      "name": "Radium",
+      "atomic_weight": 226.0,
+      "electron_config": "[Rn] 7s2",
+      "series": "Alkaline",
+      "valence": 2,
+      "discovery_year": 1898,
+      "density_g_per_cm3": 5000.0,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 9.9e-12,
+        "ocean": 1e-15,
+        "human_body": 1e-13
+      },
+      "isotopes_count": 33
+    },
+    {
+      "id": 89,
+      "symbol": "Ac",
+      "name": "Actinium",
+      "atomic_weight": 227.0,
+      "electron_config": "[Rn] 7s2 6d1",
+      "series": "Actinoid",
+      "valence": 3,
+      "oxidation_states": ["2", "3c"],
+      "discovery_year": 1899,
+      "density_g_per_cm3": 10070.0,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": null,
+        "ocean": null,
+        "human_body": 0.0
+      },
+      "isotopes_count": 31
+    },
+    {
+      "id": 90,
+      "symbol": "Th",
+      "name": "Thorium",
+      "atomic_weight": 232.0377,
+      "electron_config": "[Rn] 7s2 6d2",
+      "series": "Actinoid",
+      "valence": 4,
+      "discovery_year": 1829,
+      "density_g_per_cm3": 11724.0,
+      "abundance_percent": {
+        "universe": 4e-8,
+        "crust": 0.0006,
+        "ocean": 4e-12,
+        "human_body": 0.0
+      },
+      "isotopes_count": 30
+    },
+    {
+      "id": 91,
+      "symbol": "Pa",
+      "name": "Protactinium",
+      "atomic_weight": 231.03588,
+      "electron_config": "[Rn] 7s2 5f2 6d1",
+      "series": "Actinoid",
+      "valence": 5,
+      "discovery_year": 1913,
+      "density_g_per_cm3": 15370.0,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 9.9e-13,
+        "ocean": 2e-23,
+        "human_body": 0.0
+      },
+      "isotopes_count": 29
+    },
+    {
+      "id": 92,
+      "symbol": "U",
+      "name": "Uranium",
+      "atomic_weight": 238.02891,
+      "electron_config": "[Rn] 7s2 5f3 6d1",
+      "series": "Actinoid",
+      "valence": 6,
+      "discovery_year": 1789,
+      "density_g_per_cm3": 19050.0,
+      "abundance_percent": {
+        "universe": 2e-8,
+        "crust": 0.00018,
+        "ocean": 3.3e-7,
+        "human_body": 1e-7
+      },
+      "isotopes_count": 26
+    },
+    {
+      "id": 93,
+      "symbol": "Np",
+      "name": "Neptunium",
+      "atomic_weight": 237.0,
+      "electron_config": "[Rn] 7s2 5f4 6d1",
+      "series": "Actinoid",
+      "valence": 7,
+      "discovery_year": 1940,
+      "density_g_per_cm3": 20450.0,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 20
+    },
+    {
+      "id": 94,
+      "symbol": "Pu",
+      "name": "Plutonium",
+      "atomic_weight": 244.0,
+      "electron_config": "[Rn] 7s2 5f6",
+      "series": "Actinoid",
+      "valence": 8,
+      "discovery_year": 1940,
+      "density_g_per_cm3": 19816.0,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 20
+    },
+    {
+      "id": 95,
+      "symbol": "Am",
+      "name": "Americium",
+      "atomic_weight": 243.0,
+      "electron_config": "[Rn] 7s2 5f7",
+      "series": "Actinoid",
+      "valence": 6,
+      "discovery_year": 1944,
+      "density_g_per_cm3": 13670.0,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 19
+    },
+    {
+      "id": 96,
+      "symbol": "Cm",
+      "name": "Curium",
+      "atomic_weight": 247.0,
+      "electron_config": "[Rn] 7s2 5f7 6d1",
+      "series": "Actinoid",
+      "valence": 4,
+      "discovery_year": 1944,
+      "density_g_per_cm3": 13510.0,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 20
+    },
+    {
+      "id": 97,
+      "symbol": "Bk",
+      "name": "Berkelium",
+      "atomic_weight": 247.0,
+      "electron_config": "[Rn] 7s2 5f9",
+      "series": "Actinoid",
+      "valence": 4,
+      "discovery_year": 1949,
+      "density_g_per_cm3": 14780.0,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 20
+    },
+    {
+      "id": 98,
+      "symbol": "Cf",
+      "name": "Californium",
+      "atomic_weight": 251.0,
+      "electron_config": "[Rn] 7s2 5f10",
+      "series": "Actinoid",
+      "valence": 4,
+      "discovery_year": 1950,
+      "density_g_per_cm3": 15100.0,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 20
+    },
+    {
+      "id": 99,
+      "symbol": "Es",
+      "name": "Einsteinium",
+      "atomic_weight": 252.0,
+      "electron_config": "[Rn] 7s2 5f11",
+      "series": "Actinoid",
+      "valence": 3,
+      "discovery_year": 1952,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 19
+    },
+    {
+      "id": 100,
+      "symbol": "Fm",
+      "name": "Fermium",
+      "atomic_weight": 257.0,
+      "electron_config": "[Rn] 7s2 5f12",
+      "series": "Actinoid",
+      "valence": 3,
+      "discovery_year": 1952,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 19
+    },
+    {
+      "id": 101,
+      "symbol": "Md",
+      "name": "Mendelevium",
+      "atomic_weight": 258.0,
+      "electron_config": "[Rn] 7s2 5f13",
+      "series": "Actinoid",
+      "valence": 3,
+      "discovery_year": 1955,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 18
+    },
+    {
+      "id": 102,
+      "symbol": "No",
+      "name": "Nobelium",
+      "atomic_weight": 259.0,
+      "electron_config": "[Rn] 7s2 5f14",
+      "series": "Actinoid",
+      "valence": 3,
+      "discovery_year": 1958,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 17
+    },
+    {
+      "id": 103,
+      "symbol": "Lr",
+      "name": "Lawrencium",
+      "atomic_weight": 266.0,
+      "electron_config": "[Rn] 7s2 5f14 7p1",
+      "series": "Actinoid",
+      "valence": 3,
+      "discovery_year": 1961,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 16
+    },
+    {
+      "id": 104,
+      "symbol": "Rf",
+      "name": "Rutherfordium",
+      "atomic_weight": 267.0,
+      "electron_config": "[Rn] 7s2 5f14 6d2",
+      "series": "Transition",
+      "valence": 4,
+      "discovery_year": 1964,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 16
+    },
+    {
+      "id": 105,
+      "symbol": "Db",
+      "name": "Dubnium",
+      "atomic_weight": 268.0,
+      "electron_config": "[Rn] 7s2 5f14 6d3",
+      "series": "Transition",
+      "valence": 5,
+      "discovery_year": 1967,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 16
+    },
+    {
+      "id": 106,
+      "symbol": "Sg",
+      "name": "Seaborgium",
+      "atomic_weight": 269.0,
+      "electron_config": "[Rn] 7s2 5f14 6d4",
+      "series": "Transition",
+      "valence": 6,
+      "discovery_year": 1974,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 16
+    },
+    {
+      "id": 107,
+      "symbol": "Bh",
+      "name": "Bohrium",
+      "atomic_weight": 270.0,
+      "electron_config": "[Rn] 7s2 5f14 6d5",
+      "series": "Transition",
+      "valence": 7,
+      "discovery_year": 1981,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 16
+    },
+    {
+      "id": 108,
+      "symbol": "Hs",
+      "name": "Hassium",
+      "atomic_weight": 270.0,
+      "electron_config": "[Rn] 7s2 5f14 6d6",
+      "series": "Transition",
+      "valence": 8,
+      "discovery_year": 1984,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 15
+    },
+    {
+      "id": 109,
+      "symbol": "Mt",
+      "name": "Meitnerium",
+      "atomic_weight": 278.0,
+      "electron_config": "[Rn] 7s2 5f14 6d7",
+      "series": "Unknown",
+      "valence": null,
+      "discovery_year": 1982,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 15
+    },
+    {
+      "id": 110,
+      "symbol": "Ds",
+      "name": "Darmstadtium",
+      "atomic_weight": 281.0,
+      "electron_config": "[Rn] 7s1 5f14 6d9",
+      "series": "Unknown",
+      "valence": null,
+      "discovery_year": 1994,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 15
+    },
+    {
+      "id": 111,
+      "symbol": "Rg",
+      "name": "Roentgenium",
+      "atomic_weight": 282.0,
+      "electron_config": "[Rn] 7s2 5f14 6d9",
+      "series": "Unknown",
+      "valence": null,
+      "discovery_year": 1994,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 12
+    },
+    {
+      "id": 112,
+      "symbol": "Cn",
+      "name": "Copernicium",
+      "atomic_weight": 285.0,
+      "electron_config": "[Rn] 7s2 5f14 6d10",
+      "series": "Unknown",
+      "valence": null,
+      "discovery_year": 1996,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 9
+    },
+    {
+      "id": 113,
+      "symbol": "Nh",
+      "name": "Nihonium",
+      "atomic_weight": 286.0,
+      "electron_config": "[Rn] 7s2 5f14 6d10 7p1",
+      "series": "Unknown",
+      "valence": null,
+      "discovery_year": 2004,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 5
+    },
+    {
+      "id": 114,
+      "symbol": "Fl",
+      "name": "Flerovium",
+      "atomic_weight": 289.0,
+      "electron_config": "[Rn] 7s2 5f14 6d10 7p2",
+      "series": "Unknown",
+      "valence": null,
+      "discovery_year": 1998,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 5
+    },
+    {
+      "id": 115,
+      "symbol": "Mc",
+      "name": "Moscovium",
+      "atomic_weight": 290.0,
+      "electron_config": "[Rn] 7s2 5f14 6d10 7p3",
+      "series": "Unknown",
+      "valence": null,
+      "discovery_year": 2004,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 5
+    },
+    {
+      "id": 116,
+      "symbol": "Lv",
+      "name": "Livermorium",
+      "atomic_weight": 293.0,
+      "electron_config": "[Rn] 7s2 5f14 6d10 7p4",
+      "series": "Unknown",
+      "valence": null,
+      "discovery_year": 2000,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 4
+    },
+    {
+      "id": 117,
+      "symbol": "Ts",
+      "name": "Tennessine",
+      "atomic_weight": 294.0,
+      "electron_config": "[Rn] 7s2 5f14 6d10 7p5",
+      "series": "Unknown",
+      "valence": null,
+      "discovery_year": 2010,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 4
+    },
+    {
+      "id": 118,
+      "symbol": "Og",
+      "name": "Oganesson",
+      "atomic_weight": 294.0,
+      "electron_config": "[Rn] 7s2 5f14 6d10 7p6",
+      "series": "Unknown",
+      "valence": null,
+      "discovery_year": 2006,
+      "density_g_per_cm3": null,
+      "abundance_percent": {
+        "universe": 0.0,
+        "crust": 0.0,
+        "ocean": 0.0,
+        "human_body": 0.0
+      },
+      "isotopes_count": 1
+    }
+  ]
+}

@@ -1,17 +1,19 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+import { twMerge } from "tailwind-merge";
 import Link from '@components/Base/Link/Link.astro';
-import { Icon } from 'astro-icon/components';
 
-interface Props {
+interface Props extends HTMLAttributes<"a"> {
   href: string;
-  title?: string;
+  title: string;
   icon_name?: string;
 }
 
 const { href, title, icon_name = "mdi:arrow-left", ...attr } = Astro.props;
+console.log(attr);
 ---
 
-  <nav class="text-sm text-gray-500 dark:text-gray-400 mb-4 inline-flex items-center">
+  <nav class:list={twMerge(["text-sm text-gray-500 dark:text-gray-400 mb-4 inline-flex items-center", attr.class])} {...attr}>
     <Link href={href} icon={{ name: icon_name, class: "inline-flex items-center" }} title={title} {...attr}>
       <slot>
     </Link>

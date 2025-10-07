@@ -28,14 +28,32 @@ const headings = post.rendered?.metadata?.headings as Array<{ text: string; dept
 const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
 ---
 
-<Layout title={post.data.title} class="max-w-screen-lg mx-auto mt-8">
+<Layout title={post.data.title} class="max-w-screen-xl mx-auto mt-8">
 
-  <BackTo href="/blog" title="Return to all blog posts listing page">Back to Blog Posts</BackTo>
-  
   {imagePath && (
-    <Image src={imagePath} alt="A bird." width="800" height="500" />
+    <Image slot="hero" src={imagePath} alt={post.data.title} width="800" height="300" class="mx-auto"/>
   )}
 
+  <BackTo slot="sidebar" href="/blog" title="Return to all blog posts listing page" class="my-8 sticky top-20 pt-4 bacon">Back to Blog Posts</BackTo>
+
+  {headings && (
+    <div slot="sidebar-alt" class="my-8 sticky top-20 pt-4">
+      <Heading id="table-of-contents" as="h2" class="my-6 text-md">Table of Contents</Heading>
+      <nav aria-labelledby="table-of-contents" class="mb-4">
+        <span class="sr-only">Table of Contents</span>
+        <ul class="list-none space-y-2 ml-0">
+          {headings.map((heading: any) => (
+            <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm" data-depth={heading.depth}>
+              <Link variant="link" href={`#${heading.slug}`} class="no-underline hover:underline inline-flex items-center">
+                {heading.text}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div> 
+  )}
+  
   <hgroup id="blog-header" class="mb-4"class="my-4">
     <Heading as="h1" >{post.data.title}</Heading>
     {data.summary && (<p class="lead mt-6">{data.summary}</p>)}
@@ -60,24 +78,6 @@ const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
       </p>
     )}
   </footer>
-
-  {headings && (
-    <div class="border-t border-gray-300 dark:border-gray-700 my-12">
-      <Heading as="h2" class="my-6">Table of Contents</Heading>
-      <ul class="list-disc list-inside space-y-2 ml-4">
-        {headings.map((heading: any) => {
-          if (heading.depth !== 2) return null;
-          return (
-            <li class="list-disc flex items-center text-gray-800 dark:text-gray-200 text-sm">
-              <Link variant="link" href={`#${heading.slug}`} class="no-underline hover:underline inline-flex items-center">
-                {heading.text}
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
-    </div> 
-  )}
 
   <Prose class="border-t border-gray-300 dark:border-gray-700 mt-8 py-8">
     <Fragment set:html={content ?? "<p>No element found</p>"} />
@@ -109,4 +109,9 @@ const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
       </p> 
     </div>
   )}
+
+  <Link variant="link" href="#blog-header" class="no-underline hover:underline inline-flex items-center">
+    Back to top
+  </Link>
+
 </Layout>

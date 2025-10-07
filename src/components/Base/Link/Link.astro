@@ -6,20 +6,12 @@ import { isExternalUrl } from "@utils/helpers";
 
 interface Props extends HTMLAttributes<"a"> {
   variant?: "link" | "primary" | "secondary" | "disabled";
-  isExternal?: boolean;
   icon?: Record<string, string | boolean | undefined>;
 }
 
-let {
-  variant = "link",
-  isExternal = false,
-  icon = null,
-  ...attr
-} = Astro.props;
+const { variant = "link", icon = null, ...attr } = Astro.props;
 
-if (attr.href && isExternalUrl(attr.href as string)) {
-  isExternal = true;
-}
+const isExternal = isExternalUrl(attr.href as string);
 ---
 
 <a
@@ -29,7 +21,7 @@ if (attr.href && isExternalUrl(attr.href as string)) {
     variant === "primary" && "primary",
     variant === "secondary" && "secondary",
     variant === "disabled" && "disabled",
-    Astro.props.class,
+    attr.class,
   ])}
   {...attr}
 >
