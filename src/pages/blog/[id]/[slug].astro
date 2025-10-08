@@ -50,6 +50,13 @@ const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
             </li>
           ))}
         </ul>
+        <Link 
+        variant="link" 
+        href="#blog-header"
+        icon={{name: "mdi:arrow-up", class: "inline-flex items-center"}} 
+        class="text-gray-800 dark:text-gray-200 no-underline hover:underline inline-flex items-center text-sm mt-50">
+          Back to top
+        </Link>
       </nav>
     </div> 
   )}
@@ -109,9 +116,5 @@ const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
       </p> 
     </div>
   )}
-
-  <Link variant="link" href="#blog-header" class="no-underline hover:underline inline-flex items-center">
-    Back to top
-  </Link>
 
 </Layout>
