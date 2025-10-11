@@ -1,4 +1,4 @@
-// src/pages/api/products.json.ts
+// src/pages/api/elements.json.ts
     import type { APIRoute } from 'astro';
     import { getCollection } from 'astro:content';
 

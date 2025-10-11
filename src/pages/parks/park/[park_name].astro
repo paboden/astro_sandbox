@@ -1,0 +1,173 @@
+---
+import type { ParkSchema } from "@lib/Schema/park";
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const response = await fetch('http://localhost:4321/api/nps--parks.json');
+  const parks = await response.json();
+  return parks.items.map((park: ParkSchema) => ({
+    params: { park_name: park?.name?.replace(/\s+/g, '-').toLowerCase() },
+    props: { park },
+  }));
+}) satisfies GetStaticPaths;
+
+const { park } = Astro.props as { park: ParkSchema };
+
+const date = new Date();
+
+// Format for a specific locale and options
+const formatter = new Intl.DateTimeFormat('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    // second: '2-digit',
+    timeZoneName: 'short',
+});
+---
+<hgroup>
+  <h1>{park?.name}</h1>
+  <p>{park?.designation}</p>
+</hgroup>
+
+{park?.description && (
+  <h2>Description</h2>
+  <p>{park?.description}</p>
+)}
+
+{park.directionsInfo && (
+  <h2>Directions</h2>
+  <p>{park.directionsInfo}</p>
+  <a href={park.directionsUrl}>More</a>
+)}
+
+{park?.weatherInfo && (
+  <h2>Weather</h2>
+  <p>{park?.weatherInfo}</p>
+)}
+
+{park.operatingHours && (
+  <h2>Operating hours</h2>
+  <ul>
+    {park?.operatingHours.map((item) => (
+      <li>
+        <h3>{item?.name}</h3>
+        <p>{item?.description}</p>
+        <h4>Standard Hours</h4>
+        <dl>
+          <dt>Monday</dt>
+          <dd>{item?.standardHours?.monday}</dd>
+          <dt>Tuesday</dt>
+          <dd>{item?.standardHours?.tuesday}</dd>
+          <dt>Wednesday</dt>
+          <dd>{item?.standardHours?.wednesday}</dd>
+          <dt>Thursday</dt>
+          <dd>{item?.standardHours?.thursday}</dd>
+          <dt>Friday</dt>
+          <dd>{item?.standardHours?.friday}</dd>
+          <dt>Saturday</dt>
+          <dd>{item?.standardHours?.saturday}</dd>
+          <dt>Sunday</dt>
+          <dd>{item?.standardHours?.sunday}</dd>
+        </dl>
+        {item?.exceptions && item?.exceptions.length > 0 && (
+          <details>
+            <summary>Exceptions</summary>
+            <ul>
+              {item?.exceptions?.map((exception) => { 
+                const startDate = exception?.startDate as string;
+                const endDate = exception?.endDate as string;
+                return (
+                  <li>
+                  <h4>{exception?.name}</h4>
+                  <time>From <strong>{formatter.format(new Date(startDate))}</strong> to <strong>{formatter.format(new Date(endDate))}</strong></time>
+                  <dl>
+                    <dt>Monday</dt>
+                    <dd>{exception?.exceptionHours?.monday}</dd>
+                    <dt>Tuesday</dt>
+                    <dd>{exception?.exceptionHours?.tuesday}</dd>
+                    <dt>Wednesday</dt>
+                    <dd>{exception?.exceptionHours?.wednesday}</dd>
+                    <dt>Thursday</dt>
+                    <dd>{exception?.exceptionHours?.thursday}</dd>
+                    <dt>Friday</dt>
+                    <dd>{exception?.exceptionHours?.friday}</dd>
+                    <dt>Saturday</dt>
+                    <dd>{exception?.exceptionHours?.saturday}</dd>
+                    <dt>Sunday</dt>
+                    <dd>{exception?.exceptionHours?.sunday}</dd>
+                  </dl>
+                  </li>
+                )
+              })}
+            </ul>
+          </details>
+        )}
+      </li>
+    ))}
+  </ul>
+
+)}
+
+{park?.activities.length > 0 && (
+  <h2>Activities</h2>
+  <ul>
+    {park?.activities.map((item) => (
+      <li>{item}</li>
+    ))}
+  </ul>
+)}
+
+{park?.topics.length > 0 && (
+  <h2>Topics</h2>
+  <ul>
+    {park?.topics.map((item) => (
+      <li>{item}</li>
+    ))}
+  </ul>
+)}
+
+{park?.entranceFees.length > 0 && (
+  <h2>Entrance Fees</h2>
+  <dl>
+    {park?.entranceFees.map((item) => (
+      <div>
+        <dt>{item?.title}</dt>
+        <dd><strong>${item?.cost}</strong></dd>
+        <dd>{item?.description}</dd>
+      </div>
+    ))}
+  </dl>
+)}
+
+{park?.entrancePasses.length > 0 && (
+  <h2>Entrance Passes</h2>
+  <dl>
+    {park?.entrancePasses.map((item) => (
+      <div>
+        <dt>{item?.title}</dt>
+        <dd><strong>${item?.cost}</strong></dd>
+        <dd>{item?.description}</dd>
+      </div>
+    ))}
+  </dl>
+)}
+
+{park?.addresses.length > 0 && (
+  <h2>Addresses</h2>
+  <ul>
+    {park?.addresses.map((address) => (
+      <li>
+        <address>
+          <h3>{address?.type}</h3>
+          {address?.line1 && <p>{address?.line1}</p>}
+          {address?.line2 && <p>{address?.line2}</p>}
+          {address?.line3 && <p>{address?.line3}</p>}
+          {address?.city && address?.stateCode && address?.postalCode && <p>{address?.city}, {address?.stateCode} {address?.postalCode}</p>}
+        </address>
+      </li>
+    ))}
+  </ul>
+)}

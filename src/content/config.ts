@@ -6,6 +6,7 @@ import { ElementSimpleSchema } from "@/lib/Schema/element_simple";
 import { BlogPostSchema } from "@/lib/Schema/blog_post";
 import { AuthorSchema } from "@/lib/Schema/author";
 import { BlogTagSchema } from "@/lib/Schema/blog_tag";
+import { NpsParksSchema } from "@/lib/Schema/nps_parks";
 
 const elements = defineCollection({
   loader: glob({ 
@@ -18,6 +19,14 @@ const elements = defineCollection({
 const periodic_elements_list = defineCollection({
   loader: file("./src/content/data/periodic_table_elements__simple.json", { parser: (text) => JSON.parse(text).data }),
   schema: ElementSimpleSchema,
+});
+
+const nps_parks_source = defineCollection({
+  loader: glob({ 
+    pattern: "*.json", 
+    base: "./src/content/data/nps-parks-api" 
+  }),
+  schema: NpsParksSchema,
 });
 
 const blog = defineCollection({
@@ -57,6 +66,7 @@ const footer_menu = defineCollection({
 export const collections = {
   elements,
   periodic_elements_list,
+  nps_parks_source,
   blog,
   blog_tags,
   authors,

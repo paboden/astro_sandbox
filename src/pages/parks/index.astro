@@ -1,0 +1,20 @@
+---
+import type { ParkSchema } from "@lib/Schema/park";
+
+const response = await fetch('http://localhost:4321/api/nps--parks.json');
+const parks = await response.json();
+---
+
+<h1>National Parks List</h1>
+
+{parks.items.length && (
+  <ul>
+    {parks.items.map((park: ParkSchema) => {
+      const url = "/parks/park/" + park?.name?.replace(/\s+/g, '-').toLowerCase() as string;
+      return (
+        <li><a href={url}>{park?.fullName}</a></li>
+      )
+    })}
+  </ul>
+)}
+

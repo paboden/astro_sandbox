@@ -1,0 +1,61 @@
+name: Silver
+symbol: Ag
+atomic_weight: 107.8682
+appearance: "A soft, white, lustrous transition metal"
+color: silver
+classification: "transition metal"
+number: 47
+period: 5
+block: d
+group: 11
+electrons_per_shell: [2, 8, 18, 18, 1]
+configuration: [2, 2, 6, 2, 6, 10, 2, 6, 10, 1]
+protons: 47
+neutrons: 61
+electrons: 47
+oxidation_states: ["-2", "-1", "+1", "+2", "+3"]
+electronegativity: 1.93
+ionization_energy:
+  - 731.0
+  - 2070
+  - 3361
+atomic_radius: 144
+covalent_radius:
+  - 145
+van_der_waals_radius: 172
+stp: solid
+density: 10.503
+melting_point:
+  - type: K
+    value: 1234.93
+  - type: C
+    value: 961.78
+  - type: F
+    value: 11763.2
+boiling_point:
+  - type: K
+    value: 2435
+  - type: C
+    value: 2162
+  - type: F
+    value: 3924
+heat_fusion: 11.28
+vaporization:
+  - 254
+molar_heat: 25.350
+cas_number:
+  - 7440-22-4
+chemspider_id: 22394
+pubchem_id: 23954
+ec_number: 231-131-3
+year_discovered: -5000
+year_named: unknown
+discovered_by: unknown
+named_by: unknown
+location: Asia minor
+name_meaning: 'The symbol "Ag" is a direct reference to the Latin word argentum, also meaning "silver".'
+image: silver--crystal.jpg
+facts:
+  - "It exhibits the highest electrical conductivity, thermal conductivity, and reflectivity of any metal."
+  - "Metallic silver, like copper, is an antibacterial agent"
+wiki: https://en.wikipedia.org/wiki/Silver
