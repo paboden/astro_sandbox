@@ -1,5 +1,5 @@
 ---
-import type { ParkSchema } from "@lib/Schema/park";
+import type { ParkSchema } from "@/types/park";
 
 const response = await fetch('http://localhost:4321/api/nps--parks.json');
 const parks = await response.json();

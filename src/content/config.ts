@@ -1,12 +1,12 @@
 import { z, defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders';
-import { MenuItemSchema } from "@/lib/Schema/menu_item";
-import { ElementSchema } from "@/lib/Schema/element";
-import { ElementSimpleSchema } from "@/lib/Schema/element_simple";
-import { BlogPostSchema } from "@/lib/Schema/blog_post";
-import { AuthorSchema } from "@/lib/Schema/author";
-import { BlogTagSchema } from "@/lib/Schema/blog_tag";
-import { NpsParksSchema } from "@/lib/Schema/nps_parks";
+import { MenuItemSchema } from "@/types/menu_item";
+import { ElementSchema } from "@/types/element";
+import { ElementSimpleSchema } from "@/types/element_simple";
+import { BlogPostSchema } from "@/types/blog_post";
+import { AuthorSchema } from "@/types/author";
+import { BlogTagSchema } from "@/types/blog_tag";
+import { NpsParksSchema } from "@/types/nps_parks";
 
 const elements = defineCollection({
   loader: glob({ 
