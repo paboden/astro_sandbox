@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from "astro/types";
 import { twMerge } from "tailwind-merge";
 import { Icon } from "astro-icon/components";
-import { isExternalUrl } from "@utils/helpers";
+import { isExternalUrl } from "@lib/helpers";
 
 interface Props extends HTMLAttributes<"a"> {
   variant?: "link" | "primary" | "secondary" | "disabled";
