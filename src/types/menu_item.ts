@@ -1,5 +1,5 @@
 import { z } from 'astro:content';
-import { IconSchema } from "@/lib/Schema/icon"
+import { IconSchema } from "@/types/icon"
 
 const baseMenuItemSchema = z.object({
   id: z.string(),

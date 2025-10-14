@@ -1,0 +1,48 @@
+---
+import type { ParkSchema } from "@/types/park";
+import BackTo from "@components/Navigation/BackTo/BackTo.astro";
+import Container from "@layouts/Container.astro";
+import Layout from "@layouts/Layout.astro";
+import Prose from "@layouts/Prose.astro";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
+import type { GetStaticPaths } from 'astro';
+import { getUsStateName } from '@lib/helpers'
+
+export const getStaticPaths = (async () => {
+  const state_parks = await getCollection('state_parks');
+  return state_parks.map((park) => ({
+    params: { state_code: park.id },
+    props: { park },
+  }));
+}) satisfies GetStaticPaths;
+
+const { park } = Astro.props as { park: CollectionEntry<'state_parks'> } ;
+
+const data = park.data?.data;
+const id = park.id.toUpperCase() as string;
+
+const stateName = getUsStateName(id);
+---
+<Layout>
+  <div class="w-[80ch] mx-auto">
+
+    <BackTo href="/parks" title="Return to all parks list">Back to All Parks</BackTo>
+
+    <Prose>
+
+    <h1 class="mt-10">National Parks List for {getUsStateName(id)}</h1>
+
+      {data?.length && (
+        <ul>
+          {data.map((park) => {
+            const url = "/parks/park/" + park?.name?.replace(/\s+/g, '-').toLowerCase() as string;
+            return (
+              <li><a href={url}>{park?.fullName}</a></li>
+            )
+          })}
+        </ul>
+      )}
+ 
+    </Prose>
+  </div>
+</Layout>

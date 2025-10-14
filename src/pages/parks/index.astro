@@ -1,20 +1,56 @@
 ---
 import type { ParkSchema } from "@/types/park";
+import Container from "@layouts/Container.astro";
+import Layout from "@layouts/Layout.astro";
+import Prose from "@layouts/Prose.astro";
+import states from "@content/data/states/us-states-with-detail.json"
 
 const response = await fetch('http://localhost:4321/api/nps--parks.json');
 const parks = await response.json();
+
 ---
+<Layout>
+  <div class="flex mx-auto py-10  w-[80ch]">
+    <Prose>
+      <h1 class="mt-10">National Parks List</h1>
+    </Prose>
+  </div>
 
-<h1>National Parks List</h1>
+  <div class="flex gap-[2ch] mx-auto w-[80ch]">
+    <div class="w-[38ch]">
+      <Prose>
+        <!-- <p class="text-sm text-gray-600 dark:text-gray-400"><a href="/api/nps--parks.json" target="_blank">View json data</a></p> -->
+        {parks.items.length && (
+          <ul>
+            {parks.items.map((park: ParkSchema) => {
+              const url = "/parks/park/" + park?.name?.replace(/\s+/g, '-').toLowerCase() as string;
+              return (
+                <li><a href={url}>{park?.fullName}</a></li>
+              )
+            })}
+          </ul>
+        )}
+      </Prose>
+    </div>
 
-{parks.items.length && (
-  <ul>
-    {parks.items.map((park: ParkSchema) => {
-      const url = "/parks/park/" + park?.name?.replace(/\s+/g, '-').toLowerCase() as string;
-      return (
-        <li><a href={url}>{park?.fullName}</a></li>
-      )
-    })}
-  </ul>
-)}
+    <div class="w-[38ch]">
+      <Prose>
+
+        <!-- <p class="text-sm text-gray-600 dark:text-gray-400"><a href="/api/nps--parks.json" target="_blank">View json data</a></p> -->
+
+        {states.states.length && (
+          <ul>
+            {states.states.map((state) => {
+              const url = "/parks/state/" + state.abbreviation.toLowerCase() as string;
+              return (
+                <li><a href={url}>{state.name}</a></li>
+              )
+            })}
+          </ul>
+        )}
+      </Prose>
+    </div>
+  </div>
+</Layout>
+
 

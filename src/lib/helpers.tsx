@@ -1,4 +1,4 @@
-
+import states from "@content/data/states/us-states-with-detail.json"
 
 export function isExternalUrl(url: string): boolean {
   // console.log("Checking URL:", url);
@@ -38,4 +38,13 @@ export function dashesToSpaces(str: string): string {
     return str; // Handle empty strings or non-string inputs
   }
   return str.replaceAll(/[_-]/g, ' ');
+}
+
+export function getUsStateName(stateCode: string) {
+  console.log(stateCode, 'stateCode');
+  if (typeof stateCode !== 'string' || stateCode.length === 0 || stateCode.length > 2) {
+    return '';
+  }
+
+  return states.states.filter(state => state.abbreviation === stateCode).map(state => state.name);
 }

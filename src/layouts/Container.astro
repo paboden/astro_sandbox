@@ -8,15 +8,20 @@ interface Props extends HTMLAttributes<"div"> {
   gapSize?: string;
   thresholdSize?: string;
   items?: number;
+  containerWidth?: string | number;
 }
 
-let { type = "container", spacingSize, gapSize, thresholdSize,  ...attr } = Astro.props;
+const { type = "container", spacingSize = '', gapSize = '', thresholdSize, containerWidth = "15rem", ...attr } = Astro.props;
 
 let default_classes = '';
+let width = '';
+let spacing = spacingSize;
+let gap = gapSize;
 
 switch (type) {
   case "stack":
     default_classes = 'group flex flex-col justify-start';
+    width = typeof containerWidth == 'string' ? `w-[${containerWidth}]` : `w-[${containerWidth}rem]`;
     break;
   case "box":
     default_classes = 'group flex';
@@ -32,7 +37,7 @@ switch (type) {
     break;
   case "switcher":
     default_classes = 'group flex flex-wrap';
-    spacingSize = '';
+    spacing = '';
     break;
   case "cover":
     default_classes = 'group flex';
@@ -47,10 +52,10 @@ switch (type) {
     default_classes = 'group flex';
     break;
   case "container":
-    default_classes = 'flex';
+    default_classes = 'flex-col';
     break;
   default:
-    default_classes = '';
+    default_classes = 'flex-col';
 }
 
 ---
@@ -60,6 +65,8 @@ switch (type) {
   class:list={twMerge([
     type,
     default_classes,
+    width,
+    gap,
     attr.class
   ])}
   {...attr}

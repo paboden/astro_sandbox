@@ -29,6 +29,14 @@ const nps_parks_source = defineCollection({
   schema: NpsParksSchema,
 });
 
+const state_parks = defineCollection({
+  loader: glob({ 
+    pattern: "*.json", 
+    base: "./src/content/data/nps-parks-api" 
+  }),
+  schema: NpsParksSchema,
+});
+
 const blog = defineCollection({
   loader: glob({ 
     pattern: "*.md", 
@@ -67,6 +75,7 @@ export const collections = {
   elements,
   periodic_elements_list,
   nps_parks_source,
+  state_parks,
   blog,
   blog_tags,
   authors,
