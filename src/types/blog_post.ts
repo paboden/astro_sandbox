@@ -1,4 +1,4 @@
-import { z } from 'astro:content';
+import { z, type CollectionEntry, reference } from 'astro:content';
 
 export const BlogPostSchema = z.object({
   id: z.number(),
@@ -8,7 +8,7 @@ export const BlogPostSchema = z.object({
   tags: z.array(z.string()).nullish(),
   summary: z.string().nullish(),
   image: z.string().nullish(),
-  author: z.string().nullish(),
+  authors: z.array(z.string()).nullish(),
 })
 
 export type BlogPostSchema = z.infer<typeof BlogPostSchema>

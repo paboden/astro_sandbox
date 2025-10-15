@@ -1,5 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, getEntries, type CollectionEntry } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import Layout from "@layouts/Layout.astro" // Adjust path
 import Heading from '@components/Base/Heading/Heading.astro';
@@ -26,6 +26,7 @@ const content = post.rendered?.html;
 const headings = post.rendered?.metadata?.headings as Array<{ text: string; depth: number; slug: string }>;
 
 const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
+// const authors = await getEntries();
 ---
 
 <Layout title={post.data.title} class="max-w-screen-xl mx-auto mt-8">
@@ -67,9 +68,13 @@ const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
   </hgroup>
 
   <footer id="blog-meta" class="mb-4">
-    {data.author && (
+    {data.authors && (
       <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
-        By <Link variant="link" href={`/blog/authors/${data.author}`} class="no-underline hover:underline inline-flex items-center">{data.author}</Link>
+        By {data.authors.map((author: any) => (
+            <Link variant="link" href={`/blog/authors/${author}`} class="no-underline hover:underline inline-flex items-center mr-1">
+              {author} - 
+            </Link>
+          ))}
       </p> 
     )}
 
@@ -108,11 +113,11 @@ const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
     </div> 
   )}
 
-  {data.author && (
+  {data.authors && (
     <div class="border-t border-gray-300 dark:border-gray-700 my-12">
-      <Heading as="h2" class="my-6">About the Author</Heading>
+      <Heading as="h2" class="my-6">About the Author(s)</Heading>
       <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">
-        {data.author} articles go here.
+        {data.authors} articles go here.
       </p> 
     </div>
   )}
