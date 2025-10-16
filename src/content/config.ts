@@ -1,4 +1,4 @@
-import { z, defineCollection } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { MenuItemSchema } from "@/types/menu_item";
 import { ElementSchema } from "@/types/element";

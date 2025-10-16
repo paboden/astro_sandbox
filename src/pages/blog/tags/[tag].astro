@@ -1,19 +1,16 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, getEntries, type CollectionEntry } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
-import Layout from "@layouts/Layout.astro" // Adjust path
+import Layout from "@layouts/Layout.astro";
 import Heading from '@components/Base/Heading/Heading.astro';
 import Prose from '@layouts/Prose.astro';
 import Link from '@components/Base/Link/Link.astro';
 
 export const getStaticPaths = (async () => {
   const allTags = await getCollection('blog_tags');
-
-//post.data.title.replace(/\s+/g, '-').toLowerCase()
-
   return allTags.map((tag) => ({
     params: { 
-      tag: tag.data.name.replace(/\s+/g, '-').toLowerCase()
+      tag: tag.data.id.replace(/\s+/g, '-').toLowerCase()
     },
     props: { tag },
   }));
@@ -23,6 +20,21 @@ const { tag } = Astro.props as { tag: CollectionEntry<'blog_tags'> };
 
 const data = tag.data;
 const content = tag.rendered?.html;
+
+const allPosts = await getCollection('blog');
+const postsWithSpecificTag = [];
+for (const post of allPosts) {
+  post as CollectionEntry<'blog'>
+  if (post.data.tags) {
+    for (const tag of post.data.tags) {
+      if (tag.id === data.id) {
+        postsWithSpecificTag.push(post);
+      }
+    }
+  }
+}
+
+console.log(postsWithSpecificTag);
 ---
 
 <Layout title={tag.data.name} class="max-w-screen-lg mx-auto mt-8">
@@ -45,4 +57,27 @@ const content = tag.rendered?.html;
   <Prose class="mt-8">
     <Fragment set:html={content ?? "<p>No element found</p>"} />
   </Prose>
+
+    {postsWithSpecificTag && (
+    <div class="border-t border-gray-300 dark:border-gray-700 my-12">
+      <Heading as="h2" class="my-6">Articles</Heading>
+      <ul>
+        {postsWithSpecificTag?.map((post) => {
+          if (!post.data) {
+            return '';
+          }
+          const slug = `/blog/${post.data.id}/${post.data.title.replace(/\s+/g, '-').toLowerCase()}`;
+          const html_id = post.data.title.replace(/\s+/g, '-').toLowerCase();
+          return (
+            <li id={html_id} class="text-gray-800 dark:text-gray-200">
+              <Link variant="link" href={slug} class="no-underline hover:underline">
+                {post.data.title}
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
+    </div> 
+  )}
+
 </Layout>

@@ -1,6 +1,10 @@
 import { z } from 'astro:content';
 
 export const AuthorSchema = z.object({
+  id: z.string().trim().regex(
+    /^[a-z_]+$/,
+    "String can only contain lowercase letters and underscores."
+  ).max(255, "Author username is too long."),
   username: z.string().trim().regex(
     /^[a-z_]+$/,
     "String can only contain lowercase letters and underscores."
@@ -8,6 +12,7 @@ export const AuthorSchema = z.object({
   name: z.string().trim().max(255, "Name is too long."),
   email: z.string().trim().email("Invalid email format.").nullish(),
   joined: z.coerce.date().nullish(),
+  short_bio: z.string().nullish(),
 })
 
 export type AuthorSchema = z.infer<typeof AuthorSchema>
