@@ -11,7 +11,7 @@ export const AuthorSchema = z.object({
   ).max(255, "Author username is too long."),
   name: z.string().trim().max(255, "Name is too long."),
   email: z.string().trim().email("Invalid email format.").nullish(),
-  joined: z.coerce.date().nullish(),
+  joined: z.coerce.date(),
   short_bio: z.string().nullish(),
 })
 

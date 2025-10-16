@@ -22,9 +22,29 @@ const data = author.data;
 const content = author.rendered?.html;
 ---
 
-<Layout title={ data.name } class="max-w-screen-lg mx-auto mt-8">
+<Layout title={ data.name } class="max-w-screen-xl mx-auto mt-8">
 
-  <BackTo href="/blog/authors" title="Return to all blog authors listing page">Back to Blog Authors</BackTo>
+  <BackTo slot="sidebar" href="/blog/authors" title="Return to all blog authors listing page">Blog Authors</BackTo>
+  <BackTo id="destination_link" slot="sidebar" href="/" title="Return to previous article">Return to Previous article</BackTo>
+
+  {author && (
+    <div slot="sidebar" class="my-2 sticky top-24 py-2 px-4 bg-gray-100 rounded-md">
+      <nav aria-label="Blog navigation" class="my-2">
+        <span class="sr-only">Table of Contents</span>
+        <ul class="list-none space-y-2 ml-0">
+          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
+            <Link variant="link" href="/blog" class="no-underline hover:underline inline-flex items-center">All Posts</Link>
+          </li>
+          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
+            <Link variant="link" href="/blog/tags" class="no-underline hover:underline inline-flex items-center">All Topics</Link>
+          </li>
+          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
+            <Link variant="link" href="/blog/authors" class="no-underline hover:underline inline-flex items-center">All Authors</Link>
+          </li>
+        </ul>
+      </nav>
+    </div> 
+  )}
 
   <hgroup class="mt-4">
     <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 inline-flex items-center">Author</p>
@@ -36,11 +56,25 @@ const content = author.rendered?.html;
     )}
   </hgroup>
 
-
-
   <Prose class="mt-8">
     <Fragment set:html={content ?? "<p>No element found</p>"} />
   </Prose>
 
   <p>Test</p>
 </Layout>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const destination = urlParams.get('destination');
+
+  if (destination && typeof destination === 'string') {
+    const documentLink = document.getElementById('destination_link');
+    const returnLink = documentLink?.querySelector('a');
+
+    if (returnLink) {
+      returnLink.href = destination;
+    } else {
+      documentLink?.remove;
+    }
+  }
+</script>

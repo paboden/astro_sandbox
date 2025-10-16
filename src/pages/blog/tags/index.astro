@@ -3,21 +3,21 @@ import { getCollection } from 'astro:content';
 import Heading from "@components/Base/Heading/Heading.astro";
 import Container from "@layouts/Container.astro";
 import Layout from "@layouts/Layout.astro";
-import Link from '@components/Base/Link/Link.astro';
 import BackTo from '@components/Navigation/BackTo/BackTo.astro';
+import Link from '@components/Base/Link/Link.astro';
 
-const allPosts = await getCollection('blog');
-const posts = allPosts.map((post) => ({
-    ...post.data,
-  })).sort((a, b) => a.id.valueOf() - b.id.valueOf());
+const allTags = await getCollection('blog_tags');
+const tags = allTags.map((tag) => ({
+    ...tag.data,
+  }));
 
 ---
 
-<Layout title="Blog Posts" class="max-w-screen-xl mx-auto mt-8">
+<Layout title="Blog Tags" class="max-w-screen-xl mx-auto mt-8">
+  
+  <BackTo slot="sidebar" href="/blog" title="Return to all blog posts page">Blog posts</BackTo>
 
-  <BackTo slot="sidebar" href="/" title="Return to site home">Home</BackTo>
-
-  {posts && (
+  {tags && (
     <div slot="sidebar" class="my-2 sticky top-24 py-2 px-4 bg-gray-100 rounded-md">
       <nav aria-label="Blog navigation" class="my-2">
         <span class="sr-only">Table of Contents</span>
@@ -36,16 +36,17 @@ const posts = allPosts.map((post) => ({
     </div> 
   )}
 
-  <Heading as="h1">Blog Posts</Heading>
+  <Heading as="h1">Blog tags</Heading>
+
   <ul class="list list--unstyled my-12">
-    {posts.map((post) => {
-      const href = `/blog/${post.id}/${post.title.replace(/\s+/g, '-').toLowerCase()}`;
+    {tags.map((tag) => {
+      const href = `/blog/tags/${tag.id.replace(/\s+/g, '-').toLowerCase()}`;
       return (
-        <li data-number={post.id} class="list__item mb-6">
+        <li data-number={tag.id} class="list__item mb-6">
           <a class="element_link" href={href}>
             <article class="teaser post_teaser">
-              <Heading as="h2" class="element_number">{post.title}</Heading>
-              <p class="element_symbol">{post.summary}</p>
+              <Heading as="h2" class="element_number">{tag.name}</Heading>
+              <p class="element_symbol">{tag.description}</p>
             </article>
           </a>
         </li>

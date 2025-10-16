@@ -5,6 +5,7 @@ import Layout from "@layouts/Layout.astro";
 import Heading from '@components/Base/Heading/Heading.astro';
 import Prose from '@layouts/Prose.astro';
 import Link from '@components/Base/Link/Link.astro';
+import BackTo from '@components/Navigation/BackTo/BackTo.astro';
 
 export const getStaticPaths = (async () => {
   const allTags = await getCollection('blog_tags');
@@ -33,35 +34,47 @@ for (const post of allPosts) {
     }
   }
 }
-
-console.log(postsWithSpecificTag);
 ---
 
-<Layout title={tag.data.name} class="max-w-screen-lg mx-auto mt-8">
+<Layout title={tag.data.name} class="max-w-screen-xl mx-auto mt-8">
 
-  <hgroup class="mt-4">
+  <BackTo slot="sidebar" href="/blog/tags" title="Return to all blog authors listing page">Back to Tags</BackTo>
 
-    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 inline-flex items-center">
-      <Link href="/blog" icon={{ name: "mdi:arrow-left", class: "inline-flex items-center"}} >Back to Blog</Link>
-    </p>
+  {postsWithSpecificTag && (
+    <div slot="sidebar" class="my-2 sticky top-24 py-2 px-4 bg-gray-100 rounded-md">
+      <nav aria-label="Blog navigation" class="my-2">
+        <span class="sr-only">Table of Contents</span>
+        <ul class="list-none space-y-2 ml-0">
+          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
+            <Link variant="link" href="/blog" class="no-underline hover:underline inline-flex items-center">All Posts</Link>
+          </li>
+          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
+            <Link variant="link" href="/blog/tags" class="no-underline hover:underline inline-flex items-center">All Topics</Link>
+          </li>
+          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
+            <Link variant="link" href="/blog/authors" class="no-underline hover:underline inline-flex items-center">All Authors</Link>
+          </li>
+        </ul>
+      </nav>
+    </div> 
+  )}
 
+  <hgroup class="">
+    <p class="text-md text-gray-500 mb-2">Tag</p>
     <Heading as="h1" >{tag.data.name}</Heading>
-
-    {data.description && (
-      <p class="lead mt-6">
-        {data.description}
-      </p> 
-    )}
   </hgroup>
 
+  {data.description && (<p class="lead mt-6">{data.description}</p>)}
   <Prose class="mt-8">
     <Fragment set:html={content ?? "<p>No element found</p>"} />
   </Prose>
 
-    {postsWithSpecificTag && (
-    <div class="border-t border-gray-300 dark:border-gray-700 my-12">
-      <Heading as="h2" class="my-6">Articles</Heading>
-      <ul>
+  {postsWithSpecificTag && (
+    <section class="border-t border-gray-300 dark:border-gray-300 my-12">
+      <Heading as="h2" class="my-6 text-lg">
+        <>{postsWithSpecificTag.length}</> {postsWithSpecificTag.length >= 2 ? 'Articles' : 'Article'} with <span class="italic text-gray-600">{tag.data.name}</span> found.
+      </Heading>
+      <ul class="list-disc">
         {postsWithSpecificTag?.map((post) => {
           if (!post.data) {
             return '';
@@ -77,7 +90,7 @@ console.log(postsWithSpecificTag);
           )
         })}
       </ul>
-    </div> 
+    </section> 
   )}
 
 </Layout>

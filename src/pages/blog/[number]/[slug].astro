@@ -35,17 +35,17 @@ const toc_headings = post.rendered?.metadata?.headings as Array<{ text: string; 
 const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
 ---
 
-<Layout title={post.data.title} class="max-w-screen-xl mx-auto mt-8" id="table-of-contents">
+<Layout title={post.data.title} class="max-w-screen-xl mx-auto mt-8">
 
   {imagePath && (
-    <Image slot="hero" src={imagePath} alt={post.data.title} width="800" height="300" class="mx-auto"/>
+    <Image src={imagePath} alt={post.data.title} width="800" height="300" class="mx-auto"/>
   )}
 
-  <BackTo slot="sidebar" href="/blog" title="Return to all blog posts listing page" class="sticky top-0 pt-4">Back to Blog Posts</BackTo>
+  <BackTo slot="sidebar" href="/blog" title="Return to all blog posts listing page" class="sticky top-10">Back to Blog Posts</BackTo>
 
   {toc_headings && (
     <div slot="sidebar" class="my-2 sticky top-24 py-1 px-4 bg-gray-100 rounded-md">
-      <Heading  as="h2" class="my-3 text-md">Table of Contents</Heading>
+      <Heading as="h2" class="my-3 text-md"><Link variant="link" href="#top" class="no-underline hover:underline">Table of Contents</Link></Heading>
       <nav aria-labelledby="table-of-contents" class="mb-4">
         <span class="sr-only">Table of Contents</span>
         <ul class="list-none space-y-2 ml-0">
@@ -73,7 +73,26 @@ const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
       </nav>
     </div> 
   )}
-  
+
+  {post && (
+    <div slot="sidebar" class="my-2 mt-6 sticky top-132 py-2 px-4 bg-gray-100 rounded-md">
+      <nav aria-label="Blog navigation" class="my-2">
+        <span class="sr-only">Table of Contents</span>
+        <ul class="list-none space-y-2 ml-0">
+          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
+            <Link variant="link" href="/blog" class="no-underline hover:underline inline-flex items-center">All Posts</Link>
+          </li>
+          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
+            <Link variant="link" href="/blog/tags" class="no-underline hover:underline inline-flex items-center">All Topics</Link>
+          </li>
+          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
+            <Link variant="link" href="/blog/authors" class="no-underline hover:underline inline-flex items-center">All Authors</Link>
+          </li>
+        </ul>
+      </nav>
+    </div> 
+  )}
+
   <hgroup id="blog-header" class="mb-4"class="my-4">
     <Heading as="h1" >{post.data.title}</Heading>
     {data.summary && (<p class="lead mt-6">{data.summary}</p>)}
@@ -149,7 +168,7 @@ const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
             <div class="flex mt-2">
               <Link 
                 variant="primary" 
-                href={`/blog/authors/${author.data.username}`} 
+                href={`/blog/authors/${author.data.username}?destination=/blog/${post.data.id}/${post.data.title.replace(/\s+/g, '-').toLowerCase()}`}
                 class="text-xs text-gray-500 dark:text-gray-400 no-underline hover:underline inline-flex items-center">
                 More by @{author.data.username}
               </Link>
