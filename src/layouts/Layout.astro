@@ -23,6 +23,7 @@ const sidbarClassAlt = hasSidebarAlt ? 'with-sidebar-alt flex flex-wrap gap-8' :
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{Astro.props.title ?? "Astro Sandbox Site"}</title>
+    <meta name="description" content={Astro.props.description ?? "This page needs a description"}>
   </head>
   <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
     <div id="top"></div>

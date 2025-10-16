@@ -35,7 +35,7 @@ const toc_headings = post.rendered?.metadata?.headings as Array<{ text: string; 
 const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
 ---
 
-<Layout title={post.data.title} class="max-w-screen-xl mx-auto mt-8">
+<Layout title={post.data.title} description={post.data.summary} class="max-w-screen-xl mx-auto mt-8">
 
   {imagePath && (
     <Image src={imagePath} alt={post.data.title} width="800" height="300" class="mx-auto"/>
