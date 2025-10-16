@@ -35,17 +35,17 @@ const toc_headings = post.rendered?.metadata?.headings as Array<{ text: string; 
 const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
 ---
 
-<Layout title={post.data.title} class="max-w-screen-xl mx-auto mt-8">
+<Layout title={post.data.title} class="max-w-screen-xl mx-auto mt-8" id="table-of-contents">
 
   {imagePath && (
     <Image slot="hero" src={imagePath} alt={post.data.title} width="800" height="300" class="mx-auto"/>
   )}
 
-  <BackTo slot="sidebar" href="/blog" title="Return to all blog posts listing page" class="my-8 sticky top-20 pt-4 bacon">Back to Blog Posts</BackTo>
+  <BackTo slot="sidebar" href="/blog" title="Return to all blog posts listing page" class="sticky top-0 pt-4">Back to Blog Posts</BackTo>
 
   {toc_headings && (
-    <div slot="sidebar-alt" class="my-8 sticky top-20 pt-4">
-      <Heading id="table-of-contents" as="h2" class="my-6 text-md">Table of Contents</Heading>
+    <div slot="sidebar" class="my-2 sticky top-24 py-1 px-4 bg-gray-100 rounded-md">
+      <Heading  as="h2" class="my-3 text-md">Table of Contents</Heading>
       <nav aria-labelledby="table-of-contents" class="mb-4">
         <span class="sr-only">Table of Contents</span>
         <ul class="list-none space-y-2 ml-0">
@@ -56,12 +56,18 @@ const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
               </Link>
             </li>
           ))}
+          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm mt-6 pt-6 border-t-1 border-gray-300">
+            <Link variant="link" href="#tags-section" class="no-underline hover:underline inline-flex items-center">Topics</Link>
+          </li>
+          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm mb-6 pb-6 border-b-1 border-gray-300">
+            <Link variant="link" href="#authors-section" class="no-underline hover:underline inline-flex items-center">Meet the Author</Link>
+          </li>
         </ul>
         <Link 
         variant="link" 
-        href="#blog-header"
+        href="#top"
         icon={{name: "mdi:arrow-up", class: "inline-flex items-center"}} 
-        class="text-gray-800 dark:text-gray-200 no-underline hover:underline inline-flex items-center text-sm mt-50">
+        class="text-gray-600 dark:text-gray-300 no-underline hover:underline inline-flex items-center text-xs">
           Back to top
         </Link>
       </nav>
@@ -112,7 +118,7 @@ const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
 
   {articleTags && (
     <div class="border-t border-gray-300 dark:border-gray-700 my-12">
-      <Heading as="h2" class="my-6">Post Topics</Heading>
+      <Heading id="tags-section" as="h2" class="my-6">Post Topics</Heading>
       <ul>
         {articleTags?.map((tag) => {
           if (!tag.data) {
@@ -132,7 +138,7 @@ const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
 
   {articleAuthors && (
     <div class="border-t border-gray-300 dark:border-gray-700 my-12">
-      <Heading as="h2" class="my-6">Meet the Author{articleAuthors.length >= 2 ? '(s)' : ''}</Heading>
+      <Heading id="authors-section" as="h2" class="my-6">Meet the Author{articleAuthors.length >= 2 ? '(s)' : ''}</Heading>
 
       {articleAuthors.map((author, index: number) => {
         return (
