@@ -7,6 +7,8 @@ import Prose from '@layouts/Prose.astro';
 import Link from '@components/Base/Link/Link.astro';
 import BackTo from '@components/Navigation/BackTo/BackTo.astro';
 
+export const prerender = true;
+
 export const getStaticPaths = (async () => {
   const allTags = await getCollection('blog_tags');
   return allTags.map((tag) => ({

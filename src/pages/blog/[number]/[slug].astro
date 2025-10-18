@@ -9,6 +9,8 @@ import BackTo from '@components/Navigation/BackTo/BackTo.astro';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 
+export const prerender = true;
+
 export const getStaticPaths = (async () => {
   const allPosts = await getCollection('blog');
   return allPosts.map((post) => ({
@@ -41,57 +43,74 @@ const imagePath = data.image ? `/images/blog_images/${data.image}` : null;
     <Image src={imagePath} alt={post.data.title} width="800" height="300" class="mx-auto"/>
   )}
 
-  <BackTo slot="sidebar" href="/blog" title="Return to all blog posts listing page" class="sticky top-10">Back to Blog Posts</BackTo>
+  <div slot="sidebar" class="sticky top-6">
 
-  {toc_headings && (
-    <div slot="sidebar" class="my-2 sticky top-24 py-1 px-4 bg-gray-100 rounded-md">
-      <Heading as="h2" class="my-3 text-md"><Link variant="link" href="#top" class="no-underline hover:underline">Table of Contents</Link></Heading>
-      <nav aria-labelledby="table-of-contents" class="mb-4">
-        <span class="sr-only">Table of Contents</span>
-        <ul class="list-none space-y-2 ml-0">
-          {toc_headings.map((toc_heading: any) => (
-            <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm" data-depth={toc_heading.depth}>
-              <Link variant="link" href={`#${toc_heading.slug}`} class="no-underline hover:underline inline-flex items-center">
-                {toc_heading.text}
-              </Link>
+    <BackTo slot="sidebar" href="/blog" title="Return to all blog posts listing page" >Back to Blog Posts</BackTo>
+
+    {toc_headings && (
+      <div slot="sidebar" class="mt-2 py-3 px-4 bg-gray-100 rounded-md">
+        <Heading as="h2" class="mb-3 text-md"><Link variant="link" href="#top" class="no-underline hover:underline">Table of Contents</Link></Heading>
+        <nav aria-labelledby="table-of-contents">
+          <span class="sr-only">Table of Contents</span>
+          <ul class="list-none space-y-2 ml-0">
+            {toc_headings.map((toc_heading: any) => (
+              <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm" data-depth={toc_heading.depth}>
+                <Link variant="link" href={`#${toc_heading.slug}`} class="no-underline hover:underline inline-flex items-center">
+                  {toc_heading.text}
+                </Link>
+              </li>
+            ))}
+            <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm mt-4 pt-4 border-t-1 border-gray-300">
+              <Link variant="link" href="#tags-section" class="no-underline hover:underline inline-flex items-center">Topics</Link>
             </li>
-          ))}
-          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm mt-6 pt-6 border-t-1 border-gray-300">
-            <Link variant="link" href="#tags-section" class="no-underline hover:underline inline-flex items-center">Topics</Link>
-          </li>
-          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm mb-6 pb-6 border-b-1 border-gray-300">
-            <Link variant="link" href="#authors-section" class="no-underline hover:underline inline-flex items-center">Meet the Author</Link>
-          </li>
-        </ul>
-        <Link 
-        variant="link" 
-        href="#top"
-        icon={{name: "mdi:arrow-up", class: "inline-flex items-center"}} 
-        class="text-gray-600 dark:text-gray-300 no-underline hover:underline inline-flex items-center text-xs">
-          Back to top
-        </Link>
-      </nav>
-    </div> 
-  )}
+            <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm mb-4 pb-4 border-b-1 border-gray-300">
+              <Link variant="link" href="#authors-section" class="no-underline hover:underline inline-flex items-center">Meet the Author</Link>
+            </li>
+          </ul>
+          <Link 
+            variant="link" 
+            href="#top"
+            icon={{name: "mdi:arrow-up", class: "inline-flex items-center"}} 
+            class="text-gray-600 dark:text-gray-300 no-underline hover:underline inline-flex items-center text-xs">
+              Back to top</Link>
+        </nav>
+      </div> 
+    )}
 
-  {post && (
-    <div slot="sidebar" class="my-2 mt-6 sticky top-132 py-2 px-4 bg-gray-100 rounded-md">
-      <nav aria-label="Blog navigation" class="my-2">
-        <span class="sr-only">Table of Contents</span>
-        <ul class="list-none space-y-2 ml-0">
-          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
-            <Link variant="link" href="/blog" class="no-underline hover:underline inline-flex items-center">All Posts</Link>
-          </li>
-          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
-            <Link variant="link" href="/blog/tags" class="no-underline hover:underline inline-flex items-center">All Topics</Link>
-          </li>
-          <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
-            <Link variant="link" href="/blog/authors" class="no-underline hover:underline inline-flex items-center">All Authors</Link>
-          </li>
-        </ul>
-      </nav>
-    </div> 
-  )}
+    {post && (
+      <div slot="sidebar" class="mt-4 py-3 px-4 bg-gray-100 rounded-md">
+        <nav aria-label="Blog navigation">
+          <span class="sr-only">Table of Contents</span>
+          <ul class="list-none space-y-2 ml-0">
+            <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
+              <Link 
+                variant="link" 
+                href="/blog" 
+                class="font-bold no-underline hover:underline inline-flex items-center"
+                icon={{name: "mdi:arrow-left", class: "inline-flex items-center mr-1"}}>
+                  All Posts</Link>
+            </li>
+            <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
+              <Link 
+                variant="link" 
+                href="/blog/tags" 
+                class="font-bold no-underline hover:underline inline-flex items-center"
+                icon={{name: "mdi:arrow-left", class: "inline-flex items-center mr-1"}}>
+                  All Topics</Link>
+            </li>
+            <li class="list-none items-center text-gray-800 dark:text-gray-200 text-sm">
+              <Link 
+                variant="link" 
+                href="/blog/authors" 
+                class="font-bold no-underline hover:underline inline-flex items-center" 
+                icon={{name: "mdi:arrow-left", class: "inline-flex items-center mr-1"}}>
+                  All Authors</Link>
+            </li>
+          </ul>
+        </nav>
+      </div> 
+    )}
+  </div>
 
   <hgroup id="blog-header" class="mb-4"class="my-4">
     <Heading as="h1" >{post.data.title}</Heading>

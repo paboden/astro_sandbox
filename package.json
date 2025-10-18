@@ -13,6 +13,9 @@
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.13.10",
     "astro-icon": "^1.1.5",
+    "rehype-mathjax": "^7.1.0",
+    "remark-github-blockquote-alert": "^2.0.0",
+    "remark-math": "^6.0.0",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.13"
   },

@@ -8,6 +8,8 @@ import Link from '@components/Base/Link/Link.astro';
 import { Icon } from 'astro-icon/components';
 import BackTo from '@components/Navigation/BackTo/BackTo.astro';
 
+export const prerender = true;
+
 export const getStaticPaths = (async () => {
   const allAuthors = await getCollection('authors');
   return allAuthors.map((author) => ({
