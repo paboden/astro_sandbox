@@ -13,7 +13,7 @@ interface ComponentListing {
 const componentsList = new Array();
 
 let componentsDirectory = Object.values(import.meta.glob([
-  '../../../src/pages/component-pages/*.{md,mdx,astro}',
+  '../../../src/pages/components/*.{md,mdx,astro}',
 ], { eager: true }));
 
 const ComponentListings = [...componentsDirectory];

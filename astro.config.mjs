@@ -4,12 +4,16 @@ import tailwindcss from '@tailwindcss/vite';
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
 import { remarkAlert } from "remark-github-blockquote-alert";
-import customRemarkCodeTitle from "./src/plugins/customRemarkCodeTitle.js"
-import { customExternalLink } from "./src/plugins/customExternalLink.js"
+import customRemarkCodeTitle from "./src/plugins/customRemarkCodeTitle.js";
+import { customExternalLink } from "./src/plugins/customExternalLink.js";
 import icon from 'astro-icon';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+
+  site: 'http://localhost:4321',
+
   vite: {
     plugins: [tailwindcss()]
   },
@@ -27,5 +31,8 @@ export default defineConfig({
     ],
   },
 
-  integrations: [icon()]
+  integrations: [
+    icon(),
+    sitemap(),
+  ]
 });

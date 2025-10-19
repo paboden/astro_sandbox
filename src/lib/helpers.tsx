@@ -1,12 +1,9 @@
 import states from "@content/data/states/us-states-with-detail.json"
 
 export function isExternalUrl(url: string): boolean {
-  // console.log("Checking URL:", url);
   try {
     const targetUrl = new URL(url);
-    // console.log(targetUrl, 'targetUrl');
     const currentOrigin = window.location.origin;
-    console.log(currentOrigin, 'currentOrigin');
     return targetUrl.origin !== currentOrigin;
   } catch (error) {
     // Handle cases where the URL might be malformed or relative
@@ -41,7 +38,6 @@ export function dashesToSpaces(str: string): string {
 }
 
 export function getUsStateName(stateCode: string) {
-  console.log(stateCode, 'stateCode');
   if (typeof stateCode !== 'string' || stateCode.length === 0 || stateCode.length > 2) {
     return '';
   }

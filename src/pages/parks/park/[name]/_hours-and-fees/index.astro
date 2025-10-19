@@ -11,16 +11,22 @@ import { Icon } from "astro-icon/components";
 export const prerender = true;
 
 export const getStaticPaths = (async () => {
-  const response = await fetch('http://localhost:4321/api/nps--parks.json');
+  const response = await fetch('http://localhost:4321/api/parks.json');
   const parks = await response.json();
-  return parks.items.map((park: ParkSchema) => ({
-    params: { park_name: park?.name?.replace(/\s+/g, '-').toLowerCase() },
-    props: { park },
+
+  console.log(parks[0]);
+  const paths = parks.map((park: ParkSchema) => ({
+    params: { name: park.data.name.replace(/\s+/g, '-').toLowerCase() },
+    props: { park }
   }));
+
+  return paths;
 }) satisfies GetStaticPaths;
 
 const { park } = Astro.props as { park: ParkSchema };
 
+const path_park_name = park.data.name.replace(/\s+/g, '-').toLowerCase();
+const data = park.data;
 const date = new Date();
 
 // Format for a specific locale and options
@@ -40,63 +46,19 @@ const formatter = new Intl.DateTimeFormat('en-US', {
 
     <BackTo class="mt-3" href="/parks" title="Return to all blog authors listing page">Back to Parks</BackTo>
 
-    <hgroup class="flex flex-col gap-2 align-baseline my-8">
-      <h1 class="font-bold text-3xl m-0 mb-0 p-0">{park?.name} <span class="font-light text-3xl m-0 p-0 italic">{park?.designation}</span></h1>
-      {park?.parkCode && (
-        <p class="text-xs text-gray-500">Parkcode: {park?.parkCode}</p>
-      )}
+    <hgroup class="flex flex-col gap-2 align-baseline pt-8 pb-12">
+      <p class="text-md text-gray-500">{park?.data.name} <span class="font-light m-0 p-0 italic">{park?.data.designation}</span></p>
+      <h1 class="font-bold text-3xl m-0 mb-0 p-0">Operating Hours & Entrance Fees</h1>
     </hgroup>
-
-    {park?.description && (
+    
+    {park.data.operatingHours && (
+      <BackTo class="" href={`/parks/park/${path_park_name}`} title="Return to all blog authors listing page">Back to General Information</BackTo>
       <section>
-        {/* <h2 class="font-bold text-lg mb-2">Description</h2> */}
-        <p>{park?.description}</p>
-      </section>
-    )}
-
-    {park?.states && (
-      <section>
-        <h2 class="font-semibold text-lb mb-2">State(s)</h2>
-        <nav class="mb-12">
-          <ul class="list-none flex flex-wrap gap-2">{park?.states?.split(",").map((state) => {
-            const url = `/parks/state/${state.toLowerCase()}`;
-            return (
-              <li class="flex align-middle text-sm list-none">
-                <a class="flex flex-nowrap align-middle items-center px-3 bg-gray-400 hover:bg-gray-600 rounded-2xl p-1 text-white no-underline gap-1" href={url}>
-                  {getUsStateName(state)}
-                  <Icon name="mdi:arrow-up"></Icon>
-                </a>
-              </li>
-            )
-            })}
-          </ul>
-        </nav>
-      </section>
-    )}
-
-    {park.directionsInfo && (
-      <section>
-        <h2 class="font-semibold text-lg mb-2">Directions</h2>
-        <p>{park.directionsInfo}</p>
-        <a href={park.directionsUrl}>More</a>
-      </section>
-    )}
-
-    {park?.weatherInfo && (
-      <section>
-        <h2 class="font-semibold text-lg mb-2">Weather</h2>
-        <p>{park?.weatherInfo}</p>
-      </section>
-    )}
-
-    {park.operatingHours && (
-      <section>
-        <h2 class="font-semibold text-lg mb-4">Operating hours</h2>
-        <ul class="list-none p-0 m-0 ml-12">
-          {park?.operatingHours.map((item) => (
-            <li class="mb-6">
+        <ul class="list-none py-6">
+          {park?.data.operatingHours.map((item) => (
+            <li class="mb-8 pb-8 border-b-1 border-gray-300">
               <section>
-                <h3 class="font-semibold my-3 py-0">{item?.name}</h3>
+                <h3 class="font-semibold text-lg mb-3 py-0">{item?.name}</h3>
                 <p>{item?.description}</p>
                 <h4 class="font-semibold my-3 mb-2 py-0">Standard Hours</h4>
                 <dl class="ml-0">
@@ -169,35 +131,14 @@ const formatter = new Intl.DateTimeFormat('en-US', {
       </section>
     )}
 
-    {park?.activities.length > 0 && (
+    {park?.data.entranceFees.length > 0 && (
+      <BackTo class="mt-3 mb-8" href={`/parks/park/${path_park_name}`} title="Return to all blog authors listing page">Back to General Information</BackTo>
       <section>
-        <h2 class="font-semibold text-lg mb-2">Activities</h2>
-        <ul>
-          {park?.activities.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      </section>
-    )}
-
-    {park?.topics.length > 0 && (
-      <section>
-        <h2 class="font-semibold text-xl mb-2">Topics</h2>
-        <ul>
-          {park?.topics.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      </section>
-    )}
-
-    {park?.entranceFees.length > 0 && (
-      <section>
-        <h2 class="font-semibold text-xl mb-2">Entrance Fees</h2>
+        <h2 class="font-semibold text-2xl pt-0 pb-12">Entrance Fees</h2>
         <dl>
-          {park?.entranceFees.map((item) => (
-            <div>
-              <dt>{item?.title}</dt>
+          {park?.data.entranceFees.map((item) => (
+            <div class="mb-8 pb-8 border-b-1 border-gray-300">
+              <dt class="font-semibold text-lg">{item?.title}</dt>
               <dd><strong>${item?.cost}</strong></dd>
               <dd>{item?.description}</dd>
             </div>
@@ -206,11 +147,13 @@ const formatter = new Intl.DateTimeFormat('en-US', {
       </section>
     )}
 
-    {park?.entrancePasses.length > 0 && (
+
+    {park?.data.entrancePasses.length > 0 && (
+      <BackTo class="mt-3 mb-8" href={`/parks/park/${path_park_name}`} title="Return to all blog authors listing page">Back to General Information</BackTo>
       <section>
         <h2 class="font-semibold text-xl mb-2">Entrance Passes</h2>
         <dl>
-          {park?.entrancePasses.map((item) => (
+          {park?.data.entrancePasses.map((item) => (
             <div>
               <dt>{item?.title}</dt>
               <dd><strong>${item?.cost}</strong></dd>
@@ -221,7 +164,7 @@ const formatter = new Intl.DateTimeFormat('en-US', {
       </section>
     )}
 
-    {park?.addresses.length > 0 && (
+    <!-- {park?.addresses.length > 0 && (
       <section>
         <h2 class="font-semibold text-xl">Addresses</h2>
         <ul>
@@ -238,11 +181,13 @@ const formatter = new Intl.DateTimeFormat('en-US', {
           ))}
         </ul>
       </section>
-    )}
+    )} -->
 
-    {park?.url && (
+    <BackTo class="mt-8" href={`/parks/park/${path_park_name}`} title="Return to all blog authors listing page">Back to General Information</BackTo>
+
+    {park?.data.url && (
       <nav class="my-20">
-        <a href={park.url}>
+        <a href={park.data.url}>
           <h2 class="font-bold text-lg mb-2">Learn more!</h2>
           <p>Visit the official website for this park.</p>
         </a>

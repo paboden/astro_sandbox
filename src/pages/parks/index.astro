@@ -5,9 +5,8 @@ import Layout from "@layouts/Layout.astro";
 import Prose from "@layouts/Prose.astro";
 import states from "@content/data/states/us-states-with-detail.json"
 
-const response = await fetch('http://localhost:4321/api/nps--parks.json');
+const response = await fetch('http://localhost:4321/api/parks.json');
 const parks = await response.json();
-
 ---
 <Layout>
   <div class="flex mx-auto py-10  w-[80ch]">
@@ -19,13 +18,13 @@ const parks = await response.json();
   <div class="flex gap-[2ch] mx-auto w-[80ch]">
     <div class="w-[38ch]">
       <Prose>
-        <!-- <p class="text-sm text-gray-600 dark:text-gray-400"><a href="/api/nps--parks.json" target="_blank">View json data</a></p> -->
-        {parks.items.length && (
+        <p class="text-sm text-gray-600 dark:text-gray-400"><a href="/api/parks.json" target="_blank">View json data</a></p>
+        {parks.length && (
           <ul>
-            {parks.items.map((park: ParkSchema) => {
-              const url = "/parks/park/" + park?.name?.replace(/\s+/g, '-').toLowerCase() as string;
+            {parks.map((park: ParkSchema) => {
+              const url = "/parks/park/" + park.data.name?.replace(/\s+/g, '-').toLowerCase() as string;
               return (
-                <li><a href={url}>{park?.fullName}</a></li>
+                <li><a href={url}>{park.data.fullName}</a></li>
               )
             })}
           </ul>
@@ -36,7 +35,7 @@ const parks = await response.json();
     <div class="w-[38ch]">
       <Prose>
 
-        <!-- <p class="text-sm text-gray-600 dark:text-gray-400"><a href="/api/nps--parks.json" target="_blank">View json data</a></p> -->
+        <!-- <p class="text-sm text-gray-600 dark:text-gray-400"><a href="/api/parks.json" target="_blank">View json data</a></p> -->
 
         {states.states.length && (
           <ul>

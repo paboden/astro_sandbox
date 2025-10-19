@@ -24,7 +24,7 @@ const elementsData = elements
   <div class="max-w-screen-xl mx-auto my-10">
     <ol class="periodic-table">
       {elementsData.map((element) => {
-        const href = `/periodic-elements/${element.id}`;
+        const href = `/elements/${element.id}`;
         if (element.series === 'Lanthanide' || element.series === 'Actinide' || element.series === 'Lanthanoid' || element.series === 'Actinoid') {
           return null;
         }
@@ -54,7 +54,7 @@ const elementsData = elements
   <div class="max-w-screen-xl mx-auto my-10">
     <ol class="periodic-table lanthanide-series">
       {elementsData.map((element) => {
-        const href = `/periodic-elements/${element.id}`;
+        const href = `/elements/${element.id}`;
         if (element.series === 'Lanthanide' || element.series === 'Lanthanoid') {
           return (
             <li 
@@ -81,7 +81,7 @@ const elementsData = elements
 
     <ol class="periodic-table actinide-series">
       {elementsData.map((element) => {
-        const href = `/periodic-elements/${element.id}`;
+        const href = `/elements/${element.id}`;
         if (element.series === 'Actinide' || element.series === 'Actinoid') {
           return (
             <li 
