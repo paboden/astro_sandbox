@@ -11,10 +11,10 @@ import Layout from "@layouts/Layout.astro";
   <Welcome />
 
   <Tabs type="horizontal">
-    <TabItem label="Tab One" icon="mdi:arrow-down"><DummyContent /></TabItem>
-    <TabItem label="Tab 2"><DummyContent /></TabItem>
-    <TabItem label="This is Tab Three" icon="mdi:weather-night"><DummyContent /></TabItem>
-    <TabItem label="Tab Four goes here and is awesome" icon="mdi:account-multiple"><DummyContent /></TabItem>
+    <TabItem label="Tab One" icon="mdi:arrow-down"><DummyContent label="One"/></TabItem>
+    <TabItem label="Tab 2"><DummyContent label="Two"/></TabItem>
+    <TabItem label="This is Tab Three" icon="mdi:weather-night"><DummyContent label="Three"/></TabItem>
+    <TabItem label="Tab Four goes here and is awesome" icon="mdi:account-multiple"><DummyContent label="Four"/></TabItem>
   </Tabs>
 
   <Tabs type="vertical">
@@ -24,7 +24,9 @@ import Layout from "@layouts/Layout.astro";
     <TabItem label="Vertical Four" icon="mdi:account"><DummyContent /></TabItem>
   </Tabs>
 
-  <Container type="stack" spacingSize="2rem">
+  <hr/>
+
+  <Container type="stack" spacingSize="2rem" class="mt-24">
     <div>Lorem ipsum dolor sit amet. Vel numquam delectus aut aperiam deleniti non tenetur itaque sed rerum galisum. Vel pariatur minima sed quos tempora aut voluptatem soluta in incidunt veritatis. Eos nemo dolore aut incidunt veritatis aut temporibus quis est optio facere et quasi atque et amet sequi aut corporis aliquam. Aut internos maiores ab sunt consequatur et similique nesciunt ex quia cupiditate!</div>
     <div>Qui amet fugiat qui provident galisum ut quae quia eum dolor rerum cum soluta repellendus 33 natus voluptatibus est sunt dolore! Nam officia reiciendis aut nihil omnis et saepe magnam et dolorem rerum. Ab voluptas ipsam eos doloremque illum ad consequatur ipsam. Quo molestias aliquam ea vitae consequuntur et magni repellendus est quia excepturi aut corporis odit.</div>
     <div>Et galisum omnis aut quia voluptatem et doloribus dolores. Eos quia quisquam et quisquam sint qui quaerat quia. Non galisum voluptatem est rerum sint et doloribus dolores. Qui quia omnis aut quia voluptatem et doloribus dolores. Eos quia quisquam et quisquam sint qui quaerat quia. Non galisum voluptatem est rerum sint et doloribus dolores.</div>
