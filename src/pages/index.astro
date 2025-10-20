@@ -1,4 +1,7 @@
 ---
+import DummyContent from "@components/Base/DummyContent/DummyContent.astro";
+import TabItem from "@components/Interface/Tabs/TabItem.astro";
+import Tabs from "@components/Interface/Tabs/Tabs.astro";
 import Welcome from "@custom/Welcome.astro";
 import Container from "@layouts/Container.astro";
 import Layout from "@layouts/Layout.astro";
@@ -6,6 +9,21 @@ import Layout from "@layouts/Layout.astro";
 
 <Layout title="Home">
   <Welcome />
+
+  <Tabs type="horizontal">
+    <TabItem label="Tab One" icon="mdi:arrow-down"><DummyContent /></TabItem>
+    <TabItem label="Tab 2"><DummyContent /></TabItem>
+    <TabItem label="This is Tab Three" icon="mdi:weather-night"><DummyContent /></TabItem>
+    <TabItem label="Tab Four goes here and is awesome" icon="mdi:account-multiple"><DummyContent /></TabItem>
+  </Tabs>
+
+  <Tabs type="vertical">
+    <TabItem label="Vertical One" icon="mdi:arrow-down"><DummyContent /></TabItem>
+    <TabItem label="Vertical Tab Two"><DummyContent /></TabItem>
+    <TabItem label="Vertical Tab Three"><DummyContent /></TabItem>
+    <TabItem label="Vertical Four" icon="mdi:account"><DummyContent /></TabItem>
+  </Tabs>
+
   <Container type="stack" spacingSize="2rem">
     <div>Lorem ipsum dolor sit amet. Vel numquam delectus aut aperiam deleniti non tenetur itaque sed rerum galisum. Vel pariatur minima sed quos tempora aut voluptatem soluta in incidunt veritatis. Eos nemo dolore aut incidunt veritatis aut temporibus quis est optio facere et quasi atque et amet sequi aut corporis aliquam. Aut internos maiores ab sunt consequatur et similique nesciunt ex quia cupiditate!</div>
     <div>Qui amet fugiat qui provident galisum ut quae quia eum dolor rerum cum soluta repellendus 33 natus voluptatibus est sunt dolore! Nam officia reiciendis aut nihil omnis et saepe magnam et dolorem rerum. Ab voluptas ipsam eos doloremque illum ad consequatur ipsam. Quo molestias aliquam ea vitae consequuntur et magni repellendus est quia excepturi aut corporis odit.</div>

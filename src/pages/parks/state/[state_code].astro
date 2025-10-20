@@ -9,14 +9,14 @@ import type { GetStaticPaths } from 'astro';
 import { getUsStateName } from '@lib/helpers'
 
 export const getStaticPaths = (async () => {
-  const state_parks = await getCollection('state_parks');
+  const state_parks = await getCollection('parks_by_state');
   return state_parks.map((park) => ({
     params: { state_code: park.id },
     props: { park },
   }));
 }) satisfies GetStaticPaths;
 
-const { park } = Astro.props as { park: CollectionEntry<'state_parks'> };
+const { park } = Astro.props as { park: CollectionEntry<'parks_by_state'> };
 const data = park.data?.data;
 const id = park.id.toUpperCase() as string;
 ---
