@@ -15,6 +15,8 @@ const tabs_html = await Astro.slots.render('default');
 let tabs = new Array();
 let filtered_html = '';
 
+// If content is found in the slot, we need to parse it to figure out if it is
+// acceptable content (It is content from a TabItem component).
 if (tabs_html) {
   const { document } = parseHTML(tabs_html);
   const tabsHTMLCollection = document.querySelectorAll('section[data-tabitem]');
@@ -37,11 +39,10 @@ if (tabs_html) {
   filtered_html = document.body.innerHTML;
 }
 ---
-<section class="tabs" data-tabs-type={type} data-sync-key={syncKey} {...attr}>
-
+<section class="tabs my-12 py-12 border-0 border-gray-300" data-tabs-type={type} {...attr}>
   {tabs && (
     <nav role="navigation" class="tablist-wrapper">
-      <ul role="tablist" class="tablist">
+      <ul role="tablist" class="tablist border-0 border-gray-300">
         {tabs.map((tab, index) => {
           const href = `#tab-panel-${tab.id}`;
           const panel_id = `tab-panel-${tab.id}`;
@@ -52,6 +53,7 @@ if (tabs_html) {
                 role="tab"
                 href={href}
                 id={id}
+                data-tablink
                 data-panel-id={panel_id}
                 aria-selected={index == 0}
                 tabindex={index !== 0 ? -1 : 0}
@@ -66,78 +68,125 @@ if (tabs_html) {
     </nav>
   )}
 
-  <Fragment set:html={filtered_html} />
+    <div class="tab__items">
+      <Fragment set:html={filtered_html} />
+    </div>
 </section>
 
 <script is:inline>
 
-// Find all tabGroups...  
-const tabs = document.querySelectorAll('.tabs');
-tabs.forEach((tabGroup) => {
+  // Wait till everything is loaded...
+  document.addEventListener("DOMContentLoaded", function() {
 
-  const tabGroupPanels = tabGroup.querySelectorAll('section[data-tabitem]');
-  const tablistLinks = tabGroup.querySelectorAll('.tab .tab__link');
+    // Process each grouping of tabs seperately
+    const tabs = document.querySelectorAll('section.tabs');
+    tabs.forEach((tabGroup) => {
 
-  tabGroupPanels.forEach(panel => panel.style.display = 'none');
+      // All Links/Buttons for this group.
+      const tablistLinks = tabGroup.querySelectorAll('.tab a[data-tablink]');
 
-  tablistLinks.forEach((tabListItem, idx) => {
-    const panel_id = tabListItem.getAttribute('data-panel-id');
-    const panel = document.getElementById(panel_id);
-    panel.style.display = idx === 0 ? 'block' : 'none';
-    tabListItem.addEventListener('click', (e) => {
-      e.preventDefault();
-      const panel_id = tabListItem.getAttribute('data-panel-id');
-      const panel = document.getElementById(panel_id);
-      panel.style.display = 'block';
+      // All Panels for this group.
+      const tabGroupPanels = tabGroup.querySelectorAll('section[data-tabitem]');
+
+      tablistLinks.forEach((tabLink, idx) => {
+        tabLink.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          // Remove the active class from the links/buttons and set the 
+          // aria-selected value to false for all links/buttons.
+          tablistLinks.forEach((lnk) => {
+            lnk.classList.remove('active');
+            lnk.setAttribute('aria-selected', false);
+          });
+
+          // Hide all panels. 
+          tabGroupPanels.forEach((panel) =>{
+            panel.style.display = 'none';
+          });
+
+          // Set the active class on the link/button, Show the selected pane,
+          // and set its aria selected value.
+          tabLink.classList.add('active');
+          tabLink.setAttribute('aria-selected', true);
+          const targetPanel = document.getElementById(tabLink.dataset.panelId);
+          if (targetPanel) {
+            targetPanel.classList.add('active');
+            targetPanel.style.display = 'flex';
+          }
+        })
+      });
+
+      // Set the first panel/link item in a tab Group to be selected by default.
+      const initialActiveButton = tabGroup.querySelector('.tab:first-child a[data-tablink]');
+      if (initialActiveButton) {
+        initialActiveButton.click();
+      }
+
     });
   });
-
-});
-
-
-  // const tabLinks = document.querySelectorAll('.tablist .tab .tab__link');
-  // tabLinks.forEach((tabLink, index) => {
-  //   const panel_id = tabLink.getAttribute('data-panel-id');
-  //   const panel = document.getElementById(panel_id);
-  //   console.log(index);
-  //   console.log(panel_id);
-  //   // panel.hidden = index == 0;
-
-  //   tabLink.addEventListener('click', (e) => {
-  //     e.preventDefault();
-  //     const href = tabLink.getAttribute('href');
-  //     const panel = document.getElementById(href);
-  //     panel.hidden = false;
-  //   });
-  // });
-
-  // const tablist = document.querySelector('[role="tablist"]');
-  // const tab__links = [...tablist.querySelectorAll('[role="tab"]')];
-  // console.log(tab__links);
-
 </script>
 
 <style>
+  .tabs {
+
+  }
+
   .tablist-wrapper {
 		overflow-x: auto;
 	}
 
   .tablist {
     display: flex;
-    gap: 1rem;
     list-style: none;
+
   }
 
-  .tab {
-    border: 1px solid gray;
-    border-block-end: 0;
-    padding: 1rem;
+  .tabs[data-tabs-type='horizontal'] .tablist {
+    flex-wrap: wrap;
+    justify-content: flex-start;
     align-items: center;
+    border-bottom-width: 1px;
+    gap: 1rem;
   }
 
-  .tab [role='tab'][aria-selected='true'] {
-		color: blue;
-		border-color: blue;
-		font-weight: 600;
+  .tabs[data-tabs-type='horizontal'] .tab__items {
+    padding-block-start: 3rem;
+  }
+
+  .tab a[role='tab'] {
+    display: flex;
+    padding: .5rem 1rem;
+    align-items: center;
+    font-weight: 600;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .tab a[role='tab'][aria-selected='true'] {
+		color: white;
+		background: blue;
+    transition: all 0.5s ease-in-out;
 	}
+
+  .tabs[data-tabs-type='vertical'] {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    border-top-width: 1px;
+  }
+
+  .tabs[data-tabs-type='vertical'] .tablist-wrapper {
+    flex-basis: 15rem;
+    flex-grow: 1;
+  }
+
+  .tabs[data-tabs-type='vertical'] .tablist-wrapper .tablist {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tabs[data-tabs-type='vertical'] .tab__items {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-inline-size: 50%;
+  }
 </style>

@@ -10,19 +10,22 @@ import Layout from "@layouts/Layout.astro";
 <Layout title="Home">
   <Welcome />
 
-  <Tabs type="horizontal">
-    <TabItem label="Tab One" icon="mdi:arrow-down"><DummyContent label="One"/></TabItem>
-    <TabItem label="Tab 2"><DummyContent label="Two"/></TabItem>
-    <TabItem label="This is Tab Three" icon="mdi:weather-night"><DummyContent label="Three"/></TabItem>
-    <TabItem label="Tab Four goes here and is awesome" icon="mdi:account-multiple"><DummyContent label="Four"/></TabItem>
-  </Tabs>
+  <Container type="stack" spacingSize="2rem" class="max-w-screen-lg my-12 mx-auto">
+    <Tabs type="horizontal">
+      <TabItem label="Tab One" icon="mdi:arrow-down"><DummyContent label="One"/></TabItem>
+      <TabItem label="Tab 2"><DummyContent label="Two"/><DummyContent /><DummyContent /></TabItem>
+      <TabItem label="This is Tab Three" icon="mdi:weather-night"><DummyContent label="Three"/><DummyContent /></TabItem>
+      <TabItem label="Tab Four goes here and is awesome" icon="mdi:account-multiple"><DummyContent label="Four"/></TabItem>
+    </Tabs>
 
-  <Tabs type="vertical">
-    <TabItem label="Vertical One" icon="mdi:arrow-down"><DummyContent /></TabItem>
-    <TabItem label="Vertical Tab Two"><DummyContent /></TabItem>
-    <TabItem label="Vertical Tab Three"><DummyContent /></TabItem>
-    <TabItem label="Vertical Four" icon="mdi:account"><DummyContent /></TabItem>
-  </Tabs>
+    <Tabs type="vertical">
+      <TabItem label="Vertical One" icon="mdi:arrow-down"><DummyContent label="Vertical 1"/></TabItem>
+      <TabItem label="Vertical Tab Two"><DummyContent label="Vertical 2"/><DummyContent /></TabItem>
+      <TabItem label="Vertical Tab Three"><DummyContent label="Vertical 3"/></TabItem>
+      <TabItem label="Vertical Four" icon="mdi:account"><DummyContent label="Vertical 4"/><DummyContent /></TabItem>
+    </Tabs>
+  </Container>
+
 
   <hr/>
 
