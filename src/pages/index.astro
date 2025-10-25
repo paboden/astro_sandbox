@@ -11,14 +11,14 @@ import Layout from "@layouts/Layout.astro";
   <Welcome />
 
   <Container type="stack" spacingSize="2rem" class="max-w-screen-lg my-12 mx-auto">
-    <Tabs type="horizontal">
+    <Tabs type="horizontal" aria-label="Horizontal Tabs example">
       <TabItem label="Tab One" icon="mdi:arrow-down"><DummyContent label="One"/></TabItem>
       <TabItem label="Tab 2"><DummyContent label="Two"/><DummyContent /><DummyContent /></TabItem>
       <TabItem label="This is Tab Three" icon="mdi:weather-night"><DummyContent label="Three"/><DummyContent /></TabItem>
       <TabItem label="Tab Four goes here and is awesome" icon="mdi:account-multiple"><DummyContent label="Four"/></TabItem>
     </Tabs>
 
-    <Tabs type="vertical">
+    <Tabs type="vertical" aria-label="Vertical Tabs example">
       <TabItem label="Vertical One" icon="mdi:arrow-down"><DummyContent label="Vertical 1"/></TabItem>
       <TabItem label="Vertical Tab Two"><DummyContent label="Vertical 2"/><DummyContent /></TabItem>
       <TabItem label="Vertical Tab Three"><DummyContent label="Vertical 3"/></TabItem>

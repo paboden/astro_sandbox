@@ -40,97 +40,137 @@ if (tabs_html) {
 }
 ---
 <section class="tabs my-12 py-12 border-0 border-gray-300" data-tabs-type={type} {...attr}>
+
   {tabs && (
-    <nav role="navigation" class="tablist-wrapper">
+    <div class="tablist-wrapper">
       <ul role="tablist" class="tablist border-0 border-gray-300">
         {tabs.map((tab, index) => {
-          const href = `#tab-panel-${tab.id}`;
           const panel_id = `tab-panel-${tab.id}`;
           const id = `#tab-${tab.id}`;
           return (
             <li role="presentation" class="tab" data-index={index}>
-              <a 
+              <button 
                 role="tab"
-                href={href}
                 id={id}
                 data-tablink
                 data-panel-id={panel_id}
                 aria-selected={index == 0}
+                aria-controls={panel_id}
                 tabindex={index !== 0 ? -1 : 0}
-                class="tab__link">
+                class="tab__button">
                   {tab.icon && <Icon name={tab.icon} class="inline-flex items-center"></Icon>}
                   {tab.label}
-                </a>
+                </button>
               </li>
             )
         })}
       </ul>
-    </nav>
+    </div>
   )}
 
-    <div class="tab__items">
-      <Fragment set:html={filtered_html} />
-    </div>
+  <div class="tabs__panels">
+    <Fragment set:html={filtered_html} />
+  </div>
 </section>
 
-<script is:inline>
+<script is:inline >
 
-  // Wait till everything is loaded...
-  document.addEventListener("DOMContentLoaded", function() {
+// Wait till everything is loaded...
+document.addEventListener("DOMContentLoaded", function() {
 
-    // Process each grouping of tabs seperately
-    const tabs = document.querySelectorAll('section.tabs');
-    tabs.forEach((tabGroup) => {
+  // code from:
+  // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tab_role#example
+  const tabsContainer = document.querySelectorAll('section.tabs');
+  tabsContainer.forEach((tabsGroup) => {
 
-      // All Links/Buttons for this group.
-      const tablistLinks = tabGroup.querySelectorAll('.tab a[data-tablink]');
+    // The tablist and an array of the buttons in that list, for this tab group.
+    const tabsGroupTabList = tabsGroup.querySelector('[role="tablist"]');
+    const tabsGrouptabListButtons = Array.from(tabsGroupTabList.querySelectorAll('[role="tab"]'));
 
-      // All Panels for this group.
-      const tabGroupPanels = tabGroup.querySelectorAll('section[data-tabitem]');
+    // All panel sections for this tabs group.
+    const tabsGroupPanelsContainer = tabsGroup.querySelector(".tabs__panels");
+    const tabsGroupPanels = Array.from(tabsGroupPanelsContainer.querySelectorAll('section[aria-role="tabpanel"]'));
 
-      tablistLinks.forEach((tabLink, idx) => {
-        tabLink.addEventListener('click', (e) => {
-          e.preventDefault();
-
-          // Remove the active class from the links/buttons and set the 
-          // aria-selected value to false for all links/buttons.
-          tablistLinks.forEach((lnk) => {
-            lnk.classList.remove('active');
-            lnk.setAttribute('aria-selected', false);
-          });
-
-          // Hide all panels. 
-          tabGroupPanels.forEach((panel) =>{
-            panel.style.display = 'none';
-          });
-
-          // Set the active class on the link/button, Show the selected pane,
-          // and set its aria selected value.
-          tabLink.classList.add('active');
-          tabLink.setAttribute('aria-selected', true);
-          const targetPanel = document.getElementById(tabLink.dataset.panelId);
-          if (targetPanel) {
-            targetPanel.classList.add('active');
-            targetPanel.style.display = 'flex';
-          }
-        })
+    // Process the buttons and assign event listeners.
+    tabsGrouptabListButtons.forEach((tabButton, idx) => {
+      tabButton.addEventListener("click", (e) => {
+        showTab(e.target);
       });
+      tabButton.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          e.stopPropagation();
+          showTab(e.target);
+        }
+      });
+    })
 
-      // Set the first panel/link item in a tab Group to be selected by default.
-      const initialActiveButton = tabGroup.querySelector('.tab:first-child a[data-tablink]');
-      if (initialActiveButton) {
-        initialActiveButton.click();
+    tabsGroupTabList.addEventListener("keydown", (e) => {
+      const currentTab = e.target;
+      const currentIndex = tabsGrouptabListButtons.indexOf(currentTab);
+
+      // Exit if the focused element is not a tab.
+      if (currentIndex === -1) return;
+      let newIndex = 0;
+
+      switch (e.key) {
+        case "ArrowDown":
+        case "ArrowRight":
+          newIndex = (currentIndex + 1) % tabsGrouptabListButtons.length;
+          break;
+        case "ArrowUp":
+        case "ArrowLeft":
+          newIndex = (currentIndex - 1 + tabsGrouptabListButtons.length) % tabsGrouptabListButtons.length;
+          break;
+        case "Home":
+          newIndex = 0;
+          break;
+        case "End":
+          newIndex = tabs.length - 1;
+          break;
+        default:
+          // Exit if the key is not recognized.
+          return; 
       }
 
+      e.preventDefault();
+      e.stopPropagation();
+      tabsGrouptabListButtons[newIndex].focus();
     });
+
+    function showTab(targetTab) {
+
+      // Unselect other tabs and set this tab as selected
+      for (const tab of tabsGrouptabListButtons) {
+        if (tab === targetTab) continue;
+        tab.setAttribute("aria-selected", false);
+        tab.tabIndex = -1;
+      }
+      targetTab.setAttribute("aria-selected", true);
+      targetTab.tabIndex = 0;
+
+      // Hide other tab panels and show the selected panel
+      const targetTabPanel = document.getElementById(
+        targetTab.getAttribute("aria-controls"),
+      );
+      for (const panel of tabsGroupPanels) {
+        if (panel === targetTabPanel) continue;
+        panel.hidden = true;
+      }
+      targetTabPanel.hidden = false;
+    }
+
+    // Trigger the first panel after document load.
+    const initialActiveButton = tabsGroup.querySelector('li.tab[data-index="0"] > [role="tab"]')
+    if (initialActiveButton) {
+      initialActiveButton.click();
+    }
+
   });
+});
 </script>
 
 <style>
-  .tabs {
-
-  }
-
   .tablist-wrapper {
 		overflow-x: auto;
 	}
@@ -149,19 +189,22 @@ if (tabs_html) {
     gap: 1rem;
   }
 
-  .tabs[data-tabs-type='horizontal'] .tab__items {
+  .tabs[data-tabs-type='horizontal'] .tabs__panels {
     padding-block-start: 3rem;
   }
 
-  .tab a[role='tab'] {
+  .tab [role='tab'] {
     display: flex;
+    width: 100%;
     padding: .5rem 1rem;
     align-items: center;
     font-weight: 600;
     transition: all 0.5s ease-in-out;
+    cursor: pointer;
   }
 
-  .tab a[role='tab'][aria-selected='true'] {
+  .tab [role='tab'][aria-selected='true'],
+  .tab [role='tab']:focus {
 		color: white;
 		background: blue;
     transition: all 0.5s ease-in-out;
@@ -179,14 +222,15 @@ if (tabs_html) {
     flex-grow: 1;
   }
 
-  .tabs[data-tabs-type='vertical'] .tablist-wrapper .tablist {
+  .tabs[data-tabs-type='vertical'] .tablist-wrapper [role='tablist'] {
     display: flex;
     flex-direction: column;
   }
 
-  .tabs[data-tabs-type='vertical'] .tab__items {
+  .tabs[data-tabs-type='vertical'] .tabs__panels {
     flex-basis: 0;
     flex-grow: 999;
     min-inline-size: 50%;
   }
+
 </style>

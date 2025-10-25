@@ -22,10 +22,10 @@ const aria_labelledby = `tab-${id}`;
   data-label={label} 
   data-icon={icon} 
   id={tab_id} 
-  aria-labelledby={aria_labelledby} 
+  aria-labelledby={aria_labelledby}
+  aria-role="tabpanel"
   role="tabpanel" 
-  tabindex="0" 
-  class="tab__item" 
+  class="tab__item"
   {...attr}>
   <Prose>
     <slot />
@@ -33,12 +33,12 @@ const aria_labelledby = `tab-${id}`;
 </section>
 
 <style>
-  .tab__item {
+  [aria-role="tabpanel"][hidden] {
     opacity: 0;
     animation: fadeIn .5s ease-in-out;
   }
 
-  .tab__item.active {
+  [aria-role="tabpanel"] {
     opacity: 1;
     animation: fadeIn .5s ease-in-out;
   }
