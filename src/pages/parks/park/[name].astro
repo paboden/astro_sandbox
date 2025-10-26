@@ -7,6 +7,8 @@ import Prose from "@layouts/Prose.astro";
 import type { GetStaticPaths } from 'astro';
 import { getUsStateName } from '@lib/helpers'
 import { Icon } from "astro-icon/components";
+import TabPanel from "@components/Interface/Tabs/TabPanel.astro";
+import Tabs from "@components/Interface/Tabs/Tabs.astro";
 
 export const prerender = true;
 
@@ -38,222 +40,316 @@ const formatter = new Intl.DateTimeFormat('en-US', {
 });
 ---
 <Layout>
-  <div class="max-w-[80ch] mx-auto">
+  <div class="mx-auto max-w-screen-xl">
 
-    <BackTo class="mt-3" href="/parks" title="Return to all blog authors listing page">Back to Parks</BackTo>
+    <header class="mb-8">
+      <BackTo class="mt-3" href="/parks" title="Return to all blog authors listing page">Back to Parks</BackTo>
 
-    <hgroup class="flex flex-col gap-2 align-baseline my-8">
-      <h1 class="font-bold text-3xl m-0 mb-0 p-0">{park?.data.name} <span class="font-light text-3xl m-0 p-0 italic">{park?.data.designation}</span></h1>
-      {park?.data.parkCode && (
-        <p class="text-xs text-gray-500">Parkcode: {park?.data.parkCode}</p>
+      <hgroup class="flex flex-col gap-2 align-baseline my-8">
+        <h1 class="font-bold text-3xl m-0 mb-0 p-0">{park?.data.name} <span class="font-light text-3xl m-0 p-0 italic">{park?.data.designation}</span></h1>
+        {park?.data.parkCode && (
+          <p class="text-sm text-gray-600">Parkcode: <em>{park?.data.parkCode}</em></p>
+        )}
+      </hgroup>
+
+      {park?.data.states && (
+        <nav class="mb-3">
+          <ul class="list-none flex flex-wrap gap-2" aria-label="Associated States">
+            {park?.data.states?.split(",").map((state) => {
+              const url = `/parks/state/${state.toLowerCase()}`;
+              const link_title = `Go to the parks listing page for ${getUsStateName(state)}`;
+              return (
+                <li class="flex align-middle text-sm list-none">
+                  <a title={link_title} class="flex flex-nowrap align-middle items-center px-3 bg-blue-400 hover:bg-blue-600 rounded-2xl p-1 text-white no-underline gap-1" href={url}>
+                    {getUsStateName(state)}
+                    <Icon name="mdi:arrow-right"></Icon>
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        </nav>
       )}
-    </hgroup>
+    </header>
 
     {park?.data.description && (
       <section>
-        {/* <h2 class="font-bold text-lg mb-2">Description</h2> */}
         <p>{park?.data.description}</p>
       </section>
     )}
 
-    {park?.data.states && (
-      <section>
-        <h2 class="font-semibold text-lb mb-2">State(s)</h2>
-        <nav class="mb-12">
-          <ul class="list-none flex flex-wrap gap-2">{park?.data.states?.split(",").map((state) => {
-            const url = `/parks/state/${state.toLowerCase()}`;
-            return (
-              <li class="flex align-middle text-sm list-none">
-                <a class="flex flex-nowrap align-middle items-center px-3 bg-gray-400 hover:bg-gray-600 rounded-2xl p-1 text-white no-underline gap-1" href={url}>
-                  {getUsStateName(state)}
-                  <Icon name="mdi:arrow-up"></Icon>
-                </a>
-              </li>
-            )
-            })}
-          </ul>
-        </nav>
-      </section>
-    )}
+    <Tabs 
+      type="vertical" 
+      aria-label=`"General information about ${park?.data.name} ${park?.data.designation}"` 
+      class="my-12 py-12 border-y-1 border-gray-300">
 
-    {park.data.directionsInfo && (
-      <section>
-        <h2 class="font-semibold text-lg mb-2">Directions</h2>
-        <p>{park.data.directionsInfo}</p>
-        <a href={park.data.directionsUrl}>More</a>
-      </section>
-    )}
+      {park?.data.activities.length > 0 && (
+        <TabPanel
+          label="Activities"
+          icon="mdi:hiking"
+          tab_class="aria-selected:bg-blue-400 aria-selected:text-white rounded-md hover:bg-blue-600 hover:text-white aria-selected:hover:bg-blue-600">
+          <section>
+            <h2 class="font-semibold text-lg mb-2">Activities</h2>
+            <ul class="columns-sm">
+              {park?.data.activities.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </section>
+        </TabPanel>
+      )}
 
-    {park?.data.weatherInfo && (
-      <section>
-        <h2 class="font-semibold text-lg mb-2">Weather</h2>
-        <p>{park?.data.weatherInfo}</p>
-      </section>
-    )}
+      {park?.data.topics.length > 0 && (
+        <TabPanel
+          label="Topics"
+          icon="mdi:information-outline"
+          tab_class="aria-selected:bg-blue-400 aria-selected:text-white rounded-md hover:bg-blue-600 hover:text-white aria-selected:hover:bg-blue-600">
+          <section>
+            <h2 class="font-semibold text-xl mb-2">Topics</h2>
+            <ul class="columns-3xs">
+              {park?.data.topics.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </section>
+        </TabPanel>
+      )}
 
-    {park.data.operatingHours && (
-      <section>
-        <h2 class="font-semibold text-lg mb-2">Operating Hours / Entrance Fees</h2>
-        <p><a href={`/parks/park/${path_park_name}/hours-and-fees`}>View Operating Hours and Fees</a></p>
-      </section>
-    )}
+      {park.data.directionsInfo && (
+        <TabPanel
+          label="Directions"
+          icon="mdi:directions"
+          tab_class="aria-selected:bg-blue-400 aria-selected:text-white rounded-md hover:bg-blue-600 hover:text-white aria-selected:hover:bg-blue-600">
+          <section>
+            <h2 class="font-semibold text-lg mb-2">Directions</h2>
+            <p>{park.data.directionsInfo}</p>
+            <a href={park.data.directionsUrl}>More</a>
+          </section>
+        </TabPanel>
+      )}
 
-    <!-- {park.operatingHours && (
-      <section>
-        <h2 class="font-semibold text-lg mb-4">Operating hours</h2>
-        <ul class="list-none p-0 m-0 ml-12">
-          {park?.operatingHours.map((item) => (
-            <li class="mb-6">
-              <section>
-                <h3 class="font-semibold my-3 py-0">{item?.name}</h3>
-                <p>{item?.description}</p>
-                <h4 class="font-semibold my-3 mb-2 py-0">Standard Hours</h4>
-                <dl class="ml-0">
-                  <div class="flex items-baseline gap-2">
-                    <dt class="font-semibold my-0 py-0">Monday:</dt>
-                    <dd class="font-normal my-0 py-0">{item?.standardHours?.monday}</dd>
-                  </div>
-                  <div class="flex items-baseline gap-2">
-                    <dt class="font-semibold my-0 py-0">Tuesday:</dt>
-                    <dd class="font-normal my-0 py-0">{item?.standardHours?.tuesday}</dd>
-                  </div>
-                  <div class="flex items-baseline gap-2">
-                    <dt class="font-semibold my-0 py-0">Wednesday:</dt>
-                    <dd class="font-normal my-0 py-0">{item?.standardHours?.wednesday}</dd>
-                  </div>
-                  <div class="flex items-baseline gap-2">
-                    <dt class="font-semibold my-0 py-0">Thursday:</dt>
-                    <dd class="font-normal my-0 py-0">{item?.standardHours?.thursday}</dd>
-                  </div>
-                  <div class="flex items-baseline gap-2">
-                    <dt class="font-semibold my-0 py-0">Friday:</dt>
-                    <dd class="font-normal my-0 py-0">{item?.standardHours?.friday}</dd>
-                  </div>
-                  <div class="flex items-baseline gap-2">
-                    <dt class="font-semibold my-0 py-0">Saturday:</dt>
-                    <dd class="font-normal my-0 py-0">{item?.standardHours?.saturday}</dd>
-                  </div>
-                  <div class="flex items-baseline gap-2">
-                    <dt class="font-semibold my-0 py-0">Sunday:</dt>
-                    <dd class="font-normal my-0 py-0">{item?.standardHours?.sunday}</dd>
-                  </div>
-                </dl>
-                {item?.exceptions && item?.exceptions.length > 0 && (
-                  <details>
-                    <summary>Exceptions</summary>
-                    <ul>
-                      {item?.exceptions?.map((exception) => { 
-                        const startDate = exception?.startDate as string;
-                        const endDate = exception?.endDate as string;
-                        return (
-                          <li>
-                          <h4>{exception?.name}</h4>
-                          <time>From <strong>{formatter.format(new Date(startDate))}</strong> to <strong>{formatter.format(new Date(endDate))}</strong></time>
-                          <dl>
-                            <dt>Monday</dt>
-                            <dd>{exception?.exceptionHours?.monday}</dd>
-                            <dt>Tuesday</dt>
-                            <dd>{exception?.exceptionHours?.tuesday}</dd>
-                            <dt>Wednesday</dt>
-                            <dd>{exception?.exceptionHours?.wednesday}</dd>
-                            <dt>Thursday</dt>
-                            <dd>{exception?.exceptionHours?.thursday}</dd>
-                            <dt>Friday</dt>
-                            <dd>{exception?.exceptionHours?.friday}</dd>
-                            <dt>Saturday</dt>
-                            <dd>{exception?.exceptionHours?.saturday}</dd>
-                            <dt>Sunday</dt>
-                            <dd>{exception?.exceptionHours?.sunday}</dd>
-                          </dl>
-                          </li>
-                        )
-                      })}
-                    </ul>
+      {park?.data.weatherInfo && (
+        <TabPanel
+          label="Weather"
+          icon="mdi:weather-partly-cloudy"
+          tab_class="aria-selected:bg-blue-400 aria-selected:text-white rounded-md hover:bg-blue-600 hover:text-white aria-selected:hover:bg-blue-600">
+          <section>
+            <h2 class="font-semibold text-lg mb-2">Weather</h2>
+            <p>{park?.data.weatherInfo}</p>
+          </section>
+        </TabPanel>
+      )}
+
+      {park.data.operatingHours && (
+        <TabPanel
+          label="Hours"
+          icon="mdi:clock-outline"
+          tab_class="aria-selected:bg-blue-400 aria-selected:text-white rounded-md hover:bg-blue-600 hover:text-white aria-selected:hover:bg-blue-600">
+          <section>
+            <h2 class="font-semibold text-lg mb-4">Operating hours</h2>
+            <ul class="list-none p-0 m-0">
+              {park?.data.operatingHours.map((item) => (
+                <li class="mb-3">
+                  <details class="group/hours border-1 border-gray-300 rounded-md">
+                    <summary class="flex items-center w-full">
+                      <h3 class="font-semibold my-3 py-0 px-4 w-full">{item?.name}</h3>
+                      <Icon name="mdi:arrow-right" class="ml-auto mr-4 text-xl -rotate-270 group-open/hours:-rotate-90 transition-transform duration-300"></Icon>
+                    </summary>
+                    <div class="px-4 py-4 border-t-1 border-gray-300">
+                      <p>{item?.description}</p>
+                      <h4 class="font-semibold my-3 mb-2 py-0">Standard Hours</h4>
+                      <dl class="ml-0">
+                        <div class="flex items-baseline gap-2">
+                          <dt class="font-semibold my-0 py-0">Monday:</dt>
+                          <dd class="font-normal my-0 py-0">{item?.standardHours?.monday}</dd>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                          <dt class="font-semibold my-0 py-0">Tuesday:</dt>
+                          <dd class="font-normal my-0 py-0">{item?.standardHours?.tuesday}</dd>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                          <dt class="font-semibold my-0 py-0">Wednesday:</dt>
+                          <dd class="font-normal my-0 py-0">{item?.standardHours?.wednesday}</dd>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                          <dt class="font-semibold my-0 py-0">Thursday:</dt>
+                          <dd class="font-normal my-0 py-0">{item?.standardHours?.thursday}</dd>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                          <dt class="font-semibold my-0 py-0">Friday:</dt>
+                          <dd class="font-normal my-0 py-0">{item?.standardHours?.friday}</dd>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                          <dt class="font-semibold my-0 py-0">Saturday:</dt>
+                          <dd class="font-normal my-0 py-0">{item?.standardHours?.saturday}</dd>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                          <dt class="font-semibold my-0 py-0">Sunday:</dt>
+                          <dd class="font-normal my-0 py-0">{item?.standardHours?.sunday}</dd>
+                        </div>
+                      </dl>
+                    </div>
+                    {item?.exceptions && item?.exceptions.length > 0 && (
+                      <details class="group/exception border-t-1 border-gray-300 bg-gray-200">
+                        <summary class="flex items-center w-full font-semibold py-3 px-4">
+                          <h4 class="font-semibold w-full">Exceptions</h4>
+                          <Icon name="mdi:arrow-right" class="ml-auto text-xl -rotate-270 group-open/exception:-rotate-90 transition-transform duration-300"></Icon>
+                        </summary>
+                        <ul>
+                          {item?.exceptions?.map((exception) => { 
+                            const startDate = exception?.startDate as string;
+                            const endDate = exception?.endDate as string;
+                            return (
+                              <li class="py-3 px-4 border-t-1 border-gray-300">
+                                <h4 class="font-semibold my-3 py-0">{exception?.name}</h4>
+                                <p class="mb-3">
+                                  <time>From <strong>{formatter.format(new Date(startDate))}</strong> to <strong>{formatter.format(new Date(endDate))}</strong></time>
+                                </p>
+                                <dl class="ml-0 mb-3">
+                                  <div class="flex items-baseline gap-2">
+                                    <dt class="font-semibold my-0 py-0">Monday</dt>
+                                    <dd class="font-normal my-0 py-0">{exception?.exceptionHours?.monday}</dd>
+                                  </div>
+
+                                  <div class="flex items-baseline gap-2">
+                                    <dt class="font-semibold my-0 py-0">Tuesday</dt>
+                                    <dd class="font-normal my-0 py-0">{exception?.exceptionHours?.tuesday}</dd>
+                                  </div>
+
+                                  <div class="flex items-baseline gap-2">
+                                    <dt class="font-semibold my-0 py-0">Wednesday</dt>
+                                    <dd class="font-normal my-0 py-0">{exception?.exceptionHours?.wednesday}</dd>
+                                  </div>
+
+                                  <div class="flex items-baseline gap-2">
+                                    <dt class="font-semibold my-0 py-0">Thursday</dt>
+                                    <dd class="font-normal my-0 py-0">{exception?.exceptionHours?.thursday}</dd>
+                                  </div>
+
+                                  <div class="flex items-baseline gap-2">
+                                    <dt class="font-semibold my-0 py-0">Friday</dt>
+                                    <dd class="font-normal my-0 py-0">{exception?.exceptionHours?.friday}</dd>
+                                  </div>
+
+                                  <div class="flex items-baseline gap-2">
+                                    <dt class="font-semibold my-0 py-0">Saturday</dt>
+                                    <dd class="font-normal my-0 py-0">{exception?.exceptionHours?.saturday}</dd>
+                                  </div>
+
+                                  <div class="flex items-baseline gap-2">
+                                    <dt class="font-semibold my-0 py-0">Sunday</dt>
+                                    <dd class="font-normal my-0 py-0">{exception?.exceptionHours?.sunday}</dd>
+                                  </div>
+                                </dl>
+                              </li>
+                            )
+                          })}
+                        </ul>
+                      </details>
+                    )}
                   </details>
-                )}
-              </section>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )} -->
+                </li>
+              ))}
+            </ul>
+          </section>
+        </TabPanel>
+      )}
 
-    {park?.data.activities.length > 0 && (
-      <section>
-        <h2 class="font-semibold text-lg mb-2">Activities</h2>
-        <ul>
-          {park?.data.activities.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      </section>
-    )}
+      {(park?.data.entranceFees.length > 0) && (
+        <TabPanel 
+          label="Fees" 
+          icon="mdi:currency-usd" 
+          tab_class="aria-selected:bg-blue-400 aria-selected:text-white rounded-md hover:bg-blue-600 hover:text-white aria-selected:hover:bg-blue-600">
+          {park?.data.entranceFees.length > 0 ? (
+            <section>
+              <h2 class="font-semibold text-xl mb-6">Entrance Fees</h2>
+              <dl>
+                {park?.data.entranceFees.map((item) => (
+                  <div class="peer peer-[div]:mt-6 peer-[div]:pt-6 peer-[div]:border-t-1 peer-[div]:border-gray-300">
+                    <dt class="font-semibold text-xl mb-2">{item?.title}</dt>
+                    <dd>
+                      <strong class="text-gray-600 italic">${item?.cost}</strong>
+                      <details class="mt-2">
+                        <summary class="text-sm mb-3">More information</summary>
+                        <p>{item?.description}</p>
+                      </details>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          ) : (
+            <section>
+              <h2 class="font-semibold text-xl mb-6">Entrance Fees</h2>
+              <p>There are no entrance fees.</p>
+            </section>
+          )}
+        </TabPanel>
+      )}
 
-    {park?.data.topics.length > 0 && (
-      <section>
-        <h2 class="font-semibold text-xl mb-2">Topics</h2>
-        <ul>
-          {park?.data.topics.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      </section>
-    )}
+      {(park?.data.entrancePasses.length > 0) && (
+        <TabPanel 
+          label="Passes" 
+          icon="mdi:forest-outline" 
+          tab_class="aria-selected:bg-blue-400 aria-selected:text-white rounded-md hover:bg-blue-600 hover:text-white aria-selected:hover:bg-blue-600">
+          {park?.data.entrancePasses.length > 0 ? (
+            <section>
+              <h2 class="font-semibold text-xl mb-6">Entrance Passes</h2>
+              <dl>
+                {park?.data.entrancePasses.map((item) => (
+                  <div class="peer peer-[div]:mt-6 peer-[div]:pt-6 peer-[div]:border-t-1 peer-[div]:border-gray-300">
+                    <dt class="font-semibold text-xl  mb-2">{item?.title}</dt>
+                    <dd>
+                      <strong class="text-gray-600 italic">${item?.cost}</strong>
+                      <details class="mt-2">
+                        <summary class="text-sm mb-3">More information</summary>
+                        <p>{item?.description}</p>
+                      </details>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          ) : (
+            <section class="mt-12">
+              <h2 class="font-semibold text-xl mb-6">Entrance Passes</h2>
+              <p>No entrance passes available.</p>
+            </section>
+          )}
+        </TabPanel>
+      )}
 
-    <!-- {park?.entranceFees.length > 0 && (
-      <section>
-        <h2 class="font-semibold text-xl mb-2">Entrance Fees</h2>
-        <dl>
-          {park?.entranceFees.map((item) => (
-            <div>
-              <dt>{item?.title}</dt>
-              <dd><strong>${item?.cost}</strong></dd>
-              <dd>{item?.description}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-    )} -->
+      {park?.data.addresses.length > 0 && (
+        <TabPanel 
+          label="Address & Contact" 
+          icon="mdi:map-marker-outline" 
+          tab_class="aria-selected:bg-blue-400 aria-selected:text-white rounded-md hover:bg-blue-600 hover:text-white aria-selected:hover:bg-blue-600">
+          <section>
+            <h2 class="font-semibold text-xl">Official Address(es)</h2>
+            <ul class="mt-6">
+              {park?.data.addresses.map((address) => (
+                <li class="peer peer-[li]:mt-6 peer-[li]:pt-6 peer-[li]:border-t-1 peer-[li]:border-gray-300">
+                  <address>
+                    <h3 class="font-semibold text-lg mb-2">{address?.type} Address</h3>
+                    {address?.line1 && <p>{address?.line1}</p>}
+                    {address?.line2 && <p>{address?.line2}</p>}
+                    {address?.line3 && <p>{address?.line3}</p>}
+                    {address?.city && address?.stateCode && address?.postalCode && <p>{address?.city}, {address?.stateCode} {address?.postalCode}</p>}
+                  </address>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </TabPanel>
+      )}
 
-    <!-- {park?.entrancePasses.length > 0 && (
-      <section>
-        <h2 class="font-semibold text-xl mb-2">Entrance Passes</h2>
-        <dl>
-          {park?.entrancePasses.map((item) => (
-            <div>
-              <dt>{item?.title}</dt>
-              <dd><strong>${item?.cost}</strong></dd>
-              <dd>{item?.description}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-    )} -->
-
-    {park?.data.addresses.length > 0 && (
-      <section>
-        <h2 class="font-semibold text-xl">Addresses</h2>
-        <ul>
-          {park?.data.addresses.map((address) => (
-            <li class="mt-4">
-              <address>
-                <h3 class="font-semibold text-lg mb-2">{address?.type}</h3>
-                {address?.line1 && <p>{address?.line1}</p>}
-                {address?.line2 && <p>{address?.line2}</p>}
-                {address?.line3 && <p>{address?.line3}</p>}
-                {address?.city && address?.stateCode && address?.postalCode && <p>{address?.city}, {address?.stateCode} {address?.postalCode}</p>}
-              </address>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )}
+    </Tabs>
 
     {park?.data.url && (
       <nav class="my-20">
         <a href={park.data.url}>
           <h2 class="font-bold text-lg mb-2">Learn more!</h2>
-          <p>Visit the official website for this park.</p>
+          <p>Visit the official website for {park?.data.name} {park?.data.designation}</p>
         </a>
       </nav>
     )}
@@ -261,8 +357,8 @@ const formatter = new Intl.DateTimeFormat('en-US', {
   </div>
 </Layout>
 
-<style>
+<!-- <style>
   section + section {
     margin-block-start: 2rem;
   }
-</style>
+</style> -->

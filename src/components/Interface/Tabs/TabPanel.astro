@@ -1,14 +1,14 @@
 ---
-import Prose from '@layouts/Prose.astro';
 import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<"div">{
 	label: string;
   id?: string;
 	icon?: string;
+  tab_class?: string;
 }
 
-const {label, id = label.replace(/\s+/g, '-').toLowerCase(), icon, ...attr} = Astro.props;
+const {label, id = label.replace(/\s+/g, '-').toLowerCase(), icon, tab_class = '', ...attr} = Astro.props;
 
 if (!label) {
 	throw new Error('Missing prop `label` on `<TabItem>` component.');
@@ -17,20 +17,20 @@ if (!label) {
 const tab_id = `tab-panel-${id}`;
 const aria_labelledby = `tab-${id}`;
 ---
-<section 
-  data-tabitem 
-  data-label={label} 
-  data-icon={icon} 
-  id={tab_id} 
+<div 
+  data-tabitem
+  data-label={label}
+  data-icon={icon}
+  data-tab-class={tab_class}
+  id={tab_id}
   aria-labelledby={aria_labelledby}
   aria-role="tabpanel"
   role="tabpanel" 
   class="tab__item"
   {...attr}>
-  <Prose>
-    <slot />
-  </Prose>
-</section>
+
+  <slot />
+</div>
 
 <style>
   [aria-role="tabpanel"][hidden] {

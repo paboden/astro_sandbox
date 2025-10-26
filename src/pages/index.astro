@@ -1,6 +1,6 @@
 ---
 import DummyContent from "@components/Base/DummyContent/DummyContent.astro";
-import TabItem from "@components/Interface/Tabs/TabItem.astro";
+import TabPanel from "@components/Interface/Tabs/TabPanel.astro";
 import Tabs from "@components/Interface/Tabs/Tabs.astro";
 import Welcome from "@custom/Welcome.astro";
 import Container from "@layouts/Container.astro";
@@ -12,17 +12,17 @@ import Layout from "@layouts/Layout.astro";
 
   <Container type="stack" spacingSize="2rem" class="max-w-screen-lg my-12 mx-auto">
     <Tabs type="horizontal" aria-label="Horizontal Tabs example">
-      <TabItem label="Tab One" icon="mdi:arrow-down"><DummyContent label="One"/></TabItem>
-      <TabItem label="Tab 2"><DummyContent label="Two"/><DummyContent /><DummyContent /></TabItem>
-      <TabItem label="This is Tab Three" icon="mdi:weather-night"><DummyContent label="Three"/><DummyContent /></TabItem>
-      <TabItem label="Tab Four goes here and is awesome" icon="mdi:account-multiple"><DummyContent label="Four"/></TabItem>
+      <TabPanel label="Tab One" icon="mdi:arrow-down"><DummyContent label="One"/></TabPanel>
+      <TabPanel label="Tab 2"><DummyContent label="Two"/><DummyContent /><DummyContent /></TabPanel>
+      <TabPanel label="This is Tab Three" icon="mdi:weather-night"><DummyContent label="Three"/><DummyContent /></TabPanel>
+      <TabPanel label="Tab Four goes here and is awesome" icon="mdi:account-multiple"><DummyContent label="Four"/></TabPanel>
     </Tabs>
 
     <Tabs type="vertical" aria-label="Vertical Tabs example">
-      <TabItem label="Vertical One" icon="mdi:arrow-down"><DummyContent label="Vertical 1"/></TabItem>
-      <TabItem label="Vertical Tab Two"><DummyContent label="Vertical 2"/><DummyContent /></TabItem>
-      <TabItem label="Vertical Tab Three"><DummyContent label="Vertical 3"/></TabItem>
-      <TabItem label="Vertical Four" icon="mdi:account"><DummyContent label="Vertical 4"/><DummyContent /></TabItem>
+      <TabPanel label="Vertical One" icon="mdi:arrow-down"><DummyContent label="Vertical 1"/></TabPanel>
+      <TabPanel label="Vertical Tab Two"><DummyContent label="Vertical 2"/><DummyContent /></TabPanel>
+      <TabPanel label="Vertical Tab Three"><DummyContent label="Vertical 3"/></TabPanel>
+      <TabPanel label="Vertical Four" icon="mdi:account"><DummyContent label="Vertical 4"/><DummyContent /></TabPanel>
     </Tabs>
   </Container>
 

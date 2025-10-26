@@ -19,7 +19,7 @@ let filtered_html = '';
 // the tabItem components.
 if (tabs_html) {
   const { document } = parseHTML(tabs_html);
-  const tabsHTMLCollection = document.querySelectorAll('section[data-tabitem]');
+  const tabsHTMLCollection = document.querySelectorAll('[role="tabpanel"]');
 
   const tabsArray = Array.from(tabsHTMLCollection);
   tabsArray.forEach((tab) => {
@@ -27,6 +27,7 @@ if (tabs_html) {
       id: tab.getAttribute('data-label').replace(/\s+/g, '-').toLowerCase(),
       label: tab.getAttribute('data-label'),
       icon: tab.getAttribute('data-icon'),
+      tab_class: tab.getAttribute('data-tab-class'),
     })
   });
 
@@ -41,11 +42,11 @@ if (tabs_html) {
   // filtered_html = document.body.innerHTML;
 }
 ---
-<section class="tabs my-12 py-12 border-0 border-gray-300" data-tabs-type={type} {...attr}>
+<section class={`tabs ${attr.class}`} data-tabs-type={type} {...attr}>
 
   {tabs && (
-    <div class="tablist-wrapper">
-      <ul role="tablist" class="tablist border-0 border-gray-300">
+    <div class="tablist-wrapper overflow-auto">
+      <ul role="tablist" class="flex list-none border-0 border-gray-300 gap-1">
         {tabs.map((tab, index) => {
           const panel_id = `tab-panel-${tab.id}`;
           const id = `#tab-${tab.id}`;
@@ -59,8 +60,8 @@ if (tabs_html) {
                 aria-selected={index == 0}
                 aria-controls={panel_id}
                 tabindex={index !== 0 ? -1 : 0}
-                class="tab__button">
-                  {tab.icon && <Icon name={tab.icon} class="inline-flex items-center"></Icon>}
+                class={`tab__button ${tab.tab_class}`}>
+                  {tab.icon && <Icon name={tab.icon} class="inline-flex items-center mr-1"></Icon>}
                   {tab.label}
                 </button>
               </li>
@@ -92,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // All panel sections for this tabs group.
     const tabsGroupPanelsContainer = tabsGroup.querySelector(".tabs__panels");
-    const tabsGroupPanels = Array.from(tabsGroupPanelsContainer.querySelectorAll('section[aria-role="tabpanel"]'));
+    const tabsGroupPanels = Array.from(tabsGroupPanelsContainer.querySelectorAll('[role="tabpanel"]'));
 
     // Process the buttons and assign event listeners.
     tabsGrouptabListButtons.forEach((tabButton, idx) => {
@@ -174,21 +175,10 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <style>
-  .tablist-wrapper {
-		overflow-x: auto;
-	}
-
-  .tablist {
-    display: flex;
-    list-style: none;
-
-  }
-
   .tabs[data-tabs-type='horizontal'] .tablist {
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    border-bottom-width: 1px;
     gap: 1rem;
   }
 
@@ -206,10 +196,7 @@ document.addEventListener("DOMContentLoaded", function() {
     cursor: pointer;
   }
 
-  .tab [role='tab'][aria-selected='true'],
-  .tab [role='tab']:focus {
-		color: white;
-		background: blue;
+  .tab [role='tab'][aria-selected='true'] {
     transition: all 0.5s ease-in-out;
 	}
 
@@ -217,7 +204,6 @@ document.addEventListener("DOMContentLoaded", function() {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
-    border-top-width: 1px;
   }
 
   .tabs[data-tabs-type='vertical'] .tablist-wrapper {

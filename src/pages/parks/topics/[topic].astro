@@ -1,0 +1,39 @@
+---
+import type { ParkSchema } from "@/types/park";
+import BackTo from "@components/Navigation/BackTo/BackTo.astro";
+import Layout from "@layouts/Layout.astro";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
+import type { GetStaticPaths } from 'astro';
+import { getUsStateName } from '@lib/helpers'
+import { Icon } from "astro-icon/components";
+
+export const getStaticPaths = (async () => {
+  const response = await fetch('http://localhost:4321/api/parks.json');
+  const parks = await response.json();
+
+
+  return parks.map((park) => ({
+    params: { topic: 'all' },
+    props: { park },
+  }));
+}) satisfies GetStaticPaths;
+
+// const { park } = Astro.props as { park: CollectionEntry<'parks_by_state'> };
+// const data = park.data?.data;
+// const id = park.id.toUpperCase() as string;
+---
+<Layout>
+  <div class="flex mx-auto max-w-screen-xl">
+    <header class="mb-8">
+      <BackTo class="mt-3" href="/parks" title="Return to all parks list">Back to All Parks</BackTo>
+      <hgroup class="flex flex-col gap-2 align-baseline my-8">
+        <h1 class="text-3xl font-bold">National Parks by Topic</h1>
+        <!-- <p class="text-sm text-gray-600">{data?.length} total parks</p> -->
+      </hgroup>
+    </header>
+  </div>
+
+  <div class="mx-auto max-w-screen-xl">
+    <p>The list will go here.</p>
+  </div>
+</Layout>
