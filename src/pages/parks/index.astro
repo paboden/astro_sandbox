@@ -7,6 +7,8 @@ import states from "@content/data/states/us-states-with-detail.json"
 
 const response = await fetch('http://localhost:4321/api/parks.json');
 const parks = await response.json();
+const parksListSorted = parks.sort((a: ParkSchema, b: ParkSchema) => a.data.name.localeCompare(b.data.name));
+
 ---
 <Layout>
   <div class="flex py-10 mx-auto max-w-screen-xl">
@@ -19,9 +21,9 @@ const parks = await response.json();
 
     <div class="col-span-4">
       <h2 class="text-xl font-semibold mb-6">Parks by name</h2>
-      {parks.length && (
+      {parksListSorted.length && (
         <ul class="columns-sm gap-4">
-          {parks.map((park: ParkSchema) => {
+          {parksListSorted.map((park: ParkSchema) => {
             const url = "/parks/park/" + park.data.name?.replace(/\s+/g, '-').toLowerCase() as string;
             return (
               <li><a class="text-blue-500 hover:text-blue-700" href={url}>{park.data.fullName}</a></li>

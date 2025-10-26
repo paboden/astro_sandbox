@@ -90,10 +90,13 @@ const formatter = new Intl.DateTimeFormat('en-US', {
           tab_class="aria-selected:bg-blue-400 aria-selected:text-white rounded-md hover:bg-blue-600 hover:text-white aria-selected:hover:bg-blue-600">
           <section>
             <h2 class="font-semibold text-lg mb-2">Activities</h2>
-            <ul class="columns-sm">
-              {park?.data.activities.map((item) => (
-                <li>{item}</li>
-              ))}
+            <ul class="list-disc list-inside columns-3xs">
+              {park?.data.activities.map((activity: string) => {
+                const url = "/parks/activities/activity/" + activity?.replace(/\s+/g, '-').toLowerCase() as string;
+                return (
+                  <li class="mb-1"><a class="text-blue-500 hover:text-blue-700" href={url}>{activity}</a></li>
+                )
+              })}
             </ul>
           </section>
         </TabPanel>
@@ -106,10 +109,13 @@ const formatter = new Intl.DateTimeFormat('en-US', {
           tab_class="aria-selected:bg-blue-400 aria-selected:text-white rounded-md hover:bg-blue-600 hover:text-white aria-selected:hover:bg-blue-600">
           <section>
             <h2 class="font-semibold text-xl mb-2">Topics</h2>
-            <ul class="columns-3xs">
-              {park?.data.topics.map((item) => (
-                <li>{item}</li>
-              ))}
+            <ul class="list-disc list-inside columns-3xs">
+              {park?.data.topics.map((topic: string) => {
+                const url = "/parks/topics/topic/" + topic?.replace(/\s+/g, '-').toLowerCase() as string;
+                return (
+                  <li class="mb-1"><a class="text-blue-500 hover:text-blue-700" href={url}>{topic}</a></li>
+                )
+              })}
             </ul>
           </section>
         </TabPanel>

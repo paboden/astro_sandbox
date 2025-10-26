@@ -52,6 +52,11 @@ export const GET: APIRoute = async () => {
 
     const states = item.states.split(',');
     const state = states.at(0).toLowerCase();
+    const activitiesSorted = item.activities.sort();
+    const topicsSorted = item.topics.sort();
+
+    item.activities = activitiesSorted;
+    item.topics = topicsSorted;
 
     const data = {
       id: item.parkCode,

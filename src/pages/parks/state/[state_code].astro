@@ -20,6 +20,7 @@ export const getStaticPaths = (async () => {
 const { park } = Astro.props as { park: CollectionEntry<'parks_by_state'> };
 const data = park.data?.data;
 const id = park.id.toUpperCase() as string;
+
 ---
 <Layout>
   <div class="flex mx-auto max-w-screen-xl">
