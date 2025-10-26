@@ -9,8 +9,17 @@ import { getUsStateName } from '@lib/helpers'
 import { Icon } from "astro-icon/components";
 import TabPanel from "@components/Interface/Tabs/TabPanel.astro";
 import Tabs from "@components/Interface/Tabs/Tabs.astro";
+import { Image } from 'astro:assets';
 
 export const prerender = true;
+
+interface ImageData {
+  credit: string;
+  altText: string;
+  title: string;
+  caption: string;
+  url: string;
+}
 
 export const getStaticPaths = (async () => {
   const response = await fetch('http://localhost:4321/api/parks.json');
@@ -35,53 +44,74 @@ const formatter = new Intl.DateTimeFormat('en-US', {
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-    // second: '2-digit',
-    // timeZoneName: 'short',
 });
 ---
 <Layout>
   <div class="mx-auto max-w-screen-xl">
 
-    <header class="mb-8">
-      <BackTo class="mt-3" href="/parks" title="Return to all blog authors listing page">Back to Parks</BackTo>
+    <header class="flex flex-col md:grid md:grid-cols-6 md:gap-x-[3rem]">
 
-      <hgroup class="flex flex-col gap-2 align-baseline my-8">
-        <h1 class="font-bold text-3xl m-0 mb-0 p-0">{park?.data.name} <span class="font-light text-3xl m-0 p-0 italic">{park?.data.designation}</span></h1>
-        {park?.data.parkCode && (
-          <p class="text-sm text-gray-600">Parkcode: <em>{park?.data.parkCode}</em></p>
+      <div class="col-span-4 order-2 md:order-1 w-full">
+
+        <BackTo class="mt-3" href="/parks" title="Return to all blog authors listing page">Back to Parks</BackTo>
+
+        <hgroup class="flex flex-col gap-2 align-baseline my-8 col-span-[main]">
+          <h1 class="font-bold text-3xl m-0 mb-0 p-0">{park?.data.name} <span class="font-light text-3xl m-0 p-0 italic">{park?.data.designation}</span></h1>
+          {park?.data.parkCode && (
+            <p class="text-sm text-gray-600">Parkcode: <em>{park?.data.parkCode}</em></p>
+          )}
+        </hgroup>
+
+        {park?.data.states && (
+          <nav class="mb-6 col-span-[main]">
+            <ul class="list-none flex flex-wrap gap-2" aria-label="Associated States">
+              {park?.data.states?.split(",").map((state) => {
+                const url = `/parks/state/${state.toLowerCase()}`;
+                const link_title = `Go to the parks listing page for ${getUsStateName(state)}`;
+                return (
+                  <li class="flex align-middle text-sm list-none">
+                    <a title={link_title} class="flex flex-nowrap align-middle items-center px-3 bg-blue-400 hover:bg-blue-600 rounded-2xl p-1 text-white no-underline gap-1" href={url}>
+                      {getUsStateName(state)}
+                      <Icon name="mdi:arrow-right"></Icon>
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
+          </nav>
         )}
-      </hgroup>
 
-      {park?.data.states && (
-        <nav class="mb-3">
-          <ul class="list-none flex flex-wrap gap-2" aria-label="Associated States">
-            {park?.data.states?.split(",").map((state) => {
-              const url = `/parks/state/${state.toLowerCase()}`;
-              const link_title = `Go to the parks listing page for ${getUsStateName(state)}`;
+        {park?.data.description && (
+          <section>
+            <p>{park?.data.description}</p>
+          </section>
+        )}
+      </div>
+
+      <div class="col-span-2 order-1 md:order-2 w-full">
+        {park?.data.images && (
+          park.data.images.map((img: ImageData, index: number) => {
+            if (index === 0) {
               return (
-                <li class="flex align-middle text-sm list-none">
-                  <a title={link_title} class="flex flex-nowrap align-middle items-center px-3 bg-blue-400 hover:bg-blue-600 rounded-2xl p-1 text-white no-underline gap-1" href={url}>
-                    {getUsStateName(state)}
-                    <Icon name="mdi:arrow-right"></Icon>
-                  </a>
-                </li>
+                <figure class="my-6">
+                  <img src={img.url} width="600" class="rounded-4xl"/>
+                  <figcaption class="text-xs py-6">
+                    <p>{img.caption} | <cite>{img.credit}</cite></p>
+                    
+                    </figcaption>
+                </figure>
+                
               )
-            })}
-          </ul>
-        </nav>
-      )}
+            }
+          })
+        )}
+      </div>
     </header>
-
-    {park?.data.description && (
-      <section>
-        <p>{park?.data.description}</p>
-      </section>
-    )}
 
     <Tabs 
       type="vertical" 
       aria-label=`"General information about ${park?.data.name} ${park?.data.designation}"` 
-      class="my-12 py-12 border-y-1 border-gray-300">
+      class="mb-6 py-12 border-y-1 border-gray-300">
 
       {park?.data.activities.length > 0 && (
         <TabPanel
