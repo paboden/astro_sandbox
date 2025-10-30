@@ -15,13 +15,29 @@ const parksListSorted = parks.sort((a: ParkSchema, b: ParkSchema) => a.data.name
     <h1 class="text-3xl font-bold mt-6">National Parks List</h1>
   </div>
 
-  <div class="grid grid-cols-6 gap-4 mx-auto max-w-screen-xl">
+  <div class="grid grid-cols-6 pb-12 gap-4 mx-auto max-w-screen-xl">
 
-    <p class="col-span-full text-sm text-gray-600 dark:text-gray-400"><a href="/api/parks.json" target="_blank">View json data</a></p>
-
-    <div class="col-span-4">
+    <div class="col-span-6">
       <h2 class="text-xl font-semibold mb-6">Parks by name</h2>
-      {parksListSorted.length && (
+
+      <form action="#" class="my-6">
+        <div class="pr-10">
+          <label for="filter_form__parks" class="text-sm text-gray-600">Search by park name:</label><br>
+          <input type="text" name="filter_form__parks" class="p-2 border-1 border-gray-300 rounded-sm w-full" placeholder="@park name" list="filter_form__parksList">
+          {parksListSorted.length && (
+            <datalist id="filter_form__parksList">
+            {parksListSorted.map((park: ParkSchema) => {
+              const url = "/parks/park/" + park.data.name?.replace(/\s+/g, '-').toLowerCase() as string;
+              return (
+                <option value={park.data.fullName}>{url}</option>
+              )
+            })}
+            </datalist>
+          )}
+        </div>
+      </form>
+
+      <!-- {parksListSorted.length && (
         <ul class="columns-sm gap-4">
           {parksListSorted.map((park: ParkSchema) => {
             const url = "/parks/park/" + park.data.name?.replace(/\s+/g, '-').toLowerCase() as string;
@@ -30,10 +46,10 @@ const parksListSorted = parks.sort((a: ParkSchema, b: ParkSchema) => a.data.name
             )
           })}
         </ul>
-      )}
+      )} -->
     </div>
 
-    <div class="col-span-2">
+    <div class="col-span-6 pb-12">
       <h2 class="text-xl font-semibold mb-6">States</h2>
       {states.states.length && (
         <ul class="columns-[12rem]">
@@ -47,6 +63,10 @@ const parksListSorted = parks.sort((a: ParkSchema, b: ParkSchema) => a.data.name
       )}
     </div>
 
+    <div class="col-span-6">
+      <h2 class="text-xl font-semibold mb-6">Additional links</h2>
+      <p class="col-span-full text-sm text-gray-600 dark:text-gray-400"><a href="/api/parks.json" target="_blank">View json data</a></p>
+    </div>
   </div>
 </Layout>
 
