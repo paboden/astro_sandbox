@@ -4,7 +4,6 @@ name: Silver
 symbol: Ag
 stp: solid
 weight: 107.8682
-
 cas_number:
   - 7440-22-4
 chemspider_id:
@@ -13,6 +12,7 @@ pubchem_id:
   - 23954
 ec_number:
   - 231-131-3
+slug: 47-silver
 ---
 
-Markdown content here...
+This is some content for silver

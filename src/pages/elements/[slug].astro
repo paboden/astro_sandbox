@@ -10,11 +10,12 @@ import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import type { GetStaticPaths } from 'astro';
 import DataItem from "@components/Base/DataItem/DataItem.astro";
 import DataItemList from "@components/Base/DataItem/DataItemList.astro";
+import type { ElementSchema } from "@/types/element.ts";
 
 export const getStaticPaths = (async () => {
   const elements = await getCollection('elements');
   return elements.map((element) => ({
-    params: { slug: `${element.data.number}_${element.data.name.toLowerCase()}` },
+    params: { slug: `${element.data.number}-${element.data.name.toLowerCase()}` },
     props: { element: element, data: element.data, content: element.rendered },
   }));
 }) satisfies GetStaticPaths;
