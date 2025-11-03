@@ -1,0 +1,83 @@
+---
+import { Image } from "astro:assets";
+import Layout from "@layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import { getEntry } from "astro:content";
+
+import type { MarkdownInstance } from 'astro';
+interface Frontmatter {
+    title: string;
+    description?: string;
+    number: number;
+    symbol: string;
+    name: string;
+    stp?: string;
+    density?: number;
+    weight?: number;
+    classification?: string;
+    color?: string;
+    appearance?: string;
+    period?: number;
+    block?: string;
+    group?: number;
+    configuration?: number[];
+    oxidation_states?: (number | string)[];
+    cas_number?: string[];
+    ec_number?: string;
+    chemspider_id?: number;
+    pubchem_id?: number;
+    year_discovered?: number;
+    discovered_by?: string;
+    year_named?: number;
+    named_by?: string;
+    name_meaning?: string;
+    image?: string;
+    wiki?: string;
+    href?: string;
+    facts?: string[];
+    location?: string;
+    protons?: number;
+    neutrons?: number;
+    electrons?: number;
+    melting_point?: { type: string; value: number }[];
+    boiling_point?: { type: string; value: number }[];
+    vaporization?: number[];
+}
+
+export async function getStaticPaths() {
+  const elements = Object.values(
+    import.meta.glob<MarkdownInstance<Frontmatter>>("@content/elements/*.md", { eager: true })
+  );
+
+  return elements.map((el) => {
+    const name = el.frontmatter.name;
+    const number = el.frontmatter.number;
+    const element = el.frontmatter;
+    const content = el.compiledContent();
+
+    return {
+      params: { periodic_element_name: `element__${number}_${name.toLowerCase()}__element` },
+      props: { element, content },
+    };
+  });
+}
+
+const { periodic_element_name } = Astro.params;
+const { element, content } = Astro.props;
+
+---
+
+<Layout title=`Periodic Element: ${element.name}`>
+
+  <Fragment set:html={content ?? "<p>No element found</p>"} />
+
+  {element.facts && element.facts.length > 0 && (
+    <h2>Facts</h2>
+    <ul>
+      {element.facts.map((fact) => (
+        <li>{fact}</li>
+      ))}
+    </ul>
+  )}
+
+</Layout>

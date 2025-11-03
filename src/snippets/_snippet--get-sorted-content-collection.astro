@@ -1,0 +1,40 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+// Content collection import
+const elements = await getCollection("periodic_elements_list");
+const elementsData = elements
+  .map((element) => ({
+    ...element.data,
+  }))
+  .sort((a, b) => a.id.valueOf() - b.id.valueOf());
+---
+
+<Layout title="Periodic Elements: List display">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Atomic Number</th>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Atomic Weight</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        elementsData.map((element) => {
+          return (
+            <tr>
+              <td>{element.id}</td>
+              <td>{element.symbol}</td>
+              <td>{element.name}</td>
+              <td>{element.atomic_weight}</td>
+            </tr>
+          );
+        })
+      }
+    </tbody>
+  </table>
+</Layout>
