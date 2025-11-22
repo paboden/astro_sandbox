@@ -1,0 +1,49 @@
+---
+import TrevitalFooter from "@components/Trevital/TrevitalFooter.astro";
+import TrevitalHeader from "@components/Trevital/TrevitalHeader.astro";
+import "../styles/global.css";
+import TrevitalHeroTitle from "@components/Trevital/TrevitalHeroTitle.astro";
+import TrevitalFooterAlt1 from "@components/Trevital/TrevitalFooterAlt1.astro";
+import TrevitalHeroTitleSplit from "@components/Trevital/TrevitalHeroTitleSplit.astro";
+import TrevitalHeroTitleNoSubtext from "@components/Trevital/TrevitalHeroTitleNoSubtext.astro";
+import TrevitalFooterAlt2 from "@components/Trevital/TrevitalFooterAlt2.astro";
+import TrevitalFooterAlt3 from "@components/Trevital/TrevitalFooterAlt3.astro";
+
+const { ...attr } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{Astro.props.title ?? "Astro Sandbox Site"}</title>
+    <meta name="description" content={Astro.props.description ?? "This page needs a description"}>
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body class="text-zinc-900 dark:text-zinc-100 min-h-screen flex flex-col">
+    <TrevitalHeader />
+
+    <p>This is a hero title default format with no subtext</p>
+    <TrevitalHeroTitleNoSubtext />
+
+    <p>This is a hero title default format with subtext</p>
+    <TrevitalHeroTitle />
+
+    <p>This is a hero title split format</p>
+    <TrevitalHeroTitleSplit />
+
+    <main class="main-content">
+      <slot />
+    </main>
+
+    <!-- <TrevitalFooter /> -->
+    <!-- <TrevitalFooterAlt1 /> -->
+    <!-- <TrevitalFooterAlt2 /> -->
+    <TrevitalFooterAlt3 />
+
+  </body>
+</html>
+
